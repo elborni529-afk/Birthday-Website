@@ -319,6 +319,21 @@ p {
 </head>
 
 <body>
+	<!-- Secret Password Lock Screen -->
+	<div id="password-gate">
+  		<div class="lock-card">
+    		<div class="lock-icon">🔒</div>
+    		<h2>Secret Birthday Access</h2>
+    		<p>Enter the secret code to unlock your birthday surprise!</p>
+    
+    		<div class="input-group">
+      			<input type="password" id="pass-input" placeholder="Enter password..." onkeypress="handleKeyPress(event)" />
+      			<button onclick="checkPassword()">Unlock ✨</button>
+    		</div>
+    
+    		<p id="pass-error" class="error-msg"></p>
+  		</div>
+	</div>
 	<div class="loading"></div>
   <img src="assets/images/photo1.jpg" class="album-photo album-left-1">
   <img src="assets/images/photo2.jpg" class="album-photo album-left-2">
