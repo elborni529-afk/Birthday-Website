@@ -525,83 +525,84 @@ p {
     <img src="" alt="zoomed photo">
   </div>
 	<script>
-	// Change this to whatever secret password or date you want!
-	const SECRET_PASSWORD = "29092008"; 
+	// 1. SET YOUR SECRET PASSWORD & TARGET BIRTHDAY MIDNIGHT HERE
+	const SECRET_PASSWORD = "1234"; 
+
+	// Target Midnight Date (Year, Month [0=Jan, 1=Feb... 8=Sep, 9=Oct], Day, Hour, Min, Sec)
+	// Example: Oct 15, 2026 Midnight -> new Date(2026, 9, 15, 0, 0, 0)
+	const TARGET_BIRTHDAY = new Date(2026, 9, 15, 0, 0, 0); 
+
+	let isPasswordCorrect = false;
+	let countdownTimer = null;
 
 	function checkPassword() {
   		const input = document.getElementById("pass-input");
   		const error = document.getElementById("pass-error");
-  		const gate = document.getElementById("password-gate");
   		const card = document.querySelector(".lock-card");
 
- 		 if (input.value.trim() === SECRET_PASSWORD) {
-   			 error.innerText = "";
-    		gate.classList.add("unlocked");
+  		if (input.value.trim() === SECRET_PASSWORD) {
+    		isPasswordCorrect = true;
+    		error.innerText = "";
+    
+    		// Switch UI from password input to Countdown display
+    		document.getElementById("password-section").style.display = "none";
+    		document.getElementById("countdown-section").style.display = "block";
+    		document.getElementById("gate-title").innerText = "⏰ Hold On Tight!";
+    		document.getElementById("gate-subtitle").innerText = "Correct code! The surprise unlocks at midnight:";
+    		document.getElementById("gate-icon").innerText = "⏳";
+
+    		// Start the strict countdown check
+    		startCountdown();
   		} else {
-   			error.innerText = "Wrong code! Try again 😉";
+    		error.innerText = "Wrong code! Try again 😉";
     		card.classList.add("shake");
     		input.value = "";
     		setTimeout(() => card.classList.remove("shake"), 400);
   		}
 	}
 
-	// Allows pressing 'Enter' on the keyboard to submit
 	function handleKeyPress(event) {
-  		if (event.key === "Enter") {
-    		checkPassword();
+  		if (event.key === "Enter") checkPassword();
+	}
+
+	function startCountdown() {
+  		function update() {
+   			const now = new Date().getTime();
+    		const distance = TARGET_BIRTHDAY.getTime() - now;
+
+    		if (distance <= 0) {
+      			// MIDNIGHT HAS ARRIVED! Unlock the site automatically
+      			clearInterval(countdownTimer);
+      			unlockSite();
+      			return;
+    		}
+
+    		// Calculate time left
+    		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    		document.getElementById("days").innerText = String(days).padStart(2, '0');
+    		document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+    		document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+    		document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+  		}
+
+  		update();
+  		countdownTimer = setInterval(update, 1000);
+	}
+
+	function unlockSite() {
+  		const gate = document.getElementById("password-gate");
+  		gate.classList.add("unlocked"); // Smooth fade out
+
+  		// Burst Confetti!
+  		if (typeof confetti === 'function') {
+    		confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
   		}
 	}
 	</script>
-	<script>
-	// 1. SET THE BIRTHDAY DATE HERE (Year, Month [0-indexed: 0=Jan, 1=Feb...], Day, Hours, Mins)
-	// Example: Midnight of October 15th -> new Date(2026, 9, 15, 0, 0, 0)
-	const TARGET_BIRTHDAY = new Date(2026, 9, 29, 0, 0, 0); 
-
-	function updateCountdown() {
-  		const now = new Date().getTime();
-  		const distance = TARGET_BIRTHDAY.getTime() - now;
-
-  	const daysElem = document.getElementById("days");
-  	const hoursElem = document.getElementById("hours");
-  	const minutesElem = document.getElementById("minutes");
-  	const secondsElem = document.getElementById("seconds");
-  	const statusElem = document.getElementById("countdown-status");
-  	const titleElem = document.getElementById("countdown-title");
-
-  	if (distance < 0) {
-    	// Midnight reached!
-    	daysElem.innerText = "00";
-    	hoursElem.innerText = "00";
-    	minutesElem.innerText = "00";
-    	secondsElem.innerText = "00";
-    
-    	titleElem.innerText = "🎂 IT'S OFFICIALLY YOUR BIRTHDAY! 🎂";
-    	statusElem.innerText = "Happy Birthday! Time to celebrate! 🎉✨";
-    
-    	// Trigger celebratory confetti burst if library is loaded
-   		if (typeof confetti === 'function') {
-      		confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
-    	}
-    	return;
-  	}
-
-  	// Calculate Days, Hours, Minutes, Seconds remaining
-  	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  	const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  	// Format with leading zeros (e.g., 05 instead of 5)
-  	daysElem.innerText = String(days).padStart(2, '0');
-  	hoursElem.innerText = String(hours).padStart(2, '0');
-  	minutesElem.innerText = String(minutes).padStart(2, '0');
-  	secondsElem.innerText = String(seconds).padStart(2, '0');
-}
-
-// Run update every second
-setInterval(updateCountdown, 1000);
-updateCountdown();
-</script>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
