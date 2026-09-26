@@ -528,13 +528,12 @@ p {
 	// 1. YOUR SECRET PASSWORD
 	const SECRET_PASSWORD = "29092008"; 
 
-	// 2. YOUR TARGET BIRTHDAY (Year, Month [1 for Jan, 2 for Feb ... 10 for Oct], Day, Hour, Min)
-	// Note: Enter the standard 1-based month below (e.g., 10 for October)!
+	// 2. TARGET BIRTHDAY: September 29, 2026 at Midnight (00:00:00)
 	const TARGET_YEAR = 2026;
-	const TARGET_MONTH = 09; // 1 = January, 10 = October, 12 = December
-	const TARGET_DAY = 29;   // Day of month
+	const TARGET_MONTH = 9;  // 9 = September
+	const TARGET_DAY = 29;    // 29th
 
-	// Automatically converts to JS date
+	// Month in JS Date object is 0-indexed (0=Jan, 8=Sep)
 	const TARGET_BIRTHDAY = new Date(TARGET_YEAR, TARGET_MONTH - 1, TARGET_DAY, 0, 0, 0); 
 
 	let countdownTimer = null;
@@ -550,11 +549,11 @@ p {
     		return;
   		}
 
-  		// Trim whitespace and check password
+  		// Check Password
   		if (input.value.trim() === SECRET_PASSWORD) {
-   			if (error) error.innerText = "";
+    		if (error) error.innerText = "";
     
-    		// Switch UI from password to countdown
+    		// Hide Password Input & Show Countdown
     		passSection.style.display = "none";
     		countSection.style.display = "block";
     
@@ -566,21 +565,21 @@ p {
     		if (subtitle) subtitle.innerText = "Correct code! The surprise unlocks at midnight:";
     		if (icon) icon.innerText = "⏳";
 
-    		// Start strict countdown check
+    		// Start Countdown Check
     		startCountdown();
   		} else {
     		if (error) error.innerText = "Wrong code! Try again 😉";
     		const card = document.querySelector(".lock-card");
     		if (card) {
-      				card.classList.add("shake");
-      				setTimeout(() => card.classList.remove("shake"), 400);
+      			card.classList.add("shake");
+      			setTimeout(() => card.classList.remove("shake"), 400);
     		}
     		input.value = "";
   		}
 	}
 
 	function handleKeyPress(event) {
-  		if (event.key === "Enter") checkPassword();
+  	if (event.key === "Enter") checkPassword();
 	}
 
 	function startCountdown() {
@@ -588,9 +587,9 @@ p {
     		const now = new Date().getTime();
     		const distance = TARGET_BIRTHDAY.getTime() - now;
 
+    		// If target date is reached or passed -> unlock site
     		if (distance <= 0) {
-      			// Midnight reached! Unlock automatically
-      			clearInterval(countdownTimer);
+      			if (countdownTimer) clearInterval(countdownTimer);
       			unlockSite();
       			return;
     		}
@@ -606,14 +605,14 @@ p {
     		const mEl = document.getElementById("minutes");
     		const sEl = document.getElementById("seconds");
 
-    		if (dEl) dEl.innerText = String(days).padStart(2, '0');
-    		if (hEl) hEl.innerText = String(hours).padStart(2, '0');
-    		if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
-    		if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
+    		if (dEl) { dEl.innerText = String(days).padStart(2, '0'); }
+    		if (hEl) { hEl.innerText = String(hours).padStart(2, '0'); }
+    		if (mEl) { mEl.innerText = String(minutes).padStart(2, '0'); }
+    		if (sEl) { sEl.innerText = String(seconds).padStart(2, '0'); }
   		}
 
   		update();
-  		countdownTimer = setInterval(update, 1000);
+ 		countdownTimer = setInterval(update, 1000);
 	}
 
 	function unlockSite() {
