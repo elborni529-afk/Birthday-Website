@@ -500,6 +500,34 @@ p {
   <div class="lightbox" id="lightbox">
     <img src="" alt="zoomed photo">
   </div>
+	<script>
+	// Change this to whatever secret password or date you want!
+	const SECRET_PASSWORD = "1234"; 
+
+	function checkPassword() {
+  		const input = document.getElementById("pass-input");
+  		const error = document.getElementById("pass-error");
+  		const gate = document.getElementById("password-gate");
+  		const card = document.querySelector(".lock-card");
+
+ 		 if (input.value.trim() === SECRET_PASSWORD) {
+   			 error.innerText = "";
+    		gate.classList.add("unlocked");
+  		} else {
+   			error.innerText = "Wrong code! Try again 😉";
+    		card.classList.add("shake");
+    		input.value = "";
+    		setTimeout(() => card.classList.remove("shake"), 400);
+  		}
+	}
+
+	// Allows pressing 'Enter' on the keyboard to submit
+	function handleKeyPress(event) {
+  		if (event.key === "Enter") {
+    		checkPassword();
+  		}
+	}
+	</script>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
