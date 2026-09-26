@@ -319,45 +319,38 @@ p {
 </head>
 
 <body>
-	<!-- Secret Password Lock Screen -->
-	<div id="password-gate">
+	<!-- STEP 1: COUNTDOWN SCREEN (Shown First) -->
+	<div id="countdown-gate">
   		<div class="lock-card">
-    		<div class="lock-icon">🔒</div>
-    		<h2>Secret Birthday Access</h2>
-    		<p>Enter the princess's birthday date to unlock your surprise!</p>
+    	<div class="lock-icon">⏳</div>
+    	<h2>⏰ The Countdown Has Begun!</h2>
+    	<p>The birthday surprise unlocks at midnight on September 29th:</p>
     
-    		<div class="input-group">
-      			<input type="password" id="pass-input" placeholder="Enter password..." onkeypress="handleKeyPress(event)" />
-      			<button onclick="checkPassword()">Get Your Gift✨</button>
-    		</div>
-    
-    		<p id="pass-error" class="error-msg"></p>
-  		</div>
-	</div>
-	<!-- Birthday Countdown Banner -->
-	<div id="countdown-container" class="countdown-card">
-  		<h3 id="countdown-title">⏰ Counting Down to the Big Moment!</h3>
-  		<div class="timer-box">
-    		<div class="time-unit">
-      			<span id="days">00</span>
-      			<label>Days</label>
-    		</div>
-    		<div class="time-unit">
-      			<span id="hours">00</span>
-      			<label>Hours</label>
-    		</div>
-    		<div class="time-unit">
-      			<span id="minutes">00</span>
-      			<label>Mins</label>
-    		</div>
-    		<div class="time-unit">
-      			<span id="seconds">00</span>
-      			<label>Secs</label>
-    		</div>
-  		</div>
-  		<p id="countdown-status">Get ready for the celebration! 🎉</p>
-	</div>
+    	<div class="timer-box">
+      		<div class="time-unit"><span id="days">00</span><label>Days</label></div>
+      		<div class="time-unit"><span id="hours">00</span><label>Hours</label></div>
+      		<div class="time-unit"><span id="minutes">00</span><label>Mins</label></div>
+      		<div class="time-unit"><span id="seconds">00</span><label>Secs</label></div>
+    	</div>
+    	<p id="countdown-status">🔒 Please wait until midnight!</p>
+  	</div>
+</div>
 
+<!-- STEP 2: PASSWORD GATE (Hidden until Countdown ends) -->
+<div id="password-gate" style="display: none;">
+  <div class="lock-card">
+    <div class="lock-icon">🎉</div>
+    <h2>It's Time!</h2>
+    <p>Enter the secret code to unlock your birthday surprise!</p>
+    
+    <div class="input-group">
+      <input type="password" id="pass-input" placeholder="Enter password..." onkeypress="handleKeyPress(event)" />
+      <button onclick="checkPassword()">Unlock ✨</button>
+    </div>
+    
+    <p id="pass-error" class="error-msg"></p>
+  </div>
+</div>
 	<div class="loading"></div>
   <img src="assets/images/photo1.jpg" class="album-photo album-left-1">
   <img src="assets/images/photo2.jpg" class="album-photo album-left-2">
@@ -525,105 +518,78 @@ p {
     <img src="" alt="zoomed photo">
   </div>
 	<script>
-	// 1. YOUR SECRET PASSWORD
 	const SECRET_PASSWORD = "29092008"; 
-
-	// 2. TARGET BIRTHDAY: September 29, 2026 at Midnight (00:00:00)
-	const TARGET_YEAR = 2026;
-	const TARGET_MONTH = 9;  // 9 = September
-	const TARGET_DAY = 29;    // 29th
-
-	// Month in JS Date object is 0-indexed (0=Jan, 8=Sep)
-	const TARGET_BIRTHDAY = new Date(TARGET_YEAR, TARGET_MONTH - 1, TARGET_DAY, 0, 0, 0); 
-
+	
+	// Target: September 29, 2026 at Midnight (00:00:00)
+	const TARGET_BIRTHDAY = new Date(2026, 8, 29, 0, 0, 0); // Month 8 = September in JS
+	
 	let countdownTimer = null;
-
-	function checkPassword() {
-  		const input = document.getElementById("pass-input");
-  		const error = document.getElementById("pass-error");
-  		const passSection = document.getElementById("password-section");
-  		const countSection = document.getElementById("countdown-section");
-
-  		if (!input || !passSection || !countSection) {
-    		console.error("Missing required elements! Check your HTML IDs.");
-    		return;
-  		}
-
-  		// Check Password
-  		if (input.value.trim() === SECRET_PASSWORD) {
-    		if (error) error.innerText = "";
-    
-    		// Hide Password Input & Show Countdown
-    		passSection.style.display = "none";
-    		countSection.style.display = "block";
-    
-    		const title = document.getElementById("gate-title");
-    		const subtitle = document.getElementById("gate-subtitle");
-    		const icon = document.getElementById("gate-icon");
-
-    		if (title) title.innerText = "⏰ Hold On Tight!";
-    		if (subtitle) subtitle.innerText = "Correct code! The surprise unlocks at midnight:";
-    		if (icon) icon.innerText = "⏳";
-
-    		// Start Countdown Check
-    		startCountdown();
-  		} else {
-    		if (error) error.innerText = "Wrong code! Try again 😉";
-    		const card = document.querySelector(".lock-card");
-    		if (card) {
-      			card.classList.add("shake");
-      			setTimeout(() => card.classList.remove("shake"), 400);
-    		}
-    		input.value = "";
-  		}
-	}
-
-	function handleKeyPress(event) {
-  	if (event.key === "Enter") checkPassword();
-	}
-
+	
+	// Start Countdown right when the page loads
 	function startCountdown() {
-  		function update() {
-    		const now = new Date().getTime();
-    		const distance = TARGET_BIRTHDAY.getTime() - now;
-
-    		// If target date is reached or passed -> unlock site
-    		if (distance <= 0) {
-      			if (countdownTimer) clearInterval(countdownTimer);
-      			unlockSite();
-      			return;
-    		}
-
-    		// Calculate time left
-    		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    		const dEl = document.getElementById("days");
-    		const hEl = document.getElementById("hours");
-    		const mEl = document.getElementById("minutes");
-    		const sEl = document.getElementById("seconds");
-
-    		if (dEl) { dEl.innerText = String(days).padStart(2, '0'); }
-    		if (hEl) { hEl.innerText = String(hours).padStart(2, '0'); }
-    		if (mEl) { mEl.innerText = String(minutes).padStart(2, '0'); }
-    		if (sEl) { sEl.innerText = String(seconds).padStart(2, '0'); }
-  		}
-
-  		update();
- 		countdownTimer = setInterval(update, 1000);
+	  function update() {
+	    const now = new Date().getTime();
+	    const distance = TARGET_BIRTHDAY.getTime() - now;
+	
+	    if (distance <= 0) {
+	      if (countdownTimer) clearInterval(countdownTimer);
+	      revealPasswordGate();
+	      return;
+	    }
+	
+	    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	
+	    document.getElementById("days").innerText = String(days).padStart(2, '0');
+	    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+	    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+	    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+	  }
+	
+	  update();
+	  countdownTimer = setInterval(update, 1000);
 	}
-
-	function unlockSite() {
-  		const gate = document.getElementById("password-gate");
-  		if (gate) {
-    		gate.classList.add("unlocked");
-  		}
-  		if (typeof confetti === 'function') {
-    		confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
-  		}
+	
+	// 1. Transition from Countdown Screen to Password Screen at Midnight
+	function revealPasswordGate() {
+	  const countGate = document.getElementById("countdown-gate");
+	  const passGate = document.getElementById("password-gate");
+	
+	  if (countGate) countGate.classList.add("hidden");
+	
+	  setTimeout(() => {
+	    if (countGate) countGate.style.display = "none";
+	    if (passGate) passGate.style.display = "flex";
+	  }, 600);
 	}
+	
+	// 2. Validate Password and Unlock Website
+	function checkPassword() {
+	  const input = document.getElementById("pass-input");
+	  const error = document.getElementById("pass-error");
+	  const passGate = document.getElementById("password-gate");
+	
+	  if (input.value.trim() === SECRET_PASSWORD) {
+	    passGate.classList.add("hidden");
+	    
+	    // Confetti Explosion on Unlock
+	    if (typeof confetti === 'function') {
+	      confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
+	    }
+	  } else {
+	    error.innerText = "Wrong code! Try again 😉";
+	    input.value = "";
+	  }
+	}
+	
+	function handleKeyPress(event) {
+	  if (event.key === "Enter") checkPassword();
+	}
+	
+	// Run timer immediately on page load
+	startCountdown();
 	</script>
 	
 </body>
