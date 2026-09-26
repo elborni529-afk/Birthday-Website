@@ -34,6 +34,7 @@ Don't forget to resize your image to 490x435 px for person.png and 1920x1080 for
 Just go to index.html and change all the alphabets you want 
 ```
 ### How can i change the messages?
+
 ```
 Just go to index.html and change all the messages you want 
 ```
