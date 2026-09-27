@@ -1633,3 +1633,22 @@ audio {
     opacity: 0 !important;
     transform: scale(0) !important;
 }
+/* Ensure the entire cake row starts hidden */
+.cake-cover {
+    display: none;
+}
+
+/* Ensure child elements inside cake-cover don't force visibility early */
+.cake-cover .wish-text,
+.cake-cover .profile-img {
+    position: relative;
+    z-index: 10;
+}
+
+.wish-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
