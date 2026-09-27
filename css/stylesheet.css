@@ -1513,49 +1513,60 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Master Cake, Candle & Layout Reset --- */
+/* --- Master Cake, Cover & Candle Centering Reset --- */
 
-/* Force parent containers to stay centered */
-.col-md-12,
-.cake-container,
-#cake_container,
+/* Hide cake cover element until revealed by JavaScript */
 .cake-cover {
-    display: block !important;
-    float: none !important;
-    clear: both !important;
-    margin: 0 auto !important;
+    display: none;
     position: relative !important;
+    margin: 20px auto !important;
     text-align: center !important;
     width: 100% !important;
+    z-index: 100 !important;
 }
 
-/* Wish Text Styling */
+/* Ensure the main cake wrapper centers reliably */
+.cake-container,
+#cake_container,
+div[class*="cake"] {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 20px auto !important;
+    float: none !important;
+    clear: both !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 300px !important;
+}
+
+/* Wish Text Above Cake */
 .wish-text,
 #wishText {
     display: block !important;
     font-size: 1.1rem !important;
     font-weight: bold !important;
     color: #ff69b4 !important;
-    margin: 10px auto 15px auto !important;
+    margin: 0 auto 15px auto !important;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
     text-align: center !important;
 }
 
-/* Base Cake Dimensions & Position */
+/* Cake Body Assembly */
 .cake {
     position: relative !important;
     width: 250px !important;
     height: 160px !important;
-    margin: 70px auto 30px auto !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
+    margin: 70px auto 20px auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
     transform: none !important;
     float: none !important;
 }
 
-/* Center Profile Image under Cake */
+/* Profile Image Centering Under Cake */
 .cake .cake-cover img, 
 .cake img,
 .profile-img,
@@ -1568,7 +1579,7 @@ audio {
     position: relative !important;
 }
 
-/* Candle Stick Positioned on Top of Cake */
+/* Candle Positioned Directly On Top of Cake */
 .velas {
     background: #ffffff !important;
     border-radius: 10px !important;
@@ -1609,7 +1620,7 @@ audio {
     z-index: 10 !important;
 }
 
-/* Sponge Base Layer */
+/* Cake Base Layer */
 .bizcocho {
     background: #6d4c41 !important;
     position: absolute !important;
@@ -1621,7 +1632,7 @@ audio {
     border-radius: 0 0 10px 10px !important;
 }
 
-/* Prevent Balloon Overlays from Blocking Clicks */
+/* Prevent Overlay Balloons from Blocking Clicks */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1629,7 +1640,7 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Keep Interactive Buttons on Top */
+/* UI Controls Layering */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
