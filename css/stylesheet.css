@@ -1798,3 +1798,7 @@ div[class*="balloon"] {
     border-radius: 12px;
     position: static;
 }
+/* Hide control buttons while countdown lock is active */
+.countdown-active .navbar-fixed-bottom {
+    display: none !important;
+}
