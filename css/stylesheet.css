@@ -1540,19 +1540,16 @@ audio {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(4px);
 }
-
 .layer {
   position: absolute;
   width: 100%;
   border-radius: 10px;
 }
-
 .layer-bottom {
   height: 45px;
   bottom: 0;
   background: linear-gradient(135deg, #7b2cbf, #9d4edd);
 }
-
 .layer-middle {
   height: 40px;
   bottom: 40px;
@@ -1560,7 +1557,6 @@ audio {
   left: 7.5%;
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
 }
-
 .layer-top {
   height: 35px;
   bottom: 75px;
@@ -1623,7 +1619,6 @@ audio {
     position: relative;
     z-index: 100;
 }
-
 /* Wish text styling */
 .wish-text,
 #wishText {
@@ -1633,14 +1628,12 @@ audio {
     margin-bottom: 15px;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
 }
-
 /* Profile image styling */
 .cake-cover .profile-img {
     margin-top: 15px;
     max-width: 180px;
     border-radius: 12px;
 }
-
 /* Ensure buttons stay clickable over balloon overlays */
 .navbar-fixed-bottom,
 #cake_fade,
@@ -1649,7 +1642,6 @@ audio {
     z-index: 10000 !important;
     pointer-events: auto !important;
 }
-
 .balloon, .balloons, #balloon-border {
     pointer-events: none !important;
 }
