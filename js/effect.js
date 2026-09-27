@@ -137,14 +137,17 @@ $('document').ready(function(){
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#cake_fade').fadeIn('slow');
 		});
-	});	
-
+	});
 	$('#cake_fade').click(function(){
-	    // Instantly reveal cake container and child elements
-	    $('.cake-cover, .cake, #wishText').css({
-	        'display': 'block',
-	        'opacity': '1'
-	    }).hide().fadeIn('slow');
+
+	    $('.cake-cover').fadeIn('slow', function() {
+	
+	        $('.cake, #wishText, .profile-img')
+	            .css('opacity', '1')
+	            .fadeIn('slow');
+	
+	    });
+
 	
 	    // Smooth scroll down so the cake is centered in view
 	    $('html, body').animate({
@@ -225,32 +228,30 @@ $('#lightbox').click(function(e) {
 });
 
 //alert('hello');
-// Candle Blowout Interaction
-document.addEventListener('DOMContentLoaded', () => {
-  const flame = document.getElementById('flame');
-  const wishText = document.getElementById('wishText');
+// =========================================================
+// CANDLE BLOWOUT
+// =========================================================
 
-  if (flame) {
-    flame.addEventListener('click', () => {
-      flame.classList.add('extinguished');
-      if (wishText) {
-        wishText.textContent = "✨ Wish made! May all your dreams come true! 💖";
-        wishText.style.color = "#7209b7";
-      }
-    });
-  }
-});
 document.addEventListener('DOMContentLoaded', function () {
+
     const flame = document.getElementById('flame');
     const wishText = document.getElementById('wishText');
 
-    if (flame) {
-        flame.addEventListener('click', function () {
-            this.classList.add('extinguished');
-            if (wishText) {
-                wishText.textContent = "🎉 Wish made! May all your dreams come true! 💖";
-                wishText.style.color = "#28a745";
-            }
-        });
-    }
+    if (!flame) return;
+
+    flame.addEventListener('click', function () {
+
+        // Turn off the flame
+        this.classList.add('extinguished');
+
+        // Change wish text
+        if (wishText) {
+            wishText.textContent =
+                "🎉 Wish made! May all your dreams come true! 💖";
+
+            wishText.style.color = "#28a745";
+        }
+
+    });
+
 });
