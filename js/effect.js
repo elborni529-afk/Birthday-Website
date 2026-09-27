@@ -146,13 +146,14 @@ $('document').ready(function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
 	});
+	
 	$('#light_candle').click(function(){
-		$('.fuego').fadeIn('slow');
-		$(this).fadeOut('slow').promise().done(function(){
-			$('#wish_message').fadeIn('slow');
-		});
+	    $('.fuego').fadeIn('slow');
+	    $('#wishText').fadeIn('slow');
+	    $(this).fadeOut('slow').delay(3000).promise().done(function(){
+	        $('#story').fadeIn('slow');
+	    });
 	});
-
 		
 	$('#wish_message').click(function(){
 		 vw = $(window).width()/2;
