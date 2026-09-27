@@ -1657,13 +1657,14 @@ audio {
     background: #ffffff;
     border-radius: 10px;
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 50%;
-    margin-left: -2.5px;
-    width: 5px;
+    transform: translateX(-50%);
+    width: 8px;
     height: 35px;
+    z-index: 20;
+    margin: 0 auto;
 }
-
 .fuego {
     border-radius: 100%;
     box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
