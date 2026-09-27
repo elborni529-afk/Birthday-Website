@@ -1645,3 +1645,57 @@ audio {
 .balloon, .balloons, #balloon-border {
     pointer-events: none !important;
 }
+/* --- Direct Cake CSS (replaces cake.less runtime compilation) --- */
+.cake {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.velas {
+    background: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -2.5px;
+    width: 5px;
+    height: 35px;
+}
+
+.fuego {
+    border-radius: 100%;
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    margin-left: -6px;
+    width: 12px;
+    height: 12px;
+    background: #ffaa00;
+    cursor: pointer;
+}
+
+.cobertura {
+    background: #ece7e6;
+    border-radius: 50px/10px;
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 30px;
+    z-index: 10;
+}
+
+.bizcocho {
+    background: #6d4c41;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 120px;
+    border-radius: 0 0 10px 10px;
+}
