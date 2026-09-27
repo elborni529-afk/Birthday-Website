@@ -1701,3 +1701,22 @@ audio {
     max-width: 180px;
     border-radius: 12px;
 }
+/* Fix unclickable buttons caused by balloon overlays */
+.navbar-fixed-bottom,
+#cake_fade,
+.btn {
+    position: relative;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+/* Make balloons let clicks pass through to the button underneath */
+.balloon, .balloons, #balloon-border {
+    pointer-events: none !important;
+}
+
+/* Clean display for cake container */
+.cake-cover {
+    display: none;
+    margin-top: 20px;
+}
