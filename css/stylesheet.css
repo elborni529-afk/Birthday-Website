@@ -1513,41 +1513,28 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Clean Unified Cake, Flame & Layout CSS --- */
-.cake-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px auto;
-    position: relative;
-    z-index: 10;
-}
-
+/* --- Centered Cake, Candle & Flame Fix --- */
 .cake-cover {
-    display: none;
-    margin-top: 40px !important;
-    position: relative;
-    z-index: 100;
-}
-
-.wish-text,
-#wishText {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 30px auto 0 auto !important;
+    position: relative !important;
+    z-index: 100 !important;
+    width: 100% !important;
 }
 
 .cake {
     position: relative !important;
     width: 250px !important;
     height: 160px !important;
-    margin: 90px auto 20px auto !important;
+    margin: 60px auto 20px auto !important;
+    left: 0 !important;
+    right: 0 !important;
 }
 
-/* Avatar / Profile Image Fix */
+/* Avatar Image */
 .cake .cake-cover img, 
 .cake img,
 .profile-img,
@@ -1572,7 +1559,7 @@ audio {
     z-index: 999 !important;
 }
 
-/* Candle Flame */
+/* Flame */
 .fuego {
     border-radius: 100% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
@@ -1610,7 +1597,7 @@ audio {
     border-radius: 0 0 10px 10px !important;
 }
 
-/* Balloon Overlay Protection */
+/* Overlay protection */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1618,7 +1605,6 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Buttons & Clickables Layering */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
