@@ -146,7 +146,6 @@ $('document').ready(function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
 	});
-
 	$('#light_candle').click(function(){
 		$('.fuego').fadeIn('slow');
 		$(this).fadeOut('slow').promise().done(function(){
