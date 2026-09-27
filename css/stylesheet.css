@@ -1655,3 +1655,18 @@ audio {
 .cake-cover {
     display: none;
 }
+/* Keep cake row and its contents hidden initially */
+.cake-cover,
+.cake-cover .profile-img,
+#wishText {
+    display: none;
+}
+
+/* Wish text styling */
+#wishText {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
