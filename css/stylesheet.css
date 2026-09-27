@@ -1513,16 +1513,15 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Clean Unified Cake Composition --- */
+/* --- Exact Diagram Cake Stack & Correct Visibility --- */
 
-/* 1. Hide cake elements initially when lights are off */
-body.bulb_off .cake-cover,
-body:not(.night) .cake-cover,
-.cake-cover {
-    display: none;
+/* 1. Keep cake hidden initially until lights are turned on */
+body:not(.bulb_on):not(.night) .cake-cover,
+body.bulb_off .cake-cover {
+    display: none !important;
 }
 
-/* Reveal cake cover only after turning on lights */
+/* Reveal cake only when lights are turned on */
 body.bulb_on .cake-cover,
 body.night .cake-cover,
 .cake-cover.show,
@@ -1538,7 +1537,7 @@ body.night .cake-cover,
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    margin: 40px auto 20px auto !important;
+    margin: 30px auto 20px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
@@ -1560,37 +1559,23 @@ body.night .cake-cover,
     z-index: 1001 !important;
 }
 
-/* 3. Main Cake Frame Container (Single Centering Reference) */
+/* 3. Main Cake Frame Container */
 .cake {
     position: relative !important;
     width: 220px !important;
-    height: 135px !important;
-    margin: 35px auto 20px auto !important;
+    height: 160px !important;
+    margin: 20px auto 15px auto !important;
     left: 0 !important;
     transform: none !important;
     float: none !important;
 }
 
-/* 4. White Frosting Layer (Top of Cake Body) */
-.cobertura,
-.cake .cobertura {
-    background: #ece7e6 !important;
-    border-radius: 50px / 10px !important;
-    position: absolute !important;
-    top: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 220px !important;
-    height: 30px !important;
-    z-index: 20 !important;
-}
-
-/* 5. Chocolate Cake Base */
+/* 4. Chocolate Cake Base */
 .bizcocho,
 .cake .bizcocho {
     background: #6d4c41 !important;
     position: absolute !important;
-    top: 30px !important;
+    top: 55px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
@@ -1600,13 +1585,27 @@ body.night .cake-cover,
     z-index: 10 !important;
 }
 
-/* 6. Single White Plate Underneath the Cake */
+/* 5. White Frosting Layer (Resting on top of Chocolate Cake) */
+.cobertura,
+.cake .cobertura {
+    background: #ece7e6 !important;
+    border-radius: 50px / 10px !important;
+    position: absolute !important;
+    top: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 220px !important;
+    height: 30px !important;
+    z-index: 20 !important;
+}
+
+/* 6. White Plate Underneath the Chocolate Cake Base */
 .cake::after {
     content: "" !important;
     display: block !important;
     background: #ffffff !important;
     position: absolute !important;
-    bottom: -10px !important;
+    top: 147px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 260px !important;
@@ -1616,7 +1615,7 @@ body.night .cake-cover,
     z-index: 5 !important;
 }
 
-/* Explicitly clear any duplicate pseudo-plates */
+/* Clear any duplicate pseudo-elements */
 .bizcocho::after,
 .bizcocho::before,
 .cake::before {
@@ -1624,20 +1623,20 @@ body.night .cake-cover,
     content: none !important;
 }
 
-/* 7. Candle Stick Positioned Directly on Top of Frosting */
+/* 7. Candle Stick (Resting on Frosting) */
 .velas {
     background: #ffffff !important;
     border-radius: 4px !important;
     position: absolute !important;
-    top: -12px !important;
+    top: -5px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
-    height: 32px !important;
+    height: 35px !important;
     z-index: 25 !important;
 }
 
-/* 8. Candle Flame */
+/* 8. Candle Flame (On top of candle) */
 .fuego {
     border-radius: 50% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
@@ -1652,7 +1651,7 @@ body.night .cake-cover,
     z-index: 30 !important;
 }
 
-/* 9. Avatar Image Centered Directly Below the Cake Plate */
+/* 9. Avatar Image Centered at the Very Bottom (Below Plate) */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
