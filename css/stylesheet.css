@@ -1513,7 +1513,7 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Absolute Precision Cake & Element Layout --- */
+/* --- Complete Cake Assembly with Plate --- */
 
 /* 1. Hide cake elements initially when lights are off */
 body.bulb_off .cake-cover,
@@ -1538,7 +1538,7 @@ body.night .cake-cover,
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    margin: 40px auto 20px auto !important;
+    margin: 30px auto 20px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
@@ -1546,26 +1546,26 @@ body.night .cake-cover,
     max-width: 320px !important;
 }
 
-/* 2. Top Wish Text */
+/* 2. Top Wish Text Above Candle Flame */
 .wish-text,
 #wishText {
     display: block !important;
     font-size: 1rem !important;
     font-weight: bold !important;
     color: #ff69b4 !important;
-    margin: 0 auto 15px auto !important;
+    margin: 0 auto 10px auto !important;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
     text-align: center !important;
     position: relative !important;
     z-index: 1001 !important;
 }
 
-/* 3. Main Cake Body Frame */
+/* 3. Main Cake Frame Container */
 .cake {
     position: relative !important;
     width: 250px !important;
-    height: 140px !important;
-    margin: 40px auto 10px auto !important;
+    height: 160px !important;
+    margin: 35px auto 10px auto !important;
     left: 0 !important;
     right: 0 !important;
     top: 0 !important;
@@ -1573,12 +1573,12 @@ body.night .cake-cover,
     float: none !important;
 }
 
-/* 4. Candle Stick Positioned Directly On Top */
+/* 4. Candle Stick Positioned Directly On Top of Frosting */
 .velas {
     background: #ffffff !important;
     border-radius: 10px !important;
     position: absolute !important;
-    top: -30px !important;
+    top: 0px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
@@ -1601,12 +1601,13 @@ body.night .cake-cover,
     z-index: 1000 !important;
 }
 
-/* 6. Frosting Layer Snapped to Top of Cake */
-.cobertura {
+/* 6. White Frosting Layer Snapped Directly onto Cake Base */
+.cobertura,
+.cake .cobertura {
     background: #ece7e6 !important;
     border-radius: 50px / 10px !important;
     position: absolute !important;
-    top: 0 !important;
+    top: 30px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
@@ -1614,21 +1615,39 @@ body.night .cake-cover,
     z-index: 20 !important;
 }
 
-/* 7. Cake Base Connected Directly Below Frosting */
-.bizcocho {
+/* 7. Chocolate Cake Base */
+.bizcocho,
+.cake .bizcocho {
     background: #6d4c41 !important;
     position: absolute !important;
-    top: 15px !important;
+    top: 40px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
-    height: 110px !important;
+    height: 100px !important;
     border-radius: 0 0 10px 10px !important;
     box-shadow: none !important;
     z-index: 10 !important;
 }
 
-/* 8. Avatar Image Directly Below Cake */
+/* 8. White Plate Positioned Directly Underneath Cake */
+.bizcocho::after,
+.cake::after {
+    content: "" !important;
+    display: block !important;
+    background: #ffffff !important;
+    position: absolute !important;
+    bottom: -10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 260px !important;
+    height: 12px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    z-index: 5 !important;
+}
+
+/* 9. Avatar Image Centered Below the Plate */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
@@ -1636,7 +1655,7 @@ img[src*="avatar"],
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
-    margin: 20px auto 0 auto !important;
+    margin: 25px auto 0 auto !important;
     display: block !important;
     float: none !important;
     max-width: 110px !important;
@@ -1644,14 +1663,6 @@ img[src*="avatar"],
     border-radius: 12px !important;
     border: 3px solid #fff !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Hide stray pseudo-element lines under the cake */
-.bizcocho::after,
-.bizcocho::before,
-.cake::after,
-.cake::before {
-    display: none !important;
 }
 
 /* Prevent floating balloons from blocking clicks */
