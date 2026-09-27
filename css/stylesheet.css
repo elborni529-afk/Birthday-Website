@@ -1513,32 +1513,13 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Fixed Cake Visibility & Exact Diagram Stack --- */
+/* --- Clean Template-Compatible Cake Layout --- */
 
-/* 1. Hide cake elements initially when lights are off */
-body:not(.bulb_on) .cake-cover,
-body.bulb_off .cake-cover,
-body:not(.night) .cake-cover {
-    display: none !important;
-}
-
-/* Reveal cake cover properly when lights are turned on */
-body.bulb_on .cake-cover,
-body.night .cake-cover,
-.cake-cover.show,
-.cake-cover.animated,
-body[class*="bulb_on"] .cake-cover {
-    display: block !important;
-}
-
-/* Main centered wrapper */
+/* Reset container positioning */
 .cake-cover,
 #cake_container,
 .cake-container {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
     margin: 30px auto 20px auto !important;
     float: none !important;
     clear: both !important;
@@ -1547,7 +1528,7 @@ body[class*="bulb_on"] .cake-cover {
     max-width: 320px !important;
 }
 
-/* 2. Top Wish Text Centered Above Candle */
+/* Top Wish Text Centered Above Candle */
 .wish-text,
 #wishText {
     display: block !important;
@@ -1561,7 +1542,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 1001 !important;
 }
 
-/* 3. Main Cake Frame Container */
+/* Main Cake Frame Container */
 .cake {
     position: relative !important;
     width: 220px !important;
@@ -1572,7 +1553,7 @@ body[class*="bulb_on"] .cake-cover {
     float: none !important;
 }
 
-/* 4. Chocolate Cake Base */
+/* Chocolate Cake Base */
 .bizcocho,
 .cake .bizcocho {
     background: #6d4c41 !important;
@@ -1587,7 +1568,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 10 !important;
 }
 
-/* 5. White Frosting Layer (Resting on top of Chocolate Cake) */
+/* White Frosting Layer (Resting on top of Chocolate Cake) */
 .cobertura,
 .cake .cobertura {
     background: #ece7e6 !important;
@@ -1601,7 +1582,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 20 !important;
 }
 
-/* 6. White Plate Underneath the Chocolate Cake Base */
+/* White Plate Underneath the Chocolate Cake Base */
 .cake::after {
     content: "" !important;
     display: block !important;
@@ -1617,7 +1598,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 5 !important;
 }
 
-/* Clear any duplicate pseudo-elements */
+/* Clear duplicate pseudo-elements */
 .bizcocho::after,
 .bizcocho::before,
 .cake::before {
@@ -1625,7 +1606,7 @@ body[class*="bulb_on"] .cake-cover {
     content: none !important;
 }
 
-/* 7. Candle Stick (Resting on Frosting) */
+/* Candle Stick */
 .velas {
     background: #ffffff !important;
     border-radius: 4px !important;
@@ -1638,7 +1619,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 25 !important;
 }
 
-/* 8. Candle Flame (On top of candle) */
+/* Candle Flame */
 .fuego {
     border-radius: 50% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
@@ -1653,7 +1634,7 @@ body[class*="bulb_on"] .cake-cover {
     z-index: 30 !important;
 }
 
-/* 9. Avatar Image Centered at the Very Bottom (Below Plate) */
+/* Avatar Image Centered at the Very Bottom */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
