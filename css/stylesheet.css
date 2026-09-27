@@ -1513,7 +1513,7 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Fully Restored & Centered Cake with Plate & Frosting --- */
+/* --- Perfectly Centered Cake with Integrated Plate --- */
 
 /* 1. Hide cake elements initially when lights are off */
 body.bulb_off .cake-cover,
@@ -1564,12 +1564,10 @@ body.night .cake-cover,
 .cake {
     position: relative !important;
     width: 250px !important;
-    height: 160px !important;
-    margin: 40px auto 10px auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 0 !important;
-    transform: none !important;
+    height: 150px !important;
+    margin: 40px auto 15px auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     float: none !important;
 }
 
@@ -1578,23 +1576,23 @@ body.night .cake-cover,
 .cake .bizcocho {
     background: #6d4c41 !important;
     position: absolute !important;
-    top: 50px !important;
+    top: 35px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
-    height: 100px !important;
+    height: 95px !important;
     border-radius: 0 0 10px 10px !important;
     box-shadow: none !important;
     z-index: 10 !important;
 }
 
-/* 5. White Frosting Layer Back on Top of Base */
+/* 5. White Frosting Layer Stacked Correctly On Top of Base */
 .cobertura,
 .cake .cobertura {
     background: #ece7e6 !important;
     border-radius: 50px / 10px !important;
     position: absolute !important;
-    top: 40px !important;
+    top: 25px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
@@ -1602,20 +1600,20 @@ body.night .cake-cover,
     z-index: 20 !important;
 }
 
-/* 6. White Plate Back Underneath Base */
+/* 6. White Plate Centered Directly Underneath the Chocolate Base */
 .bizcocho::after,
 .cake::after {
     content: "" !important;
     display: block !important;
     background: #ffffff !important;
     position: absolute !important;
-    bottom: -10px !important;
+    bottom: -8px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 260px !important;
     height: 12px !important;
     border-radius: 10px !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
     z-index: 5 !important;
 }
 
@@ -1624,7 +1622,7 @@ body.night .cake-cover,
     background: #ffffff !important;
     border-radius: 10px !important;
     position: absolute !important;
-    top: 10px !important;
+    top: -5px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
@@ -1647,7 +1645,7 @@ body.night .cake-cover,
     z-index: 1000 !important;
 }
 
-/* 9. Avatar Image Centered Directly Below Cake */
+/* 9. Avatar Image Centered Directly Below the Cake Plate */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
