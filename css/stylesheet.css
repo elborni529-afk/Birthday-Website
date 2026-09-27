@@ -1802,3 +1802,12 @@ div[class*="balloon"] {
 .countdown-active .navbar-fixed-bottom {
     display: none !important;
 }
+/* Keep avatar centered underneath the cake */
+.cake-cover .profile-img {
+    display: block !important;
+    margin: 20px auto !important;
+    position: static !important;
+    max-width: 180px;
+    height: auto;
+    border-radius: 12px;
+}
