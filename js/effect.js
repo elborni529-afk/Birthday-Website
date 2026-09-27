@@ -220,7 +220,52 @@ $('#lightbox').click(function(e) {
     if (e.target !== this) return; // only close if background clicked
     $('#lightbox').fadeOut('fast');
 });
+// Blow out candle interaction
+const flame = document.getElementById('flame');
+const wishText = document.getElementById('wishText');
 
+if (flame) {
+  flame.addEventListener('click', () => {
+    flame.classList.add('extinguished');
+    wishText.textContent = "✨ Wish made! May all your dreams come true! 💖";
+    wishText.style.color = "#4cc9f0";
+    
+    // Trigger confetti or special particle effect if available
+    createBalloons(15);
+  });
+}
+
+// Generate Fancy Dark-Aesthetic Floating Balloons
+function createBalloons(count = 10) {
+  const container = document.getElementById('balloon-container');
+  if (!container) return;
+
+  const colors = [
+    'linear-gradient(135deg, #f72585, #b5179e)',
+    'linear-gradient(135deg, #7209b7, #3f37c9)',
+    'linear-gradient(135deg, #4cc9f0, #4895ef)',
+    'linear-gradient(135deg, #ff4d6d, #c9184a)',
+    'linear-gradient(135deg, #ffd166, #f77f00)'
+  ];
+
+  for (let i = 0; i < count; i++) {
+    const balloon = document.createElement('div');
+    balloon.className = 'balloon';
+    
+    // Random styling
+    balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.left = `${Math.random() * 90 + 5}%`;
+    balloon.style.animationDuration = `${Math.random() * 4 + 6}s`; // 6s to 10s
+    balloon.style.animationDelay = `${Math.random() * 3}s`;
+
+    container.appendChild(balloon);
+  }
+}
+
+// Spawn initial balloons on load
+document.addEventListener('DOMContentLoaded', () => {
+  createBalloons(12);
+});
 
 
 
