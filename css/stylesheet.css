@@ -1614,63 +1614,9 @@ audio {
   color: #555555;
   text-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
-/* Wish text formatting inside cake-cover */
-.cake-cover .wish-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
+/* --- Clean Cake & Wish Setup --- */
 
-/* Flame click interaction */
-.fuego {
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.fuego.extinguished {
-    opacity: 0 !important;
-    transform: scale(0) !important;
-}
-/* Ensure the entire cake row starts hidden */
-.cake-cover {
-    display: none;
-}
-
-/* Ensure child elements inside cake-cover don't force visibility early */
-.cake-cover .wish-text,
-.cake-cover .profile-img {
-    position: relative;
-    z-index: 10;
-}
-
-.wish-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
-.cake-cover {
-    display: none;
-}
-/* Keep cake row and its contents hidden initially */
-.cake-cover,
-.cake-cover .profile-img,
-#wishText {
-    display: none;
-}
-
-/* Wish text styling */
-#wishText {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
-/* Ensure cake-cover is hidden on start but visible when triggered */
+/* Keep entire row hidden on page load */
 .cake-cover {
     display: none;
     margin-top: 20px;
@@ -1678,16 +1624,9 @@ audio {
     z-index: 100;
 }
 
-/* Fix cake visibility and height */
-.cake {
-    display: block !important;
-    opacity: 1 !important;
-    margin: 0 auto 20px auto;
-}
-
-/* Fix text and image layout so they don't overlap balloons */
-.cake-cover .wish-text {
-    display: block !important;
+/* Wish text styling */
+.wish-text,
+#wishText {
     font-size: 1.1rem;
     font-weight: bold;
     color: #ff69b4;
@@ -1695,39 +1634,22 @@ audio {
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
 }
 
+/* Profile image styling */
 .cake-cover .profile-img {
-    display: inline-block !important;
     margin-top: 15px;
     max-width: 180px;
     border-radius: 12px;
 }
-/* Fix unclickable buttons caused by balloon overlays */
+
+/* Ensure buttons stay clickable over balloon overlays */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
     position: relative;
-    z-index: 9999 !important;
-    pointer-events: auto !important;
-}
-
-/* Make balloons let clicks pass through to the button underneath */
-.balloon, .balloons, #balloon-border {
-    pointer-events: none !important;
-}
-
-/* Clean display for cake container */
-.cake-cover {
-    display: none;
-    margin-top: 20px;
-}
-/* Keep cake container hidden until button click */
-.cake-cover {
-    display: none;
-}
-
-/* Ensure the cake action button receives clicks */
-#cake_fade {
-    position: relative;
     z-index: 10000 !important;
     pointer-events: auto !important;
+}
+
+.balloon, .balloons, #balloon-border {
+    pointer-events: none !important;
 }
