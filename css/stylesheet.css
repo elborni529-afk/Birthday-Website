@@ -1513,157 +1513,260 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Perfectly Centered Cake with Integrated Plate --- */
+/* =========================================================
+   PERFECT CAKE
+   ========================================================= */
 
-/* 1. Hide cake elements initially when lights are off */
-body.bulb_off .cake-cover,
-body:not(.night) .cake-cover,
-.cake-cover {
-    display: none;
-}
+/* ---------- CAKE COVER / MAIN WRAPPER ---------- */
 
-/* Reveal cake cover only after turning on lights */
-body.bulb_on .cake-cover,
-body.night .cake-cover,
-.cake-cover.show,
-.cake-cover.animated {
-    display: block !important;
-}
-
-/* Main centered wrapper */
 .cake-cover,
 #cake_container,
 .cake-container {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin: 40px auto 20px auto !important;
-    float: none !important;
-    clear: both !important;
-    text-align: center !important;
+
+    /* Let the wrapper center naturally */
     width: 100% !important;
     max-width: 320px !important;
+
+    margin: 40px auto 20px auto !important;
+
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+
+    float: none !important;
+    clear: both !important;
+
+    text-align: center !important;
 }
 
-/* 2. Top Wish Text Centered Above Candle */
+
+/* ---------- WISH TEXT ---------- */
+
 .wish-text,
 #wishText {
     display: block !important;
+
+    width: 100% !important;
+
+    margin: 0 auto 10px auto !important;
+
+    text-align: center !important;
+
     font-size: 1rem !important;
     font-weight: bold !important;
+
     color: #ff69b4 !important;
-    margin: 0 auto 10px auto !important;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
-    text-align: center !important;
+
+    text-shadow:
+        0 0 8px rgba(255, 105, 180, 0.5) !important;
+
     position: relative !important;
     z-index: 1001 !important;
 }
 
-/* 3. Main Cake Frame Container - Perfectly Centered */
+
+/* =========================================================
+   CAKE
+   ========================================================= */
+
 .cake {
     position: relative !important;
-    width: 250px !important;
-    height: 150px !important;
-    margin: 40px auto 15px auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    float: none !important;
-}
 
-/* 4. Chocolate Cake Base */
-.bizcocho,
-.cake .bizcocho {
-    background: #6d4c41 !important;
-    position: absolute !important;
-    top: 35px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 220px !important;
-    height: 95px !important;
-    border-radius: 0 0 10px 10px !important;
-    box-shadow: none !important;
+    width: 250px !important;
+    height: 170px !important;
+
+    /* IMPORTANT:
+       margin centers it.
+       Do NOT use left:50% here. */
+    margin: 40px auto 15px auto !important;
+
+    left: auto !important;
+    right: auto !important;
+
+    transform: none !important;
+
+    float: none !important;
+
     z-index: 10 !important;
 }
 
-/* 5. White Frosting Layer Stacked Correctly On Top of Base */
+
+/* ---------- CHOCOLATE CAKE BASE ---------- */
+
+.bizcocho,
+.cake .bizcocho {
+    position: absolute !important;
+
+    width: 220px !important;
+    height: 95px !important;
+
+    left: 50% !important;
+    top: 35px !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #6d4c41 !important;
+
+    border-radius: 0 0 10px 10px !important;
+
+    box-shadow: none !important;
+
+    z-index: 10 !important;
+}
+
+
+/* ---------- FROSTING ---------- */
+
 .cobertura,
 .cake .cobertura {
-    background: #ece7e6 !important;
-    border-radius: 50px / 10px !important;
     position: absolute !important;
-    top: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 220px !important;
     height: 30px !important;
+
+    left: 50% !important;
+    top: 25px !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ece7e6 !important;
+
+    border-radius: 50px / 10px !important;
+
     z-index: 20 !important;
 }
 
-/* 6. White Plate Centered Directly Underneath the Chocolate Base */
-.bizcocho::after,
+
+/* =========================================================
+   ONE SINGLE PLATE
+   ========================================================= */
+
+/* Remove the accidental plate from the cake base */
+.bizcocho::after {
+    content: none !important;
+}
+
+
+/* Put ONE plate underneath the entire cake */
 .cake::after {
     content: "" !important;
+
     display: block !important;
-    background: #ffffff !important;
+
     position: absolute !important;
-    bottom: -8px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 260px !important;
     height: 12px !important;
+
+    left: 50% !important;
+    bottom: 5px !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ffffff !important;
+
     border-radius: 10px !important;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15) !important;
+
     z-index: 5 !important;
 }
 
-/* 7. Candle Stick Centered On Top of Frosting */
+
+/* =========================================================
+   CANDLE
+   ========================================================= */
+
 .velas {
-    background: #ffffff !important;
-    border-radius: 10px !important;
     position: absolute !important;
-    top: -5px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 8px !important;
     height: 35px !important;
+
+    /* Center relative to cake */
+    left: 50% !important;
+
+    /* Put it directly on top of frosting */
+    top: -5px !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ffffff !important;
+
+    border-radius: 10px !important;
+
     z-index: 999 !important;
+
+    margin: 0 !important;
 }
 
-/* 8. Candle Flame */
+
+/* ---------- FLAME ---------- */
+
 .fuego {
-    border-radius: 100% !important;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
     position: absolute !important;
-    top: -12px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 12px !important;
     height: 12px !important;
+
+    left: 50% !important;
+    top: -12px !important;
+
+    transform: translateX(-50%) !important;
+
     background: #ffaa00 !important;
+
+    border-radius: 100% !important;
+
+    box-shadow:
+        0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
+
     cursor: pointer !important;
+
     z-index: 1000 !important;
+
+    margin: 0 !important;
 }
 
-/* 9. Avatar Image Centered Directly Below the Cake Plate */
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
 .cake-cover img,
 .cake-cover .profile-img,
-img[src*="avatar"],
-.cake img {
+img[src*="avatar"] {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin: 25px auto 0 auto !important;
+
     display: block !important;
-    float: none !important;
+
+    width: 110px !important;
     max-width: 110px !important;
+
     height: auto !important;
+
+    margin: 25px auto 0 auto !important;
+
+    top: auto !important;
+    left: auto !important;
+
+    float: none !important;
+
     border-radius: 12px !important;
+
     border: 3px solid #fff !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Prevent floating balloons from blocking clicks */
+
+/* =========================================================
+   BALLOONS
+   ========================================================= */
+
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1671,11 +1774,17 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Keep action controls interactive */
+
+/* =========================================================
+   BUTTONS / CONTROLS
+   ========================================================= */
+
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
     pointer-events: auto !important;
+
     position: relative !important;
+
     z-index: 999999 !important;
 }
