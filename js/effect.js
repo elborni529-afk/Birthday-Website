@@ -135,7 +135,7 @@ $('document').ready(function(){
 		// loopEight();
 
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#cake_fadein').fadeIn('slow');
+			$('#cake_fade').fadeIn('slow');
 		});
 	});	
 
