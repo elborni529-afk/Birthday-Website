@@ -140,12 +140,9 @@ $('document').ready(function(){
 	});	
 
 	$('#cake_fade').click(function(){
-	    $('.cake-cover').css('display', 'block').hide().fadeIn('slow');
-	    $('.cake').css('display', 'block').hide().fadeIn('slow');
-	    $('#wishText').css('display', 'block').hide().fadeIn('slow');
-	    $('.profile-img').css('display', 'inline-block').hide().fadeIn('slow');
-	    
-	    $(this).fadeOut('slow').delay(3000).promise().done(function(){
+	    $('.cake-cover').fadeIn('slow');
+	    $('.cake').fadeIn('slow');
+	    $(this).fadeOut('slow').delay(2000).promise().done(function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
 	});
@@ -153,7 +150,7 @@ $('document').ready(function(){
 	$('#light_candle').click(function(){
 	    $('.fuego').fadeIn('slow');
 	    $('#wishText').fadeIn('slow');
-	    $(this).fadeOut('slow').delay(3000).promise().done(function(){
+	    $(this).fadeOut('slow').delay(2000).promise().done(function(){
 	        $('#story').fadeIn('slow');
 	    });
 	});
