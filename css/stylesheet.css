@@ -1646,36 +1646,38 @@ audio {
     pointer-events: none !important;
 }
 /* --- Direct Cake CSS (replaces cake.less runtime compilation) --- */
+/* --- Direct Cake CSS Fix --- */
 .cake {
-    position: relative;
-    width: 250px;
-    height: 200px;
-    margin: 20px auto;
+    position: relative !important;
+    width: 250px !important;
+    height: 160px !important;
+    margin: 80px auto 20px auto !important; /* Extra top margin for candle space */
 }
 
 .velas {
-    background: #ffffff;
-    border-radius: 10px;
-    position: absolute;
-    top: -35px; /* Moves candle stick directly above the cake frosting */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 35px;
-    z-index: 20;
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    position: absolute !important;
+    top: -35px !important; /* Moves candle stick above frosting */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 8px !important;
+    height: 35px !important;
+    z-index: 100 !important;
 }
 
 .fuego {
-    border-radius: 100%;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8);
-    position: absolute;
-    top: -12px; /* Sits cleanly on top of the candle stick */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #ffaa00;
-    cursor: pointer;
+    border-radius: 100% !important;
+    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
+    position: absolute !important;
+    top: -12px !important; /* Sits directly on top of candle stick */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #ffaa00 !important;
+    cursor: pointer !important;
+    z-index: 101 !important;
 }
 
 .cobertura {
