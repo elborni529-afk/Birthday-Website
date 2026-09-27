@@ -1614,3 +1614,22 @@ audio {
   color: #555555;
   text-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
+/* Wish text formatting inside cake-cover */
+.cake-cover .wish-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+/* Flame click interaction */
+.fuego {
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.fuego.extinguished {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+}
