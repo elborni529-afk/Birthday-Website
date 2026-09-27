@@ -140,9 +140,8 @@ $('document').ready(function(){
 	});	
 
 	$('#cake_fade').click(function(){
-	    $('.cake-cover').fadeIn('slow');
-	    $('.cake').fadeIn('slow');
-	    $(this).fadeOut('slow').delay(2000).promise().done(function(){
+	    $('.cake-cover').css('display', 'block').hide().fadeIn('slow');
+	    $(this).fadeOut('slow', function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
 	});
