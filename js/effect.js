@@ -139,11 +139,11 @@ $('document').ready(function(){
 		});
 	});	
 
-	$('#cake_fadein').click(function(){
-		$('.cake-cover').fadeIn('slow');
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#light_candle').fadeIn('slow');
-		});
+	$('#cake_fade').click(function(){
+	    $('.cake-cover, .cake, #wishText, .profile-img').fadeIn('slow');
+	    $(this).fadeOut('slow').delay(3000).promise().done(function(){
+	        $('#light_candle').fadeIn('slow');
+	    });
 	});
 
 	$('#light_candle').click(function(){
