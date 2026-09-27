@@ -1670,3 +1670,34 @@ audio {
     margin-bottom: 15px;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
 }
+/* Ensure cake-cover is hidden on start but visible when triggered */
+.cake-cover {
+    display: none;
+    margin-top: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+/* Fix cake visibility and height */
+.cake {
+    display: block !important;
+    opacity: 1 !important;
+    margin: 0 auto 20px auto;
+}
+
+/* Fix text and image layout so they don't overlap balloons */
+.cake-cover .wish-text {
+    display: block !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+.cake-cover .profile-img {
+    display: inline-block !important;
+    margin-top: 15px;
+    max-width: 180px;
+    border-radius: 12px;
+}
