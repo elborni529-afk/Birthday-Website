@@ -222,3 +222,18 @@ $('#lightbox').click(function(e) {
 });
 
 //alert('hello');
+// Candle Blowout Interaction
+document.addEventListener('DOMContentLoaded', () => {
+  const flame = document.getElementById('flame');
+  const wishText = document.getElementById('wishText');
+
+  if (flame) {
+    flame.addEventListener('click', () => {
+      flame.classList.add('extinguished');
+      if (wishText) {
+        wishText.textContent = "✨ Wish made! May all your dreams come true! 💖";
+        wishText.style.color = "#7209b7";
+      }
+    });
+  }
+});
