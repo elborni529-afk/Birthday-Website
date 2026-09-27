@@ -1513,14 +1513,32 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Clean Template-Compatible Cake Layout --- */
+/* --- Perfectly Centered Cake with Integrated Plate --- */
 
-/* Reset container positioning */
+/* 1. Hide cake elements initially when lights are off */
+body.bulb_off .cake-cover,
+body:not(.night) .cake-cover,
+.cake-cover {
+    display: none;
+}
+
+/* Reveal cake cover only after turning on lights */
+body.bulb_on .cake-cover,
+body.night .cake-cover,
+.cake-cover.show,
+.cake-cover.animated {
+    display: block !important;
+}
+
+/* Main centered wrapper */
 .cake-cover,
 #cake_container,
 .cake-container {
     position: relative !important;
-    margin: 30px auto 20px auto !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 40px auto 20px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
@@ -1528,7 +1546,7 @@ audio {
     max-width: 320px !important;
 }
 
-/* Top Wish Text Centered Above Candle */
+/* 2. Top Wish Text Centered Above Candle */
 .wish-text,
 #wishText {
     display: block !important;
@@ -1542,39 +1560,39 @@ audio {
     z-index: 1001 !important;
 }
 
-/* Main Cake Frame Container */
+/* 3. Main Cake Frame Container - Perfectly Centered */
 .cake {
     position: relative !important;
-    width: 220px !important;
-    height: 160px !important;
-    margin: 20px auto 15px auto !important;
-    left: 0 !important;
-    transform: none !important;
+    width: 250px !important;
+    height: 150px !important;
+    margin: 40px auto 15px auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     float: none !important;
 }
 
-/* Chocolate Cake Base */
+/* 4. Chocolate Cake Base */
 .bizcocho,
 .cake .bizcocho {
     background: #6d4c41 !important;
     position: absolute !important;
-    top: 55px !important;
+    top: 35px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
-    height: 90px !important;
+    height: 95px !important;
     border-radius: 0 0 10px 10px !important;
     box-shadow: none !important;
     z-index: 10 !important;
 }
 
-/* White Frosting Layer (Resting on top of Chocolate Cake) */
+/* 5. White Frosting Layer Stacked Correctly On Top of Base */
 .cobertura,
 .cake .cobertura {
     background: #ece7e6 !important;
     border-radius: 50px / 10px !important;
     position: absolute !important;
-    top: 30px !important;
+    top: 25px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 220px !important;
@@ -1582,13 +1600,14 @@ audio {
     z-index: 20 !important;
 }
 
-/* White Plate Underneath the Chocolate Cake Base */
+/* 6. White Plate Centered Directly Underneath the Chocolate Base */
+.bizcocho::after,
 .cake::after {
     content: "" !important;
     display: block !important;
     background: #ffffff !important;
     position: absolute !important;
-    top: 147px !important;
+    bottom: -8px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 260px !important;
@@ -1598,30 +1617,22 @@ audio {
     z-index: 5 !important;
 }
 
-/* Clear duplicate pseudo-elements */
-.bizcocho::after,
-.bizcocho::before,
-.cake::before {
-    display: none !important;
-    content: none !important;
-}
-
-/* Candle Stick */
+/* 7. Candle Stick Centered On Top of Frosting */
 .velas {
     background: #ffffff !important;
-    border-radius: 4px !important;
+    border-radius: 10px !important;
     position: absolute !important;
     top: -5px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
     height: 35px !important;
-    z-index: 25 !important;
+    z-index: 999 !important;
 }
 
-/* Candle Flame */
+/* 8. Candle Flame */
 .fuego {
-    border-radius: 50% !important;
+    border-radius: 100% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
     position: absolute !important;
     top: -12px !important;
@@ -1631,10 +1642,10 @@ audio {
     height: 12px !important;
     background: #ffaa00 !important;
     cursor: pointer !important;
-    z-index: 30 !important;
+    z-index: 1000 !important;
 }
 
-/* Avatar Image Centered at the Very Bottom */
+/* 9. Avatar Image Centered Directly Below the Cake Plate */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
