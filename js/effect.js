@@ -140,7 +140,18 @@ $('document').ready(function(){
 	});	
 
 	$('#cake_fade').click(function(){
-	    $('.cake-cover').css('display', 'block').hide().fadeIn('slow');
+	    // Instantly reveal cake container and child elements
+	    $('.cake-cover, .cake, #wishText').css({
+	        'display': 'block',
+	        'opacity': '1'
+	    }).hide().fadeIn('slow');
+	
+	    // Smooth scroll down so the cake is centered in view
+	    $('html, body').animate({
+	        scrollTop: $('.cake-cover').offset().top - 50
+	    }, 'slow');
+	
+	    // Hide this button and reveal the candle button
 	    $(this).fadeOut('slow', function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
