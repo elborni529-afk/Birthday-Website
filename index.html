@@ -575,7 +575,8 @@ p {
 	
 	  if (input.value.trim() === SECRET_PASSWORD) {
 	    passGate.classList.add("hidden");
-	    
+	    // REVEAL BUTTON BAR ONLY AFTER PASSWORD IS CORRECT
+    	$('#navbar_controls').fadeIn('slow');
 	    // Confetti Explosion on Unlock
 	    if (typeof confetti === 'function') {
 	      confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
