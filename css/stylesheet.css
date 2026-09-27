@@ -1699,3 +1699,19 @@ audio {
     height: 120px;
     border-radius: 0 0 10px 10px;
 }
+/* Disable click-blocking on the entire balloon overlay container */
+.balloons,
+#balloon-border,
+.balloon-border,
+div[class*="balloon"] {
+    pointer-events: none !important;
+}
+
+/* Force the button container and buttons to stay clickable on top */
+.navbar-fixed-bottom,
+#cake_fade,
+.btn {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 999999 !important;
+}
