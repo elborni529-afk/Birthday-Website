@@ -237,3 +237,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const flame = document.getElementById('flame');
+    const wishText = document.getElementById('wishText');
+
+    if (flame) {
+        flame.addEventListener('click', function () {
+            this.classList.add('extinguished');
+            if (wishText) {
+                wishText.textContent = "🎉 Wish made! May all your dreams come true! 💖";
+                wishText.style.color = "#28a745";
+            }
+        });
+    }
+});
