@@ -1513,19 +1513,21 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Exact Diagram Cake Stack & Correct Visibility --- */
+/* --- Fixed Cake Visibility & Exact Diagram Stack --- */
 
-/* 1. Keep cake hidden initially until lights are turned on */
-body:not(.bulb_on):not(.night) .cake-cover,
-body.bulb_off .cake-cover {
+/* 1. Hide cake elements initially when lights are off */
+body:not(.bulb_on) .cake-cover,
+body.bulb_off .cake-cover,
+body:not(.night) .cake-cover {
     display: none !important;
 }
 
-/* Reveal cake only when lights are turned on */
+/* Reveal cake cover properly when lights are turned on */
 body.bulb_on .cake-cover,
 body.night .cake-cover,
 .cake-cover.show,
-.cake-cover.animated {
+.cake-cover.animated,
+body[class*="bulb_on"] .cake-cover {
     display: block !important;
 }
 
