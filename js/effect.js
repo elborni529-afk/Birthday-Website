@@ -140,8 +140,11 @@ $('document').ready(function(){
 	});	
 
 	$('#cake_fade').click(function(){
-	    $('.cake-cover').fadeIn('slow');
-	    $('.cake').fadeIn('slow');
+	    $('.cake-cover').css('display', 'block').hide().fadeIn('slow');
+	    $('.cake').css('display', 'block').hide().fadeIn('slow');
+	    $('#wishText').css('display', 'block').hide().fadeIn('slow');
+	    $('.profile-img').css('display', 'inline-block').hide().fadeIn('slow');
+	    
 	    $(this).fadeOut('slow').delay(3000).promise().done(function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
