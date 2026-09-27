@@ -1513,9 +1513,24 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Absolute Master Alignment & Position Reset --- */
+/* --- Absolute Precision Cake & Element Layout --- */
 
-/* 1. Main Cake & Image Parent Container */
+/* 1. Hide cake elements initially when the lights are off */
+body.bulb_off .cake-cover,
+body:not(.night) .cake-cover,
+.cake-cover {
+    display: none;
+}
+
+/* Reveal cake cover only after turning on lights */
+body.bulb_on .cake-cover,
+body.night .cake-cover,
+.cake-cover.show,
+.cake-cover.animated {
+    display: block !important;
+}
+
+/* Main centered wrapper */
 .cake-cover,
 #cake_container,
 .cake-container {
@@ -1523,17 +1538,95 @@ audio {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    bottom: 0 !important;
-    margin: 30px auto !important;
+    margin: 40px auto 20px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
     width: 100% !important;
     max-width: 320px !important;
-    transform: none !important;
 }
 
-/* 2. Strip Absolute Offsets from Avatar Image */
+/* 2. Top Wish Text Positioned Above Candle Flame */
+.wish-text,
+#wishText {
+    display: block !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    color: #ff69b4 !important;
+    margin: 0 auto 15px auto !important;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
+    text-align: center !important;
+    position: relative !important;
+    z-index: 1001 !important;
+}
+
+/* 3. Main Cake Body Structure */
+.cake {
+    position: relative !important;
+    width: 250px !important;
+    height: 140px !important;
+    margin: 50px auto 10px auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    float: none !important;
+}
+
+/* 4. Candle Stick Positioned Directly On Top of Cake */
+.velas {
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    position: absolute !important;
+    top: -30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 8px !important;
+    height: 35px !important;
+    z-index: 999 !important;
+}
+
+/* 5. Candle Flame */
+.fuego {
+    border-radius: 100% !important;
+    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #ffaa00 !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
+}
+
+/* 6. Frosting Layer */
+.cobertura {
+    background: #ece7e6 !important;
+    border-radius: 50px / 10px !important;
+    position: absolute !important;
+    top: 0px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 220px !important;
+    height: 30px !important;
+    z-index: 10 !important;
+}
+
+/* 7. Cake Sponge Base */
+.bizcocho {
+    background: #6d4c41 !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 220px !important;
+    height: 110px !important;
+    border-radius: 0 0 10px 10px !important;
+}
+
+/* 8. Anime Avatar Centered Directly Below Cake */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
@@ -1541,97 +1634,17 @@ img[src*="avatar"],
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    margin: 15px auto !important;
+    margin: 20px auto 0 auto !important;
     display: block !important;
     float: none !important;
-    max-width: 120px !important;
+    max-width: 110px !important;
     height: auto !important;
     border-radius: 12px !important;
-    transform: none !important;
+    border: 3px solid #fff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* 3. Cake Body Structure */
-.cake {
-    position: relative !important;
-    width: 250px !important;
-    height: 160px !important;
-    margin: 60px auto 10px auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    transform: none !important;
-    float: none !important;
-}
-
-/* 4. Top Wish Text */
-.wish-text,
-#wishText {
-    display: block !important;
-    font-size: 1.1rem !important;
-    font-weight: bold !important;
-    color: #ff69b4 !important;
-    margin: 0 auto 10px auto !important;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
-    text-align: center !important;
-}
-
-/* 5. Candle Stick */
-.velas {
-    background: #ffffff !important;
-    border-radius: 10px !important;
-    position: absolute !important;
-    top: -40px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 8px !important;
-    height: 40px !important;
-    z-index: 999 !important;
-}
-
-/* 6. Candle Flame */
-.fuego {
-    border-radius: 100% !important;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
-    position: absolute !important;
-    top: -15px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 14px !important;
-    height: 14px !important;
-    background: #ffaa00 !important;
-    cursor: pointer !important;
-    z-index: 1000 !important;
-}
-
-/* 7. Cake Frosting Layer */
-.cobertura {
-    background: #ece7e6 !important;
-    border-radius: 50px / 10px !important;
-    position: absolute !important;
-    top: 35px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 200px !important;
-    height: 30px !important;
-    z-index: 10 !important;
-}
-
-/* 8. Cake Sponge Base */
-.bizcocho {
-    background: #6d4c41 !important;
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 200px !important;
-    height: 120px !important;
-    border-radius: 0 0 10px 10px !important;
-}
-
-/* Prevent Balloons from blocking clicks */
+/* Prevent floating balloons from blocking clicks */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1639,7 +1652,7 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Keep Navigation & Action Buttons Clickable */
+/* Keep action buttons interactive */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
