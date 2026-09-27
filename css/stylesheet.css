@@ -1659,11 +1659,6 @@ audio {
     width: 260px !important;
     height: 12px !important;
 
-    left: 50% !important;
-    bottom: 5px !important;
-
-    transform: translateX(-50%) !important;
-
     background: #ffffff !important;
 
     border-radius: 10px !important;
@@ -1672,6 +1667,7 @@ audio {
         0 3px 6px rgba(0, 0, 0, 0.15) !important;
 
     z-index: 5 !important;
+	margin: 40px auto 15px auto !important;
 }
 
 
