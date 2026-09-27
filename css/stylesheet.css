@@ -1512,4 +1512,105 @@ audio {
   margin-top: 10px;
   font-weight: 600;
 }
+/* --- Fancy Cake & Candle --- */
+.cake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  position: relative;
+  z-index: 10;
+}
 
+.cake {
+  position: relative;
+  width: 180px;
+  height: 120px;
+}
+
+.plate {
+  width: 220px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  position: absolute;
+  bottom: -10px;
+  left: -20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.layer-bottom {
+  height: 45px;
+  bottom: 0;
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+}
+
+.layer-middle {
+  height: 40px;
+  bottom: 40px;
+  width: 85%;
+  left: 7.5%;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.layer-top {
+  height: 35px;
+  bottom: 75px;
+  width: 70%;
+  left: 15%;
+  background: linear-gradient(135deg, #f72585, #7209b7);
+}
+
+.candle {
+  width: 10px;
+  height: 30px;
+  background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.flame {
+  width: 14px;
+  height: 22px;
+  background: radial-gradient(ellipse at bottom, #ffea00 0%, #ff6d00 50%, transparent 100%);
+  border-radius: 50% 50% 20% 20%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 1.2s infinite alternate ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff6d00, 0 0 30px #ffea00;
+  transition: all 0.4s ease;
+}
+
+.flame.extinguished {
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  box-shadow: none;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+  100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+.wish-text {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555555;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
