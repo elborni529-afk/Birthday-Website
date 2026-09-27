@@ -1513,26 +1513,32 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Master Cake, Cover & Candle Centering Reset --- */
+/* --- Absolute Master Alignment Fix --- */
 
-/* Hide cake cover element until revealed by JavaScript */
+/* Force hide cake-cover initially */
 .cake-cover {
-    display: none;
+    display: none !important;
     position: relative !important;
-    margin: 20px auto !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 15px auto !important;
     text-align: center !important;
     width: 100% !important;
     z-index: 100 !important;
+    float: none !important;
+    clear: both !important;
 }
 
-/* Ensure the main cake wrapper centers reliably */
+/* Force container centering */
 .cake-container,
 #cake_container,
 div[class*="cake"] {
     position: relative !important;
     left: 0 !important;
     right: 0 !important;
-    margin: 20px auto !important;
+    top: 0 !important;
+    margin: 10px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
@@ -1552,12 +1558,12 @@ div[class*="cake"] {
     text-align: center !important;
 }
 
-/* Cake Body Assembly */
+/* Base Cake Frame */
 .cake {
     position: relative !important;
     width: 250px !important;
     height: 160px !important;
-    margin: 70px auto 20px auto !important;
+    margin: 60px auto 20px auto !important;
     left: 0 !important;
     right: 0 !important;
     top: 0 !important;
@@ -1566,7 +1572,7 @@ div[class*="cake"] {
     float: none !important;
 }
 
-/* Profile Image Centering Under Cake */
+/* Avatar Image Centered Under Cake */
 .cake .cake-cover img, 
 .cake img,
 .profile-img,
@@ -1577,9 +1583,10 @@ div[class*="cake"] {
     margin: 0 auto !important;
     border-radius: 12px !important;
     position: relative !important;
+    float: none !important;
 }
 
-/* Candle Positioned Directly On Top of Cake */
+/* Candle Stick Positioned Centered On Top */
 .velas {
     background: #ffffff !important;
     border-radius: 10px !important;
@@ -1632,7 +1639,7 @@ div[class*="cake"] {
     border-radius: 0 0 10px 10px !important;
 }
 
-/* Prevent Overlay Balloons from Blocking Clicks */
+/* Prevent Balloon Overlays from Blocking Clicks */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1640,7 +1647,7 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* UI Controls Layering */
+/* Keep Interactive Controls Clickable */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
