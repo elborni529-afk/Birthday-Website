@@ -1720,3 +1720,14 @@ audio {
     display: none;
     margin-top: 20px;
 }
+/* Keep cake container hidden until button click */
+.cake-cover {
+    display: none;
+}
+
+/* Ensure the cake action button receives clicks */
+#cake_fade {
+    position: relative;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+}
