@@ -1514,21 +1514,6 @@ audio {
 }
 /* --- Fancy Cake & Candle --- */
 /* =========================================================
-   HIDE CAKE UNTIL LIGHTS ARE ON
-   ========================================================= */
-body.bulb_off .cake-cover,
-body:not(.night) .cake-cover,
-.cake-cover {
-    display: none !important;
-}
-
-body.bulb_on .cake-cover,
-body.night .cake-cover,
-.cake-cover.show,
-.cake-cover.animated {
-    display: block !important;
-}
-/* =========================================================
    PERFECTLY CENTERED BIRTHDAY CAKE
    ========================================================= */
 
