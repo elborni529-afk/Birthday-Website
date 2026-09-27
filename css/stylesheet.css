@@ -1652,3 +1652,6 @@ audio {
     margin-bottom: 15px;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
 }
+.cake-cover {
+    display: none;
+}
