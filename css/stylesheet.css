@@ -1858,3 +1858,30 @@ div[class*="balloon"] {
         left: 50% !important;
     }
 }
+/* =========================================================
+   CAKE INITIAL STATE
+   Hidden until "Cake? Of course!" is clicked
+   ========================================================= */
+
+.cake-cover {
+    display: none !important;
+}
+
+.cake-cover .cake,
+.cake-cover #wishText,
+.cake-cover .profile-img {
+    display: none !important;
+}
+
+
+/* =========================================================
+   FLAME EXTINGUISHED STATE
+   ========================================================= */
+
+.fuego.extinguished {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
