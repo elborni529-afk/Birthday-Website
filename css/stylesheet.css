@@ -1513,16 +1513,16 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- Perfectly Centered Cake with Integrated Plate --- */
+/* --- الكعكة المرتبة والمتوسطة بدقة --- */
 
-/* 1. Hide cake elements initially when lights are off */
+/* 1. إخفاء الكعكة افتراضياً عندما تكون الأنوار مطفأة */
 body.bulb_off .cake-cover,
 body:not(.night) .cake-cover,
 .cake-cover {
     display: none;
 }
 
-/* Reveal cake cover only after turning on lights */
+/* إظهار الكعكة فقط عند إضاءة الأنوار */
 body.bulb_on .cake-cover,
 body.night .cake-cover,
 .cake-cover.show,
@@ -1530,7 +1530,7 @@ body.night .cake-cover,
     display: block !important;
 }
 
-/* Main centered wrapper */
+/* الحاوية الرئيسية للتوسيط */
 .cake-cover,
 #cake_container,
 .cake-container {
@@ -1538,7 +1538,7 @@ body.night .cake-cover,
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    margin: 40px auto 20px auto !important;
+    margin: 30px auto 20px auto !important;
     float: none !important;
     clear: both !important;
     text-align: center !important;
@@ -1546,7 +1546,7 @@ body.night .cake-cover,
     max-width: 320px !important;
 }
 
-/* 2. Top Wish Text Centered Above Candle */
+/* 2. نص الأمنية فوق الشمعة */
 .wish-text,
 #wishText {
     display: block !important;
@@ -1560,33 +1560,16 @@ body.night .cake-cover,
     z-index: 1001 !important;
 }
 
-/* 3. Main Cake Frame Container - Perfectly Centered */
+/* 3. حاوية الكعكة الرئيسية (توسيط صحيح بدون انزياح) */
 .cake {
     position: relative !important;
-    width: 250px !important;
+    width: 220px !important;
     height: 150px !important;
-    margin: 40px auto 15px auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    margin: 25px auto 15px auto !important;
     float: none !important;
 }
 
-/* 4. Chocolate Cake Base */
-.bizcocho,
-.cake .bizcocho {
-    background: #6d4c41 !important;
-    position: absolute !important;
-    top: 35px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 220px !important;
-    height: 95px !important;
-    border-radius: 0 0 10px 10px !important;
-    box-shadow: none !important;
-    z-index: 10 !important;
-}
-
-/* 5. White Frosting Layer Stacked Correctly On Top of Base */
+/* 4. طبقة الكريمة البيضاء في الأعلى */
 .cobertura,
 .cake .cobertura {
     background: #ece7e6 !important;
@@ -1600,14 +1583,28 @@ body.night .cake-cover,
     z-index: 20 !important;
 }
 
-/* 6. White Plate Centered Directly Underneath the Chocolate Base */
-.bizcocho::after,
+/* 5. قالب الشوكولاتة الأساسي */
+.bizcocho,
+.cake .bizcocho {
+    background: #6d4c41 !important;
+    position: absolute !important;
+    top: 40px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 220px !important;
+    height: 90px !important;
+    border-radius: 0 0 10px 10px !important;
+    box-shadow: none !important;
+    z-index: 10 !important;
+}
+
+/* 6. الصحن الأبيض تحت الكعكة مباشرة */
 .cake::after {
     content: "" !important;
     display: block !important;
     background: #ffffff !important;
     position: absolute !important;
-    bottom: -8px !important;
+    bottom: -10px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 260px !important;
@@ -1617,22 +1614,30 @@ body.night .cake-cover,
     z-index: 5 !important;
 }
 
-/* 7. Candle Stick Centered On Top of Frosting */
+/* إلغاء أي عناصر إضافية متداخلة */
+.bizcocho::after,
+.bizcocho::before,
+.cake::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* 7. عصا الشمعة فوق الكريمة */
 .velas {
     background: #ffffff !important;
-    border-radius: 10px !important;
+    border-radius: 4px !important;
     position: absolute !important;
     top: -5px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
-    height: 35px !important;
-    z-index: 999 !important;
+    height: 32px !important;
+    z-index: 25 !important;
 }
 
-/* 8. Candle Flame */
+/* 8. لهب الشمعة */
 .fuego {
-    border-radius: 100% !important;
+    border-radius: 50% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
     position: absolute !important;
     top: -12px !important;
@@ -1642,10 +1647,10 @@ body.night .cake-cover,
     height: 12px !important;
     background: #ffaa00 !important;
     cursor: pointer !important;
-    z-index: 1000 !important;
+    z-index: 30 !important;
 }
 
-/* 9. Avatar Image Centered Directly Below the Cake Plate */
+/* 9. صورة الأفاتار في الأسفل تماماً تحت الصحن */
 .cake-cover img,
 .cake-cover .profile-img,
 img[src*="avatar"],
@@ -1663,7 +1668,7 @@ img[src*="avatar"],
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Prevent floating balloons from blocking clicks */
+/* منع البالونات العائمة من حجب النقر */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1671,7 +1676,7 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Keep action controls interactive */
+/* الحفاظ على تفاعلية أزرار التحكم */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
