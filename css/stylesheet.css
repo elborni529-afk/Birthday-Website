@@ -1513,113 +1513,24 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
+/* --- Clean Unified Cake, Flame & Layout CSS --- */
 .cake-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  position: relative;
-  z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    position: relative;
+    z-index: 10;
 }
 
-.cake {
-  position: relative;
-  width: 180px;
-  height: 120px;
-}
-
-.plate {
-  width: 220px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
-  position: absolute;
-  bottom: -10px;
-  left: -20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(4px);
-}
-.layer {
-  position: absolute;
-  width: 100%;
-  border-radius: 10px;
-}
-.layer-bottom {
-  height: 45px;
-  bottom: 0;
-  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
-}
-.layer-middle {
-  height: 40px;
-  bottom: 40px;
-  width: 85%;
-  left: 7.5%;
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-}
-.layer-top {
-  height: 35px;
-  bottom: 75px;
-  width: 70%;
-  left: 15%;
-  background: linear-gradient(135deg, #f72585, #7209b7);
-}
-
-.candle {
-  width: 10px;
-  height: 30px;
-  background: linear-gradient(to bottom, #ffffff, #e0e0e0);
-  border-radius: 5px;
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.flame {
-  width: 14px;
-  height: 22px;
-  background: radial-gradient(ellipse at bottom, #ffea00 0%, #ff6d00 50%, transparent 100%);
-  border-radius: 50% 50% 20% 20%;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: flicker 1.2s infinite alternate ease-in-out;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff6d00, 0 0 30px #ffea00;
-  transition: all 0.4s ease;
-}
-
-.flame.extinguished {
-  opacity: 0;
-  transform: translateX(-50%) scale(0);
-  box-shadow: none;
-}
-
-@keyframes flicker {
-  0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
-  100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
-}
-
-.wish-text {
-  margin-top: 25px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #555555;
-  text-shadow: 0 0 5px rgba(255,255,255,0.8);
-}
-/* --- Clean Cake & Wish Setup --- */
-
-/* Keep entire row hidden on page load */
 .cake-cover {
     display: none;
-    margin-top: 20px;
+    margin-top: 40px !important;
     position: relative;
     z-index: 100;
 }
-/* Wish text styling */
+
 .wish-text,
 #wishText {
     font-size: 1.1rem;
@@ -1628,81 +1539,78 @@ audio {
     margin-bottom: 15px;
     text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
 }
-/* Profile image styling */
-.cake-cover .profile-img {
-    margin-top: 15px;
-    max-width: 180px;
-    border-radius: 12px;
-}
-/* Ensure buttons stay clickable over balloon overlays */
-.navbar-fixed-bottom,
-#cake_fade,
-.btn {
-    position: relative;
-    z-index: 10000 !important;
-    pointer-events: auto !important;
-}
-.balloon, .balloons, #balloon-border {
-    pointer-events: none !important;
-}
-/* --- Direct Cake CSS (replaces cake.less runtime compilation) --- */
-/* --- Direct Cake CSS Fix --- */
+
 .cake {
     position: relative !important;
     width: 250px !important;
     height: 160px !important;
-    margin: 80px auto 20px auto !important; /* Extra top margin for candle space */
+    margin: 90px auto 20px auto !important;
 }
 
+/* Avatar / Profile Image Fix */
+.cake .cake-cover img, 
+.cake img,
+.profile-img,
+.cake-cover .profile-img {
+    max-width: 110px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 12px !important;
+}
+
+/* Candle Stick */
 .velas {
     background: #ffffff !important;
     border-radius: 10px !important;
     position: absolute !important;
-    top: -35px !important; /* Moves candle stick above frosting */
+    top: -45px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 8px !important;
-    height: 35px !important;
-    z-index: 100 !important;
+    height: 40px !important;
+    z-index: 999 !important;
 }
 
+/* Candle Flame */
 .fuego {
     border-radius: 100% !important;
     box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
     position: absolute !important;
-    top: -12px !important; /* Sits directly on top of candle stick */
+    top: -15px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    width: 12px !important;
-    height: 12px !important;
+    width: 14px !important;
+    height: 14px !important;
     background: #ffaa00 !important;
     cursor: pointer !important;
-    z-index: 101 !important;
+    z-index: 1000 !important;
 }
 
 .cobertura {
-    background: #ece7e6;
-    border-radius: 50px/10px;
-    position: absolute;
-    top: 55px;
-    left: 50%;
-    margin-left: -100px;
-    width: 200px;
-    height: 30px;
-    z-index: 10;
+    background: #ece7e6 !important;
+    border-radius: 50px / 10px !important;
+    position: absolute !important;
+    top: 35px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important;
+    height: 30px !important;
+    z-index: 10 !important;
 }
 
 .bizcocho {
-    background: #6d4c41;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -100px;
-    width: 200px;
-    height: 120px;
-    border-radius: 0 0 10px 10px;
+    background: #6d4c41 !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important;
+    height: 120px !important;
+    border-radius: 0 0 10px 10px !important;
 }
-/* Disable click-blocking on the entire balloon overlay container */
+
+/* Balloon Overlay Protection */
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1710,162 +1618,11 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* Force the button container and buttons to stay clickable on top */
+/* Buttons & Clickables Layering */
 .navbar-fixed-bottom,
 #cake_fade,
 .btn {
     pointer-events: auto !important;
     position: relative !important;
     z-index: 999999 !important;
-}
-/* Centered Layout Wrapper */
-.cake-cover {
-    display: none;
-    margin: 20px auto 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 100;
-}
-
-/* Wish Text Styling */
-#wishText {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ff69b4;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
-
-/* Base Cake Dimensions & Centering */
-.cake {
-    position: relative;
-    width: 250px;
-    height: 180px;
-    margin: 10px auto 20px auto;
-}
-
-.velas {
-    background: #ffffff;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 35px;
-}
-
-.fuego {
-    border-radius: 100%;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8);
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #ffaa00;
-    cursor: pointer;
-}
-
-.cobertura {
-    background: #ece7e6;
-    border-radius: 50px / 10px;
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 30px;
-    z-index: 10;
-}
-
-.bizcocho {
-    background: #6d4c41;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 120px;
-    border-radius: 0 0 10px 10px;
-}
-
-/* Avatar Position Fix */
-.profile-img,
-.cake-cover .profile-img {
-    display: block;
-    margin: 15px auto 0 auto;
-    max-width: 160px;
-    height: auto;
-    border-radius: 12px;
-    position: static;
-}
-/* Hide control buttons while countdown lock is active */
-.countdown-active .navbar-fixed-bottom {
-    display: none !important;
-}
-/* Keep avatar centered underneath the cake */
-.cake-cover .profile-img {
-    display: block !important;
-    margin: 20px auto !important;
-    position: static !important;
-    max-width: 180px;
-    height: auto;
-    border-radius: 12px;
-}
-/* --- Cake Component Styles --- */
-.cake {
-    position: relative;
-    width: 250px;
-    height: 180px;
-    margin: 15px auto;
-}
-
-.velas {
-    background: #ffffff;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 35px;
-    z-index: 20;
-}
-
-.fuego {
-    border-radius: 100%;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8);
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #ffaa00;
-    cursor: pointer;
-}
-
-.cobertura {
-    background: #ece7e6;
-    border-radius: 50px / 10px;
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 30px;
-    z-index: 10;
-}
-
-.bizcocho {
-    background: #6d4c41;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 120px;
-    border-radius: 0 0 10px 10px;
 }
