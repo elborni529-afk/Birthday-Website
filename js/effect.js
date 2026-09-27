@@ -146,14 +146,6 @@ $('document').ready(function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
 	});
-	
-	$('#light_candle').click(function(){
-	    $('.fuego').fadeIn('slow');
-	    $('#wishText').fadeIn('slow');
-	    $(this).fadeOut('slow').delay(2000).promise().done(function(){
-	        $('#story').fadeIn('slow');
-	    });
-	});
 		
 	$('#wish_message').click(function(){
 		 vw = $(window).width()/2;
