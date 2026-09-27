@@ -1513,162 +1513,288 @@ audio {
   font-weight: 600;
 }
 /* --- Fancy Cake & Candle --- */
-/* --- الكعكة المرتبة والمتوسطة بدقة --- */
+/* =========================================================
+   PERFECTLY CENTERED BIRTHDAY CAKE
+   ========================================================= */
 
-/* 1. إخفاء الكعكة افتراضياً عندما تكون الأنوار مطفأة */
-body.bulb_off .cake-cover,
-body:not(.night) .cake-cover,
+/* The Bootstrap .row must stay full width */
 .cake-cover {
-    display: none;
-}
-
-/* إظهار الكعكة فقط عند إضاءة الأنوار */
-body.bulb_on .cake-cover,
-body.night .cake-cover,
-.cake-cover.show,
-.cake-cover.animated {
-    display: block !important;
-}
-
-/* الحاوية الرئيسية للتوسيط */
-.cake-cover,
-#cake_container,
-.cake-container {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin: 30px auto 20px auto !important;
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 50px 0 20px 0 !important;
+    padding: 0 !important;
+
     float: none !important;
     clear: both !important;
+
     text-align: center !important;
-    width: 100% !important;
-    max-width: 320px !important;
 }
 
-/* 2. نص الأمنية فوق الشمعة */
+/* The Bootstrap column containing the cake */
+.cake-cover > .col-md-12 {
+    position: relative !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+
+    float: none !important;
+
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   WISH TEXT
+   ========================================================= */
+
 .wish-text,
 #wishText {
+    position: relative !important;
+
     display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 auto 15px auto !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+
     font-size: 1rem !important;
     font-weight: bold !important;
+
     color: #ff69b4 !important;
-    margin: 0 auto 10px auto !important;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.5) !important;
-    text-align: center !important;
-    position: relative !important;
+
+    text-shadow:
+        0 0 8px rgba(255, 105, 180, 0.5) !important;
+
     z-index: 1001 !important;
 }
 
-/* 3. حاوية الكعكة الرئيسية (توسيط صحيح بدون انزياح) */
+
+/* =========================================================
+   CAKE
+   ========================================================= */
+
 .cake {
     position: relative !important;
+
+    display: block !important;
+
     width: 220px !important;
-    height: 150px !important;
-    margin: 25px auto 15px auto !important;
+    height: 170px !important;
+
+    margin: 20px auto 15px auto !important;
+    padding: 0 !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    transform: none !important;
+
     float: none !important;
-}
 
-/* 4. طبقة الكريمة البيضاء في الأعلى */
-.cobertura,
-.cake .cobertura {
-    background: #ece7e6 !important;
-    border-radius: 50px / 10px !important;
-    position: absolute !important;
-    top: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 220px !important;
-    height: 30px !important;
-    z-index: 20 !important;
-}
+    /* Important: this is the centering anchor */
+    margin-left: auto !important;
+    margin-right: auto !important;
 
-/* 5. قالب الشوكولاتة الأساسي */
-.bizcocho,
-.cake .bizcocho {
-    background: #6d4c41 !important;
-    position: absolute !important;
-    top: 40px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 220px !important;
-    height: 90px !important;
-    border-radius: 0 0 10px 10px !important;
-    box-shadow: none !important;
     z-index: 10 !important;
 }
 
-/* 6. الصحن الأبيض تحت الكعكة مباشرة */
+
+/* =========================================================
+   CAKE BASE
+   ========================================================= */
+
+.cake .bizcocho {
+    position: absolute !important;
+
+    top: 55px !important;
+    left: 50% !important;
+
+    width: 220px !important;
+    height: 90px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #6d4c41 !important;
+
+    border-radius: 0 0 10px 10px !important;
+
+    box-shadow: none !important;
+
+    z-index: 10 !important;
+}
+
+
+/* =========================================================
+   FROSTING
+   ========================================================= */
+
+.cake .cobertura {
+    position: absolute !important;
+
+    top: 30px !important;
+    left: 50% !important;
+
+    width: 220px !important;
+    height: 30px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ece7e6 !important;
+
+    border-radius: 50px / 10px !important;
+
+    z-index: 20 !important;
+}
+
+
+/* =========================================================
+   PLATE
+   ========================================================= */
+
 .cake::after {
     content: "" !important;
-    display: block !important;
-    background: #ffffff !important;
+
     position: absolute !important;
-    bottom: -10px !important;
+
+    top: 147px !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 260px !important;
     height: 12px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ffffff !important;
+
     border-radius: 10px !important;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15) !important;
+
     z-index: 5 !important;
 }
 
-/* إلغاء أي عناصر إضافية متداخلة */
-.bizcocho::after,
-.bizcocho::before,
-.cake::before {
+
+/* Remove old cake pseudo-elements */
+.cake::before,
+.cake .bizcocho::before,
+.cake .bizcocho::after {
     display: none !important;
     content: none !important;
 }
 
-/* 7. عصا الشمعة فوق الكريمة */
-.velas {
-    background: #ffffff !important;
-    border-radius: 4px !important;
+
+/* =========================================================
+   CANDLE
+   ========================================================= */
+
+.cake .velas {
     position: absolute !important;
+
     top: -5px !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 8px !important;
-    height: 32px !important;
+    height: 35px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    background: #ffffff !important;
+
+    border-radius: 4px !important;
+
     z-index: 25 !important;
 }
 
-/* 8. لهب الشمعة */
-.fuego {
-    border-radius: 50% !important;
-    box-shadow: 0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
+
+/* =========================================================
+   FLAME
+   ========================================================= */
+
+.cake .fuego {
     position: absolute !important;
+
     top: -12px !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+
     width: 12px !important;
     height: 12px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
     background: #ffaa00 !important;
+
+    border-radius: 50% !important;
+
+    box-shadow:
+        0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
+
     cursor: pointer !important;
+
     z-index: 30 !important;
 }
 
-/* 9. صورة الأفاتار في الأسفل تماماً تحت الصحن */
-.cake-cover img,
-.cake-cover .profile-img,
-img[src*="avatar"],
-.cake img {
+
+/* =========================================================
+   PROFILE / ANIME IMAGE
+   ========================================================= */
+
+.cake-cover .profile-img {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin: 25px auto 0 auto !important;
+
     display: block !important;
-    float: none !important;
+
+    width: 110px !important;
     max-width: 110px !important;
     height: auto !important;
+
+    margin: 25px auto 0 auto !important;
+    padding: 0 !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    transform: none !important;
+
+    float: none !important;
+
     border-radius: 12px !important;
-    border: 3px solid #fff !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+    border: 3px solid #ffffff !important;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15) !important;
+
+    z-index: 10 !important;
 }
 
-/* منع البالونات العائمة من حجب النقر */
+
+/* =========================================================
+   BALLOONS DON'T BLOCK THE CAKE
+   ========================================================= */
+
 .balloons,
 #balloon-border,
 .balloon-border,
@@ -1676,11 +1802,59 @@ div[class*="balloon"] {
     pointer-events: none !important;
 }
 
-/* الحفاظ على تفاعلية أزرار التحكم */
+
+/* =========================================================
+   BUTTONS STAY CLICKABLE
+   ========================================================= */
+
 .navbar-fixed-bottom,
 #cake_fade,
+#light_candle,
+#wish_message,
+#story,
 .btn {
     pointer-events: auto !important;
+
     position: relative !important;
+
     z-index: 999999 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .cake-cover {
+        width: 100% !important;
+
+        margin-top: 40px !important;
+    }
+
+    .cake {
+        width: 220px !important;
+        height: 170px !important;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .cake .bizcocho,
+    .cake .cobertura {
+        left: 50% !important;
+    }
+
+    .cake::after {
+        left: 50% !important;
+    }
+
+    .cake .velas {
+        left: 50% !important;
+    }
+
+    .cake .fuego {
+        left: 50% !important;
+    }
 }
