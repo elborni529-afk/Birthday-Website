@@ -749,7 +749,9 @@ function startBalloonPhysics() {
     }
 
 
-    requestAnimationFrame(update);
+    if (balloonPhysicsStarted) {
+	    requestAnimationFrame(update);
+	}
 }
 /* =========================================
    🎈 ALIGN BALLOONS → H B D B A B Y
