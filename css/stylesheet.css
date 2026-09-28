@@ -3530,3 +3530,24 @@ div[class*="balloon"] {
         0 0 8px #ffd166,
         0 0 14px #ffb703 !important;
 }
+/* 🌸 Fancy decorated birthday background */
+body.peach-after {
+    background:
+        radial-gradient(circle at 50% 20%,
+            rgba(255, 236, 210, 0.95) 0%,
+            rgba(255, 205, 190, 0.92) 38%,
+            rgba(222, 181, 210, 0.92) 70%,
+            rgba(169, 155, 205, 0.95) 100%
+        ) !important;
+
+    transition: background 2s ease !important;
+}
+#fancy-decor {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.10) 0%,
+            rgba(255,192,203,0.08) 35%,
+            transparent 70%
+        );
+}
