@@ -3740,31 +3740,27 @@ body:not(.letter-active) {
     display: block !important;
     position: absolute !important;
 
-    /* Center horizontally on cake */
     left: 50% !important;
+    top: 110px !important;
     right: auto !important;
-
-    /* Pink side of cake */
-    top: 122px !important;
     bottom: auto !important;
 
     transform: translateX(-50%) !important;
 
-    width: 48px !important;
-    height: 42px !important;
+    width: 46px !important;
+    height: 38px !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    object-fit: cover !important;
+    object-fit: contain !important;
 
-    /* Make it feel printed instead of like a photo card */
-    border: 0 !important;
-    border-radius: 4px !important;
-    outline: 0 !important;
+    border: none !important;
+    border-radius: 3px !important;
+    outline: none !important;
     box-shadow: none !important;
 
-    opacity: 0.72 !important;
+    opacity: 0.9 !important;
 
     z-index: 50 !important;
     pointer-events: none !important;
