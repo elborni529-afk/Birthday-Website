@@ -3520,3 +3520,13 @@ div[class*="balloon"] {
     }
 
 }
+/* ✨ Make the small floating sparkles visible on the peach background */
+#fancy-decor .party-sparkles span {
+    color: #ffb703 !important;
+    opacity: 0.95 !important;
+
+    text-shadow:
+        0 0 4px #ffffff,
+        0 0 8px #ffd166,
+        0 0 14px #ffb703 !important;
+}
