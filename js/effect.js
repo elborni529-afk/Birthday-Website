@@ -341,134 +341,395 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	});
 /* =========================================
-   🎈 FREE MOUSE-PUSH BALLOONS
+   🎈 ADVANCED FREE BALLOON PHYSICS
    ========================================= */
 
-(function () {
+let balloonPhysicsStarted = false;
 
-    const reactionDistance = 170;
-    const pushStrength = 14;
+function startBalloonPhysics() {
 
-    let lastMouseX = null;
-    let lastMouseY = null;
+    if (balloonPhysicsStarted) return;
+    balloonPhysicsStarted = true;
 
-    document.addEventListener('mousemove', function (e) {
+    const balloons = Array.from(
+        document.querySelectorAll('.balloons')
+    );
 
-        const balloons = document.querySelectorAll('.balloons');
+    const physics = [];
 
-        // Mouse movement direction
-        let mouseDX = 0;
-        let mouseDY = 0;
+    balloons.forEach(function(balloon) {
 
-        if (lastMouseX !== null) {
-            mouseDX = e.clientX - lastMouseX;
-            mouseDY = e.clientY - lastMouseY;
+        const rect = balloon.getBoundingClientRect();
+
+        physics.push({
+            el: balloon,
+
+            x: rect.left,
+            y: rect.top,
+
+            // Starting drift
+            vx: (Math.random() - 0.5) * 1.2,
+            vy: (Math.random() - 0.5) * 1.2,
+
+            // Every balloon gets a slightly different
+            // wandering pattern
+            phase: Math.random() * Math.PI * 2,
+            driftSpeed: 0.004 + Math.random() * 0.004
+        });
+
+        balloon.style.left = rect.left + 'px';
+        balloon.style.top = rect.top + 'px';
+        balloon.style.bottom = 'auto';
+    });
+
+
+    /* =====================================
+       🖱️ MOUSE
+       ===================================== */
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+
+    let previousMouseX = -1000;
+    let previousMouseY = -1000;
+
+    let mouseVX = 0;
+    let mouseVY = 0;
+
+
+    document.addEventListener('mousemove', function(e) {
+
+        if (previousMouseX > -500) {
+
+            mouseVX = e.clientX - previousMouseX;
+            mouseVY = e.clientY - previousMouseY;
+
         }
 
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
+        previousMouseX = e.clientX;
+        previousMouseY = e.clientY;
 
-        balloons.forEach(function (balloon) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
 
-            const rect = balloon.getBoundingClientRect();
 
-            const balloonX = rect.left + rect.width / 2;
-            const balloonY = rect.top + rect.height / 2;
+    /* =====================================
+       🎈 PHYSICS
+       ===================================== */
 
-            const dx = balloonX - e.clientX;
-            const dy = balloonY - e.clientY;
+    function update(time) {
+
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+
+        /* =================================
+           🎈 BALLOON COLLISIONS
+           ================================= */
+
+        for (let i = 0; i < physics.length; i++) {
+
+            for (let j = i + 1; j < physics.length; j++) {
+
+                const a = physics[i];
+                const b = physics[j];
+
+                const aw = a.el.offsetWidth;
+                const ah = a.el.offsetHeight;
+
+                const bw = b.el.offsetWidth;
+                const bh = b.el.offsetHeight;
+
+                const ax = a.x + aw / 2;
+                const ay = a.y + ah / 2;
+
+                const bx = b.x + bw / 2;
+                const by = b.y + bh / 2;
+
+                const dx = bx - ax;
+                const dy = by - ay;
+
+                const distance = Math.sqrt(
+                    dx * dx + dy * dy
+                );
+
+
+                /*
+                 * Balloons don't need perfect
+                 * circle collisions.
+                 *
+                 * This distance simply keeps them
+                 * visually separated.
+                 */
+
+                const minimumDistance =
+                    (aw + bw) * 0.32;
+
+
+                if (
+                    distance < minimumDistance &&
+                    distance > 0
+                ) {
+
+                    const overlap =
+                        minimumDistance - distance;
+
+                    const nx = dx / distance;
+                    const ny = dy / distance;
+
+
+                    /*
+                     * Physically separate them
+                     */
+
+                    a.x -= nx * overlap * 0.5;
+                    a.y -= ny * overlap * 0.5;
+
+                    b.x += nx * overlap * 0.5;
+                    b.y += ny * overlap * 0.5;
+
+
+                    /*
+                     * Give them a gentle bounce
+                     */
+
+                    const bounce = 0.15;
+
+                    a.vx -= nx * bounce;
+                    a.vy -= ny * bounce;
+
+                    b.vx += nx * bounce;
+                    b.vy += ny * bounce;
+                }
+            }
+        }
+
+
+        /* =================================
+           MOVE EACH BALLOON
+           ================================= */
+
+        physics.forEach(function(balloon) {
+
+            const width = balloon.el.offsetWidth;
+            const height = balloon.el.offsetHeight;
+
+            const centerX =
+                balloon.x + width / 2;
+
+            const centerY =
+                balloon.y + height / 2;
+
+
+            /* =================================
+               🖱️ MOUSE REPULSION
+               ================================= */
+
+            const dx = centerX - mouseX;
+            const dy = centerY - mouseY;
 
             const distance = Math.sqrt(
                 dx * dx + dy * dy
             );
+
+            const reactionDistance = 160;
+
 
             if (
                 distance < reactionDistance &&
                 distance > 0
             ) {
 
-                /*
-                 * VERY IMPORTANT:
-                 * stop jQuery from pulling this balloon
-                 * toward its old destination.
-                 */
-                $(balloon).stop(true, false);
-
                 const force =
-                    1 - (distance / reactionDistance);
+                    1 - distance / reactionDistance;
+
 
                 /*
-                 * Direction away from cursor
+                 * Push away from cursor
                  */
-                const directionX = dx / distance;
-                const directionY = dy / distance;
+
+                balloon.vx +=
+                    (dx / distance) *
+                    force *
+                    1.6;
+
+                balloon.vy +=
+                    (dy / distance) *
+                    force *
+                    1.6;
+
 
                 /*
-                 * Cursor speed adds extra momentum.
+                 * Transfer mouse momentum
                  */
-                const mouseSpeed =
-                    Math.sqrt(
-                        mouseDX * mouseDX +
-                        mouseDY * mouseDY
-                    );
 
-                const power =
-                    pushStrength +
-                    Math.min(mouseSpeed * 0.8, 25);
+                balloon.vx +=
+                    mouseVX * 0.035 * force;
 
-                const moveX =
-                    directionX *
-                    power *
-                    force;
-
-                const moveY =
-                    directionY *
-                    power *
-                    force;
-
-                const style =
-                    window.getComputedStyle(balloon);
-
-                let left =
-                    parseFloat(style.left) || 0;
-
-                let bottom =
-                    parseFloat(style.bottom) || 0;
-
-                /*
-                 * New REAL position.
-                 * Nothing resets this afterward.
-                 */
-                left += moveX;
-                bottom -= moveY;
-
-                /*
-                 * Keep balloons roughly on screen
-                 */
-                const maxLeft =
-                    window.innerWidth -
-                    balloon.offsetWidth;
-
-                left = Math.max(
-                    0,
-                    Math.min(maxLeft, left)
-                );
-
-                bottom = Math.max(
-                    0,
-                    Math.min(
-                        window.innerHeight -
-                        balloon.offsetHeight,
-                        bottom
-                    )
-                );
-
-                balloon.style.left = left + 'px';
-                balloon.style.bottom = bottom + 'px';
+                balloon.vy +=
+                    mouseVY * 0.035 * force;
             }
 
+
+            /* =================================
+               🌬️ NATURAL FLOATING
+               ================================= */
+
+            /*
+             * Slowly changing direction.
+             *
+             * There is NO destination.
+             * Therefore balloons never return
+             * to an old position.
+             */
+
+            balloon.phase += balloon.driftSpeed;
+
+            balloon.vx +=
+                Math.sin(balloon.phase) * 0.008;
+
+            balloon.vy +=
+                Math.cos(balloon.phase * 0.8) * 0.006;
+
+
+            /*
+             * Tiny random air currents
+             */
+
+            balloon.vx +=
+                (Math.random() - 0.5) * 0.008;
+
+            balloon.vy +=
+                (Math.random() - 0.5) * 0.008;
+
+
+            /*
+             * Slight upward tendency because
+             * they're balloons 🎈
+             */
+
+            balloon.vy -= 0.002;
+
+
+            /* =================================
+               AIR RESISTANCE
+               ================================= */
+
+            balloon.vx *= 0.998;
+            balloon.vy *= 0.998;
+
+
+            /* =================================
+               DON'T LET THEM BECOME STATIC
+               ================================= */
+
+            const speed = Math.sqrt(
+                balloon.vx * balloon.vx +
+                balloon.vy * balloon.vy
+            );
+
+            if (speed < 0.18) {
+
+                balloon.vx +=
+                    Math.sin(balloon.phase) * 0.04;
+
+                balloon.vy +=
+                    Math.cos(balloon.phase) * 0.04;
+            }
+
+
+            /* =================================
+               MAX SPEED
+               ================================= */
+
+            const maxSpeed = 6;
+
+            balloon.vx = Math.max(
+                -maxSpeed,
+                Math.min(maxSpeed, balloon.vx)
+            );
+
+            balloon.vy = Math.max(
+                -maxSpeed,
+                Math.min(maxSpeed, balloon.vy)
+            );
+
+
+            /* =================================
+               APPLY MOVEMENT
+               ================================= */
+
+            balloon.x += balloon.vx;
+            balloon.y += balloon.vy;
+
+
+            /* =================================
+               SCREEN EDGES
+               ================================= */
+
+            if (balloon.x < 0) {
+
+                balloon.x = 0;
+                balloon.vx =
+                    Math.abs(balloon.vx) * 0.8;
+            }
+
+            if (
+                balloon.x + width >
+                screenWidth
+            ) {
+
+                balloon.x =
+                    screenWidth - width;
+
+                balloon.vx =
+                    -Math.abs(balloon.vx) * 0.8;
+            }
+
+            if (balloon.y < 0) {
+
+                balloon.y = 0;
+                balloon.vy =
+                    Math.abs(balloon.vy) * 0.8;
+            }
+
+            if (
+                balloon.y + height >
+                screenHeight
+            ) {
+
+                balloon.y =
+                    screenHeight - height;
+
+                balloon.vy =
+                    -Math.abs(balloon.vy) * 0.8;
+            }
+
+
+            /* =================================
+               DRAW
+               ================================= */
+
+            balloon.el.style.left =
+                balloon.x + 'px';
+
+            balloon.el.style.top =
+                balloon.y + 'px';
         });
 
-    });
 
-})();
+        /*
+         * Mouse momentum fades quickly
+         */
+
+        mouseVX *= 0.72;
+        mouseVY *= 0.72;
+
+
+        requestAnimationFrame(update);
+    }
+
+
+    requestAnimationFrame(update);
+}
