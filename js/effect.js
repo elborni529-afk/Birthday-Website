@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	            });
 	
-	        }, 1200);
+	        }, 1800);
 	
 	    });
 	
