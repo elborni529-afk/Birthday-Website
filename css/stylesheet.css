@@ -5459,3 +5459,15 @@ body .album-right-2 {
 body .album-right-2 {
     transform: rotate(-70deg) !important;
 }
+.cake-print {
+    width: 80px !important;
+    height: 65px !important;
+
+    object-fit: contain !important;
+
+    transform:
+        translateX(-50%)
+        scale(1.7) !important;
+
+    transform-origin: center bottom !important;
+}
