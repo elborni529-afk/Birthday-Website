@@ -111,30 +111,49 @@ $('document').ready(function(){
 		});
 	}
 	function loopEight() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b7').animate({left:randleft,bottom:randtop},10000,function(){
-			loopSeven();
-		});
+	    var randleft = 1000*Math.random();
+	    var randtop = 500*Math.random();
+	
+	    $('#b7').animate(
+	        { left: randleft, bottom: randtop },
+	        10000,
+	        function () {
+	            loopSeven();
+	        }
+	    );
 	}
-
-	// Old jQuery balloon movement disabled.
-	// Mouse physics system controls them now.
 	
-	// loopOne();
-	// loopTwo();
-	// loopThree();
-	// loopFour();
-	// loopFive();
-	// loopSix();
-	// loopSeven();
-	// loopEight();
 	
-	startBalloonPhysics();
-
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#cake_fade').fadeIn('slow');
-		});
+	/* =========================================
+	   🎈 BALLOONS BUTTON
+	   ========================================= */
+	
+	$('#balloons_flying').click(function () {
+	
+	    // Old balloon loops stay disabled.
+	    // The new physics system controls movement.
+	
+	    // loopOne();
+	    // loopTwo();
+	    // loopThree();
+	    // loopFour();
+	    // loopFive();
+	    // loopSix();
+	    // loopSeven();
+	    // loopEight();
+	
+	    startBalloonPhysics();
+	
+	    $(this)
+	        .fadeOut('slow')
+	        .delay(5000)
+	        .promise()
+	        .done(function () {
+	
+	            $('#cake_fade').fadeIn('slow');
+	
+	        });
+	
 	});
 	$('#cake_fade').click(function () {
 	
