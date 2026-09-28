@@ -3578,3 +3578,27 @@ body {
     min-height: 100vh !important;
     max-height: 100vh !important;
 }
+/* =========================================
+   FIT CAKE SCENE INSIDE ONE SCREEN
+   ========================================= */
+
+body.cake-stage {
+    overflow-y: hidden !important;
+}
+
+/* Cake section should not create extra page height */
+body.cake-stage .cake-cover {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Bring cake slightly closer to wish text */
+body.cake-stage .cake-cover .cake {
+    margin-top: 38px !important;
+}
+
+/* Keep bottom navigation inside viewport */
+body.cake-stage #navbar_controls {
+    bottom: 6px !important;
+}
