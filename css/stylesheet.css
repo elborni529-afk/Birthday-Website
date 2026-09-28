@@ -2435,29 +2435,14 @@ div[class*="balloon"] {
 
 .envelope.open {
     cursor: default;
-    transform: translateX(-50%);
+
+    /* Remove the transform that was pushing
+       the whole envelope around */
+    transform: none;
 }
 
 
-/* The intro gently disappears */
-
-#letter-scene.letter-opened .letter-intro {
-    opacity: 0;
-    transform: translateY(-30px);
-    pointer-events: none;
-}
-
-
-/* Envelope moves slightly down */
-
-.envelope.open {
-    transform:
-        translateX(-50%)
-        translateY(180px);
-}
-
-
-/* Flap opens */
+/* Open the flap */
 
 .envelope.open .envelope-flap {
     transform: rotateX(180deg);
@@ -2465,7 +2450,7 @@ div[class*="balloon"] {
 }
 
 
-/* Hide the seal */
+/* Hide the heart */
 
 .envelope.open .envelope-seal {
     opacity: 0;
@@ -2477,46 +2462,99 @@ div[class*="balloon"] {
 
 
 /* =========================================
-   📜 THE LETTER BECOMES THE MAIN SCENE
+   🌙 FADE THE INTRO
+   ========================================= */
+
+#letter-scene.letter-opened .letter-intro {
+    opacity: 0;
+
+    transform:
+        translateY(-25px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   ✉️ ENVELOPE FADES AWAY
+   ========================================= */
+
+#letter-scene.letter-opened .envelope-back,
+#letter-scene.letter-opened .envelope-front,
+#letter-scene.letter-opened .envelope-flap,
+#letter-scene.letter-opened .envelope-seal {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+
+/* =========================================
+   📜 LETTER BECOMES THE MAIN FOCUS
    ========================================= */
 
 .envelope.open .letter-paper {
 
-    width: 650px;
-    height: 650px;
+    position: fixed;
 
     left: 50%;
+    top: 50%;
 
-    bottom: 0;
+    bottom: auto;
+
+    width: min(680px, 82vw);
+    height: min(78vh, 700px);
 
     transform:
-        translateX(-50%)
-        translateY(-420px);
+        translate(-50%, -50%);
 
-    z-index: 20;
+    z-index: 10000;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.65),
+        0 0 60px rgba(255,190,210,0.18);
 
     transition:
         width 1s cubic-bezier(.22,1,.36,1),
         height 1s cubic-bezier(.22,1,.36,1),
         transform 1.2s cubic-bezier(.22,1,.36,1);
 
-    border-radius: 8px;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,0.55),
-        0 0 50px rgba(255,190,210,0.12);
-}
-
-
-/* Keep envelope front behind the letter */
-
-.envelope.open .envelope-front {
-    z-index: 3;
+    animation:
+        letterAppear 1s ease forwards;
 }
 
 
 /* =========================================
-   LETTER CONTENT WHEN OPEN
+   ✨ LETTER APPEAR
+   ========================================= */
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -45%)
+            scale(0.75);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================
+   📜 LETTER CONTENT
    ========================================= */
 
 .envelope.open .paper-content {
@@ -2528,20 +2566,9 @@ div[class*="balloon"] {
 
 .envelope.open .paper-content h2 {
     font-size: 34px;
+
     margin-bottom: 35px;
 }
-
-
-/* =========================================
-   SMOOTH INTRO TRANSITION
-   ========================================= */
-
-.letter-intro {
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
-}
-
 
 /* =========================================
    LETTER CONTENT
