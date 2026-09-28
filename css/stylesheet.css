@@ -3132,3 +3132,47 @@ div[class*="balloon"] {
     }
 
 }
+/* =========================================================
+   💌 FINAL CLOSED ENVELOPE FIX
+   ========================================================= */
+
+/* While CLOSED, keep the letter hidden inside the envelope */
+#letter-scene:not(.letter-opened) .letter-paper {
+    height: 180px !important;
+
+    left: 20px !important;
+    bottom: 15px !important;
+
+    transform: translateY(0) !important;
+
+    overflow: hidden !important;
+}
+
+
+/* Don't show any writing before opening */
+#letter-scene:not(.letter-opened) .paper-content {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
+/* Once opened, reveal the writing */
+#letter-scene.letter-opened .paper-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transition: opacity 0.8s ease 0.5s !important;
+}
+@media screen and (max-width: 600px) {
+
+    #letter-scene:not(.letter-opened) .letter-paper {
+        width: 260px !important;
+        height: 150px !important;
+
+        left: 15px !important;
+        bottom: 15px !important;
+
+        transform: none !important;
+    }
+
+}
