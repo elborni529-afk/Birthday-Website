@@ -139,18 +139,25 @@ $('document').ready(function(){
 		});
 	});
 	$('#cake_fade').click(function(){
-	    $('.cake-cover, .cake, #wishText').css({
-	        'display': 'block',
-	        'opacity': '1'
-	    }).hide().fadeIn('slow');
 	
+	    var $cakeCover = $('.cake-cover');
+	
+	    // Reveal the cake section
+	    $cakeCover
+	        .addClass('cake-visible')
+	        .hide()
+	        .fadeIn('slow');
+	
+	    // Scroll smoothly to the cake
 	    $('html, body').animate({
-	        scrollTop: $('.cake-cover').offset().top - 50
+	        scrollTop: $cakeCover.offset().top - 50
 	    }, 'slow');
 	
+	    // Hide this button and show the next button
 	    $(this).fadeOut('slow', function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
+	
 	});
 		
 	$('#wish_message').click(function(){
