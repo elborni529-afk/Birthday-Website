@@ -2265,3 +2265,60 @@ function startVideoSequence() {
     }, 3200);
 
 }
+document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+
+        const video =
+            document.getElementById(
+                'final-video'
+            );
+
+
+        if (!video) return;
+
+
+        video.addEventListener(
+            'ended',
+            function () {
+
+                /*
+                 * Fade video itself first
+                 */
+
+                video.classList.remove(
+                    'video-visible'
+                );
+
+
+                /*
+                 * Give us a moment of darkness
+                 */
+
+                setTimeout(function () {
+
+                    $('#video-scene')
+                        .fadeOut(
+                            1800,
+                            function () {
+
+                                $(this).hide();
+
+
+                                /*
+                                 * YOUR EXISTING
+                                 * STARS + MOON ENDING
+                                 */
+
+                                startFinalScene();
+
+                            }
+                        );
+
+                }, 1800);
+
+            }
+        );
+
+    }
+);
