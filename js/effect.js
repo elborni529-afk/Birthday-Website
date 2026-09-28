@@ -2018,29 +2018,20 @@ function finishRoundThree() {
    🌌 FINAL SURPRISE
    ========================================= */
 
-$(document).on(
-    'click',
-    '#final-surprise',
-    function () {
+$(document).on('click', '#final-surprise', function (event) {
 
-        /*
-         * Fade the entire game away
-         */
+    event.preventDefault();
 
-        $('#memory-game')
-            .fadeOut(
-                1400,
-                function () {
+    // Prevent double-clicking
+    $(this).prop('disabled', true);
 
-                    $(this).hide();
+    // Start finale immediately
+    startFinalScene();
 
-                    startFinalScene();
+    // Fade game away underneath it
+    $('#memory-game').fadeOut(1400);
 
-                }
-            );
-
-    }
-);
+});
 function startFinalScene() {
 
     const scene =
