@@ -1510,6 +1510,7 @@ function startRoundThree() {
 
     roundThreeRunning = true;
     heartEscapes = 0;
+	lastHeartEscape = 0;
 
 
     /* Change title */
