@@ -3783,16 +3783,17 @@ body:not(.letter-active) {
     position: absolute !important;
     display: block !important;
 
-    /* position inside pink front panel */
-    top: 112px !important;
+    /* centered inside the pink front panel */
     left: 50% !important;
+    top: 108px !important;
 
-    width: 42px !important;
-    height: 30px !important;
+    width: 58px !important;
+    height: 38px !important;
 
     transform: translateX(-50%) !important;
 
     object-fit: contain !important;
+    object-position: center !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -3803,7 +3804,7 @@ body:not(.letter-active) {
     box-shadow: none !important;
     background: transparent !important;
 
-    opacity: 0.9 !important;
+    opacity: 0.88 !important;
 
     z-index: 100 !important;
     pointer-events: none !important;
