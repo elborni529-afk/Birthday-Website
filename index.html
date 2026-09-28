@@ -510,16 +510,31 @@ p {
 	  const input = document.getElementById("pass-input");
 	  const error = document.getElementById("pass-error");
 	  const passGate = document.getElementById("password-gate");
-	
-	  if (input.value.trim() === SECRET_PASSWORD) {
+	if (input.value.trim() === SECRET_PASSWORD) {
 	    passGate.classList.add("hidden");
-	    // REVEAL BUTTON BAR ONLY AFTER PASSWORD IS CORRECT
-    	$('#navbar_controls').fadeIn('slow');
+	
+	    // Reveal the button bar WITHOUT jQuery
+	    const navbar = document.getElementById("navbar_controls");
+	
+	    if (navbar) {
+	        navbar.style.display = "block";
+	        navbar.style.opacity = "0";
+	
+	        setTimeout(function () {
+	            navbar.style.transition = "opacity 1s ease";
+	            navbar.style.opacity = "1";
+	        }, 50);
+	    }
+	
 	    // Confetti Explosion on Unlock
 	    if (typeof confetti === 'function') {
-	      confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
+	        confetti({
+	            particleCount: 180,
+	            spread: 100,
+	            origin: { y: 0.6 }
+	        });
 	    }
-	  } else {
+	}else{
 	    error.innerText = "Wrong code! Try again 😉";
 	    input.value = "";
 	  }
