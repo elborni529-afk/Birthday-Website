@@ -2148,3 +2148,120 @@ function startFinalScene() {
     }, 9800);
 
 }
+/* =========================================
+   🎬 FINAL VIDEO SEQUENCE
+   ========================================= */
+
+function startVideoSequence() {
+
+    const scene =
+        document.getElementById('video-scene');
+
+    const video =
+        document.getElementById('final-video');
+
+    const glow =
+        document.querySelector(
+            '.video-transition-glow'
+        );
+
+    const intro =
+        document.querySelector(
+            '.video-intro-text'
+        );
+
+
+    if (!scene || !video) {
+        console.error(
+            'Final video scene not found.'
+        );
+
+        return;
+    }
+
+
+    /*
+     * Remove the game
+     */
+
+    $('#memory-game').fadeOut(
+        700,
+        function () {
+
+            $(this).hide();
+
+        }
+    );
+
+
+    /*
+     * Show black cinematic screen
+     */
+
+    scene.style.display = 'block';
+
+
+    /*
+     * Pink/white explosion
+     */
+
+    setTimeout(function () {
+
+        if (glow) {
+            glow.classList.add('explode');
+        }
+
+    }, 150);
+
+
+    /*
+     * Small message
+     */
+
+    setTimeout(function () {
+
+        if (intro) {
+            intro.classList.add('show');
+        }
+
+    }, 1100);
+
+
+    /*
+     * Start video
+     */
+
+    setTimeout(function () {
+
+        video.classList.add(
+            'video-visible'
+        );
+
+
+        video.currentTime = 0;
+
+
+        const playPromise =
+            video.play();
+
+
+        if (
+            playPromise !== undefined
+        ) {
+
+            playPromise.catch(
+                function (error) {
+
+                    console.log(
+                        'Video autoplay blocked:',
+                        error
+                    );
+
+                }
+            );
+
+        }
+
+    }, 3200);
+
+}
