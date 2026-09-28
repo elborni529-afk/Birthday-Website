@@ -348,61 +348,63 @@ document.addEventListener('DOMContentLoaded', function () {
    🎈 BALLOONS RUN AWAY FROM MOUSE
    ========================================= */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('mousemove', function (e) {
 
     const balloons = document.querySelectorAll('.balloons');
 
-    // How close the mouse must be before they react
-    const reactionDistance = 150;
+    const reactionDistance = 180;
+    const pushAmount = 90;
 
-    // Maximum distance a balloon can be pushed
-    const maxPush = 75;
+    balloons.forEach(function (balloon) {
 
-    document.addEventListener('mousemove', function (e) {
+        const rect = balloon.getBoundingClientRect();
 
-        balloons.forEach(function (balloon) {
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
-            const rect = balloon.getBoundingClientRect();
+        const dx = centerX - e.clientX;
+        const dy = centerY - e.clientY;
 
-            const balloonX = rect.left + rect.width / 2;
-            const balloonY = rect.top + rect.height / 2;
+        const distance = Math.sqrt(
+            dx * dx + dy * dy
+        );
 
-            const dx = balloonX - e.clientX;
-            const dy = balloonY - e.clientY;
+        if (distance < reactionDistance && distance > 0) {
 
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const force =
+                (reactionDistance - distance) /
+                reactionDistance;
 
-            if (distance < reactionDistance && distance > 0) {
+            const moveX =
+                (dx / distance) *
+                pushAmount *
+                force;
 
-                // Stronger push when mouse gets closer
-                const strength =
-                    (reactionDistance - distance) / reactionDistance;
+            const moveY =
+                (dy / distance) *
+                pushAmount *
+                force;
 
-                const pushX =
-                    (dx / distance) * maxPush * strength;
+            const currentLeft =
+                parseFloat(
+                    window.getComputedStyle(balloon).left
+                ) || 0;
 
-                const pushY =
-                    (dy / distance) * maxPush * strength;
+            const currentBottom =
+                parseFloat(
+                    window.getComputedStyle(balloon).bottom
+                ) || 0;
 
-                balloon.style.setProperty(
-                    '--mouse-x',
-                    pushX + 'px'
-                );
+            balloon.style.left =
+                (currentLeft + moveX) + 'px';
 
-                balloon.style.setProperty(
-                    '--mouse-y',
-                    pushY + 'px'
-                );
-
-            } else {
-
-                // Return smoothly to normal floating position
-                balloon.style.setProperty('--mouse-x', '0px');
-                balloon.style.setProperty('--mouse-y', '0px');
-
-            }
-
-        });
+            /*
+             * CSS bottom increases upward,
+             * therefore we subtract moveY.
+             */
+            balloon.style.bottom =
+                (currentBottom - moveY) + 'px';
+        }
 
     });
 
