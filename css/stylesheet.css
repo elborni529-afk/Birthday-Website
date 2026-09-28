@@ -1523,24 +1523,14 @@ audio {
    JavaScript adds .cake-visible after clicking the button.
    --------------------------------------------------------- */
 
+/* =========================================================
+   CAKE VISIBILITY
+   ========================================================= */
+
 .cake-cover {
-    position: relative !important;
-
-    width: 100% !important;
-    max-width: none !important;
-
-    margin: 50px 0 20px 0 !important;
-    padding: 0 !important;
-
-    float: none !important;
-    clear: both !important;
-
-    text-align: center !important;
-
     display: none !important;
 }
 
-/* Reveal the cake only after the button is clicked */
 .cake-cover.cake-visible {
     display: block !important;
 }
