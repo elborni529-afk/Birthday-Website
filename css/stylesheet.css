@@ -2133,3 +2133,22 @@ div[class*="balloon"] {
         left: 50% !important;
     }
 }
+/* =========================================
+   ✨ FIX WISH TEXT / CAKE TOPPER SPACING
+   ========================================= */
+
+.cake-cover .wish-text {
+    position: relative !important;
+    z-index: 200 !important;
+
+    /* Move the instruction above the cake */
+    transform: translateY(-32px) !important;
+
+    /* Prevent it from affecting cake positioning */
+    margin-bottom: -32px !important;
+}
+
+.cake-cover .cake-topper {
+    top: -42px !important;
+    z-index: 90 !important;
+}
