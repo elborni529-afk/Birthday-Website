@@ -3781,16 +3781,19 @@ body:not(.letter-active) {
 
 img.cake-print {
     position: absolute !important;
-    left: 50% !important;
-    top: 101px !important;
 
-    width: 80px !important;
-    height: auto !important;
+    left: 50% !important;
+    top: 91px !important;
+
+    width: 130px !important;
+    height: 75px !important;
 
     transform: translateX(-50%) !important;
 
     object-fit: contain !important;
-    opacity: 0.9 !important;
+    object-position: center bottom !important;
+
+    opacity: 1 !important;
 
     z-index: 100 !important;
     pointer-events: none !important;
@@ -5459,15 +5462,6 @@ body .album-right-2 {
 body .album-right-2 {
     transform: rotate(-70deg) !important;
 }
-.cake-print {
-    width: 80px !important;
-    height: 65px !important;
-
-    object-fit: contain !important;
-
-    transform:
-        translateX(-50%)
-        scale(1.7) !important;
 
     transform-origin: center bottom !important;
 }
