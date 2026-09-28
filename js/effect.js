@@ -1494,6 +1494,7 @@ let heartVX = 0;
 let heartVY = 0;
 
 let heartEscapes = 0;
+let lastHeartEscape = 0;
 let roundThreeRunning = false;
 
 
