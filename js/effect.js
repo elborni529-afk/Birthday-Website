@@ -1081,6 +1081,63 @@ function finishMemoryGame() {
     $(complete)
         .hide()
         .fadeIn(1000);
+	function startRoundOneTimer() {
+
+	    clearInterval(roundOneTimer);
+	
+	    roundOneTimeLeft = 3;
+	
+	    const timerText =
+	        document.getElementById('round-one-time');
+	
+	    if (!timerText) return;
+	
+	    timerText.textContent = '3.0';
+	
+	
+	    roundOneTimer = setInterval(function () {
+	
+	        roundOneTimeLeft -= 0.1;
+	
+	        if (roundOneTimeLeft <= 0) {
+	
+	            roundOneTimeLeft = 3;
+	
+	            timerText.textContent = '3.0';
+	
+	            reshuffleRoundOne();
+	
+	            return;
+	        }
+	
+	        timerText.textContent =
+	            roundOneTimeLeft.toFixed(1);
+	
+	    }, 100);
+	}
+	function reshuffleRoundOne() {
+
+	    const gameArea =
+	        document.getElementById('game-area');
+	
+	    if (!gameArea) return;
+	
+	    const hearts =
+	        gameArea.querySelectorAll('.memory-heart');
+	
+	    hearts.forEach(function (heart) {
+	
+	        const x =
+	            5 + Math.random() * 85;
+	
+	        const y =
+	            5 + Math.random() * 70;
+	
+	        heart.style.left = x + '%';
+	        heart.style.top = y + '%';
+	
+	    });
+	}
 }
 /* =========================================
    ✨ ROUND 2 — MEMORY HUNT
