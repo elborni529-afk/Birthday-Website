@@ -1080,4 +1080,392 @@ function finishMemoryGame() {
         .hide()
         .fadeIn(1000);
 }
+/* =========================================
+   ✨ ROUND 2 — MEMORY HUNT
+   ========================================= */
 
+$(document).on(
+    'click',
+    '#start-round-two',
+    function () {
+
+        $('.game-complete').fadeOut(
+            700,
+            function () {
+
+                $(this).remove();
+
+                startRoundTwo();
+
+            }
+        );
+
+    }
+);
+
+
+function startRoundTwo() {
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+    if (!gameArea) return;
+
+
+    /*
+     * Change header
+     */
+
+    $('.game-small-title')
+        .fadeOut(300);
+
+    $('.game-header h1')
+        .fadeOut(
+            300,
+            function () {
+
+                $(this)
+                    .text('Memory Hunt ✨')
+                    .fadeIn(700);
+
+            }
+        );
+
+
+    $('.game-instructions')
+        .fadeOut(
+            300,
+            function () {
+
+                $(this)
+                    .text(
+                        'Find the 3 special memories hidden among the cards 💗'
+                    )
+                    .fadeIn(700);
+
+            }
+        );
+
+
+    $('.game-counter')
+        .fadeOut(400);
+
+
+    /*
+     * Create Round 2
+     */
+
+    const round =
+        document.createElement('div');
+
+    round.className =
+        'memory-hunt';
+
+
+    const cards = [
+
+        {
+            special: true,
+            icon: '💗',
+            message:
+                'A memory worth keeping forever.'
+        },
+
+        {
+            special: false,
+            icon: '🌙'
+        },
+
+        {
+            special: false,
+            icon: '⭐'
+        },
+
+        {
+            special: true,
+            icon: '💖',
+            message:
+                'One of those moments that still makes me smile.'
+        },
+
+        {
+            special: false,
+            icon: '🌸'
+        },
+
+        {
+            special: false,
+            icon: '✨'
+        },
+
+        {
+            special: true,
+            icon: '💕',
+            message:
+                'Some memories are simply too special to forget.'
+        },
+
+        {
+            special: false,
+            icon: '🦋'
+        },
+
+        {
+            special: false,
+            icon: '🌷'
+        }
+
+    ];
+
+
+    /*
+     * Shuffle cards
+     */
+
+    cards.sort(
+        function () {
+            return Math.random() - 0.5;
+        }
+    );
+
+
+    cards.forEach(
+        function (card) {
+
+            const element =
+                document.createElement(
+                    'button'
+                );
+
+            element.className =
+                'hunt-card';
+
+            element.innerHTML =
+                '<span>?</span>';
+
+
+            element.addEventListener(
+                'click',
+                function () {
+
+                    revealHuntCard(
+                        element,
+                        card
+                    );
+
+                }
+            );
+
+
+            round.appendChild(
+                element
+            );
+
+        }
+    );
+
+
+    gameArea.appendChild(round);
+
+
+    $(round)
+        .hide()
+        .fadeIn(1000);
+}
+let huntFound = 0;
+
+
+function revealHuntCard(
+    element,
+    card
+) {
+
+    if (
+        element.classList.contains(
+            'revealed'
+        )
+    ) {
+        return;
+    }
+
+
+    element.classList.add(
+        'revealed'
+    );
+
+
+    element.innerHTML =
+        '<span>' +
+        card.icon +
+        '</span>';
+
+
+    /*
+     * CORRECT MEMORY
+     */
+
+    if (card.special) {
+
+        element.classList.add(
+            'special-memory'
+        );
+
+        huntFound++;
+
+
+        showMemoryMessage(
+            card.message
+        );
+
+
+        if (huntFound === 3) {
+
+            setTimeout(
+                finishRoundTwo,
+                1500
+            );
+
+        }
+
+    }
+
+    /*
+     * DECOY
+     */
+
+    else {
+
+        element.classList.add(
+            'decoy-memory'
+        );
+
+
+        setTimeout(
+            function () {
+
+                element.classList.remove(
+                    'revealed',
+                    'decoy-memory'
+                );
+
+                element.innerHTML =
+                    '<span>?</span>';
+
+            },
+            900
+        );
+
+    }
+}
+function showMemoryMessage(message) {
+
+    const old =
+        document.querySelector(
+            '.hunt-message'
+        );
+
+    if (old) {
+        old.remove();
+    }
+
+
+    const messageBox =
+        document.createElement(
+            'div'
+        );
+
+    messageBox.className =
+        'hunt-message';
+
+    messageBox.textContent =
+        message;
+
+
+    document
+        .getElementById(
+            'game-area'
+        )
+        .appendChild(
+            messageBox
+        );
+
+
+    $(messageBox)
+        .hide()
+        .fadeIn(500);
+
+
+    setTimeout(
+        function () {
+
+            $(messageBox)
+                .fadeOut(
+                    500,
+                    function () {
+
+                        $(this)
+                            .remove();
+
+                    }
+                );
+
+        },
+        1800
+    );
+}
+function finishRoundTwo() {
+
+    $('.memory-hunt')
+        .fadeOut(
+            800,
+            function () {
+
+                $(this).remove();
+
+            }
+        );
+
+
+    $('.hunt-message')
+        .fadeOut(400);
+
+
+    const complete =
+        document.createElement(
+            'div'
+        );
+
+    complete.className =
+        'game-complete';
+
+    complete.innerHTML = `
+        <h2>All 3 memories found 💗</h2>
+
+        <p>
+            Okay... you're pretty good at this.
+        </p>
+
+        <button
+            id="start-round-three"
+            class="round-next-btn"
+        >
+            FINAL ROUND →
+        </button>
+    `;
+
+
+    document
+        .getElementById(
+            'game-area'
+        )
+        .appendChild(
+            complete
+        );
+
+
+    $(complete)
+        .hide()
+        .fadeIn(1000);
+}
