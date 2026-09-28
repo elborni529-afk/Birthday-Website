@@ -3663,21 +3663,30 @@ body:not(.letter-active) {
     margin-top: 38px !important;
 }
 
-/* Anime picture: place neatly under the cake */
+/* 🎂 Anime picture printed onto the cake */
 .cake-cover .profile-img {
-    width: 72px !important;
-    height: 72px !important;
-
     position: absolute !important;
+
     left: 50% !important;
-    bottom: -48px !important;
+    top: 118px !important;
 
     transform: translateX(-50%) !important;
 
-    z-index: 300 !important;
+    width: 62px !important;
+    height: 48px !important;
 
-    border-radius: 14px !important;
     object-fit: cover !important;
+
+    border-radius: 8px !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+
+    opacity: 0.88 !important;
+    z-index: 80 !important;
+
+    pointer-events: none !important;
 }
 
 /* Give the bottom button enough room */
