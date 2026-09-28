@@ -3654,3 +3654,33 @@ body:not(.letter-active) {
     position: relative !important;
     z-index: 20 !important;
 }
+/* =========================================
+   🎂 FINAL CAKE + PROFILE POSITION FIX
+   ========================================= */
+
+/* Reduce the empty space above the cake */
+.cake-cover .cake {
+    margin-top: 38px !important;
+}
+
+/* Anime picture: place neatly under the cake */
+.cake-cover .profile-img {
+    width: 72px !important;
+    height: 72px !important;
+
+    position: absolute !important;
+    left: 50% !important;
+    bottom: -48px !important;
+
+    transform: translateX(-50%) !important;
+
+    z-index: 300 !important;
+
+    border-radius: 14px !important;
+    object-fit: cover !important;
+}
+
+/* Give the bottom button enough room */
+#navbar_controls {
+    z-index: 999999 !important;
+}
