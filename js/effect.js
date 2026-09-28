@@ -776,8 +776,69 @@ $(document).on('click', '#close-letter', function () {
         // Letter is now completely gone.
         $(this).css('display', 'none');
 
-        // NEXT PART OF WEBSITE WILL START HERE
+        startFakeEnding();
 
     });
 
 });
+/* =========================================
+   🌙 FAKE ENDING → GAME REVEAL
+   ========================================= */
+
+function startFakeEnding() {
+
+    const ending = $('#fake-ending');
+    const theEnd = $('#the-end');
+    const notOver = $('#not-over');
+
+    ending.fadeIn(1800);
+
+
+    /*
+     * Let the ending breathe.
+     * We WANT her to believe it's actually over.
+     */
+
+    setTimeout(function () {
+
+        theEnd.addClass('show');
+
+    }, 3500);
+
+
+    /*
+     * Hold "The End." for a moment...
+     */
+
+    setTimeout(function () {
+
+        $('#ending-title').fadeOut(700);
+        $('#ending-subtitle').fadeOut(700);
+        $('.ending-heart').fadeOut(700);
+
+    }, 6500);
+
+
+    /*
+     * Fade "The End" too.
+     */
+
+    setTimeout(function () {
+
+        theEnd.fadeOut(900);
+
+    }, 7600);
+
+
+    /*
+     * Silence...
+     *
+     * Then surprise 👀
+     */
+
+    setTimeout(function () {
+
+        notOver.fadeIn(800);
+
+    }, 9000);
+}
