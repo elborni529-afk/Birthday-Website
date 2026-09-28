@@ -282,60 +282,60 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-    // =========================================
-    // ✉️ OPEN ENVELOPE
-    // =========================================
-
-    $('#envelope').on('click keypress', function (e) {
-
-        // Allow mouse click or Enter/Space
-        if (
-            e.type === 'keypress' &&
-            e.key !== 'Enter' &&
-            e.key !== ' '
-        ) {
-            return;
-        }
-
-        const envelope = $(this);
-
-        // Prevent opening twice
-        if (envelope.hasClass('open')) {
-            return;
-        }
-
-        // Open envelope
-        envelope.addClass('open');
-
-        // Hide instruction
-        $('.open-hint').fadeOut(500);
-
-
-        // =========================================
-        // 📜 REVEAL LETTER
-        // =========================================
-
-        setTimeout(function () {
-
-            const paragraphs = $('#letter-text p');
-
-            paragraphs.each(function (index) {
-
-                $(this).delay(index * 700).queue(function (next) {
-
-                    $(this).css({
-                        animation:
-                            'letterParagraph 0.8s ease forwards'
-                    });
-
-                    next();
-
-                });
-
-            });
-
-        }, 1300);
-
-    });
-
-});
+    // =========================================================
+	// 💌 OPEN SECRET ENVELOPE
+	// =========================================================
+	
+	$(document).ready(function () {
+	
+	    $('#envelope').on('click keypress', function (e) {
+	
+	        // Allow mouse click or Enter / Space
+	        if (
+	            e.type === 'keypress' &&
+	            e.key !== 'Enter' &&
+	            e.key !== ' '
+	        ) {
+	            return;
+	        }
+	
+	        const envelope = $(this);
+	
+	        // Prevent opening twice
+	        if (envelope.hasClass('open')) {
+	            return;
+	        }
+	
+	        // ✉️ Open envelope
+	        envelope.addClass('open');
+	
+	        // Hide "Tap the envelope"
+	        $('.open-hint').fadeOut(500);
+	
+	        // 📜 Start revealing the letter
+	        setTimeout(function () {
+	
+	            const paragraphs = $('#letter-text p');
+	
+	            paragraphs.each(function (index) {
+	
+	                $(this)
+	                    .delay(index * 700)
+	                    .queue(function (next) {
+	
+	                        $(this).css({
+	                            animation:
+	                                'letterParagraph 0.8s ease forwards'
+	                        });
+	
+	                        next();
+	
+	                    });
+	
+	            });
+	
+	        }, 1300);
+	
+	    });
+	
+	});
