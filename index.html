@@ -547,83 +547,75 @@ p {
 	
 	// 2. Validate Password and Unlock Website
 	function checkPassword() {
-	  const input = document.getElementById("pass-input");
-	  const error = document.getElementById("pass-error");
-	  const passGate = document.getElementById("password-gate");
-		if (input.value.trim() === SECRET_PASSWORD) {
-
-		    passGate.classList.add("hidden");
-		
-		    setTimeout(function () {
-		
-		        // Completely remove password screen
-		        passGate.style.display = "none";
-		
-		        // Reveal the actual birthday website
-		        const mainContainer =
-		            document.querySelector(".container");
-		
-		        if (mainContainer) {
-		            mainContainer.style.display = "block";
-		        }
-		
-		        // Reveal controls
-		        const navbar =
-		            document.getElementById("navbar_controls");
-		
-		        if (navbar) {
-		
-		            navbar.style.display = "block";
-		            navbar.style.opacity = "0";
-		
-		            setTimeout(function () {
-		
-		                navbar.style.transition =
-		                    "opacity 1s ease";
-		
-		                navbar.style.opacity = "1";
-		
-		            }, 50);
-		        }
-		
-		    }, 600);
-		
-		
-		    // Confetti Explosion on Unlock
-		    if (typeof confetti === 'function') {
-		
-		        confetti({
-		            particleCount: 180,
-		            spread: 100,
-		            origin: { y: 0.6 }
-		        });
-		
-		    }
-		
-		} else {
-		
-		    error.innerText =
-		        "Wrong code! Try again 😉";
-		
-		    input.value = "";
-		}
 	
-	    // Confetti Explosion on Unlock
-	    if (typeof confetti === 'function') {
-	        confetti({
-	            particleCount: 180,
-	            spread: 100,
-	            origin: { y: 0.6 }
-	        });
+	    const input = document.getElementById("pass-input");
+	    const error = document.getElementById("pass-error");
+	    const passGate = document.getElementById("password-gate");
+	
+	    if (input.value.trim() === SECRET_PASSWORD) {
+	
+	        // Fade password screen
+	        passGate.classList.add("hidden");
+	
+	        setTimeout(function () {
+	
+	            // Completely remove password screen
+	            passGate.style.display = "none";
+	
+	            // Reveal main birthday website
+	            const mainContainer =
+	                document.querySelector(".container");
+	
+	            if (mainContainer) {
+	                mainContainer.style.display = "block";
+	            }
+	
+	            // Reveal bottom controls
+	            const navbar =
+	                document.getElementById("navbar_controls");
+	
+	            if (navbar) {
+	                navbar.style.display = "block";
+	                navbar.style.opacity = "0";
+	
+	                setTimeout(function () {
+	                    navbar.style.transition =
+	                        "opacity 1s ease";
+	
+	                    navbar.style.opacity = "1";
+	                }, 50);
+	            }
+	
+	        }, 600);
+	
+	
+	        // Confetti
+	        if (typeof confetti === "function") {
+	
+	            confetti({
+	                particleCount: 180,
+	                spread: 100,
+	                origin: { y: 0.6 }
+	            });
+	
+	        }
+	
+	    } else {
+	
+	        error.innerText =
+	            "Wrong code! Try again 😉";
+	
+	        input.value = "";
 	    }
-	}else{
-	    error.innerText = "Wrong code! Try again 😉";
-	    input.value = "";
-	  }
 	}
 	
+	
 	function handleKeyPress(event) {
-	  if (event.key === "Enter") checkPassword();
+	
+	    if (event.key === "Enter") {
+	        checkPassword();
+	    }
+	
 	}
 	
 	// Run timer immediately on page load
