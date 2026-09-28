@@ -803,3 +803,21 @@ function alignBirthdayBalloons() {
 
     });
 }
+/* =========================================
+   🎈 ALIGN WHEN "A MESSAGE FOR YOU" IS CLICKED
+   ========================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const messageButton =
+        document.getElementById('wish_message');
+
+    if (!messageButton) return;
+
+    messageButton.addEventListener('click', function () {
+
+        alignBirthdayBalloons();
+
+    });
+
+});
