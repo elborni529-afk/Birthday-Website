@@ -3142,21 +3142,10 @@ div[class*="balloon"] {
 */
 
 #letter-scene:not(.letter-opened) .letter-paper {
-    width: 340px !important;
-    height: 190px !important;
-
-    left: 20px !important;
-
-    /* THIS is the important fix */
-    bottom: 5px !important;
-
-    transform: translateY(135px) !important;
-
-    z-index: 2 !important;
-
-    overflow: hidden !important;
-
-    opacity: 1 !important;
+    display: none !important;
+}
+#letter-scene.letter-opened .letter-paper {
+    display: block !important;
 }
 
 
@@ -3202,16 +3191,3 @@ div[class*="balloon"] {
    📱 MOBILE CLOSED ENVELOPE
    ========================================================= */
 
-@media screen and (max-width: 600px) {
-
-    #letter-scene:not(.letter-opened) .letter-paper {
-        width: 260px !important;
-        height: 150px !important;
-
-        left: 15px !important;
-        bottom: 5px !important;
-
-        transform: translateY(110px) !important;
-    }
-
-}
