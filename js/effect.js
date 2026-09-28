@@ -345,67 +345,134 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	});
 /* =========================================
-   🎈 BALLOONS RUN AWAY FROM MOUSE
+   🎈 FREE MOUSE-PUSH BALLOONS
    ========================================= */
 
-document.addEventListener('mousemove', function (e) {
+(function () {
 
-    const balloons = document.querySelectorAll('.balloons');
+    const reactionDistance = 170;
+    const pushStrength = 14;
 
-    const reactionDistance = 180;
-    const pushAmount = 90;
+    let lastMouseX = null;
+    let lastMouseY = null;
 
-    balloons.forEach(function (balloon) {
+    document.addEventListener('mousemove', function (e) {
 
-        const rect = balloon.getBoundingClientRect();
+        const balloons = document.querySelectorAll('.balloons');
 
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        // Mouse movement direction
+        let mouseDX = 0;
+        let mouseDY = 0;
 
-        const dx = centerX - e.clientX;
-        const dy = centerY - e.clientY;
-
-        const distance = Math.sqrt(
-            dx * dx + dy * dy
-        );
-
-        if (distance < reactionDistance && distance > 0) {
-
-            const force =
-                (reactionDistance - distance) /
-                reactionDistance;
-
-            const moveX =
-                (dx / distance) *
-                pushAmount *
-                force;
-
-            const moveY =
-                (dy / distance) *
-                pushAmount *
-                force;
-
-            const currentLeft =
-                parseFloat(
-                    window.getComputedStyle(balloon).left
-                ) || 0;
-
-            const currentBottom =
-                parseFloat(
-                    window.getComputedStyle(balloon).bottom
-                ) || 0;
-
-            balloon.style.left =
-                (currentLeft + moveX) + 'px';
-
-            /*
-             * CSS bottom increases upward,
-             * therefore we subtract moveY.
-             */
-            balloon.style.bottom =
-                (currentBottom - moveY) + 'px';
+        if (lastMouseX !== null) {
+            mouseDX = e.clientX - lastMouseX;
+            mouseDY = e.clientY - lastMouseY;
         }
+
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+
+        balloons.forEach(function (balloon) {
+
+            const rect = balloon.getBoundingClientRect();
+
+            const balloonX = rect.left + rect.width / 2;
+            const balloonY = rect.top + rect.height / 2;
+
+            const dx = balloonX - e.clientX;
+            const dy = balloonY - e.clientY;
+
+            const distance = Math.sqrt(
+                dx * dx + dy * dy
+            );
+
+            if (
+                distance < reactionDistance &&
+                distance > 0
+            ) {
+
+                /*
+                 * VERY IMPORTANT:
+                 * stop jQuery from pulling this balloon
+                 * toward its old destination.
+                 */
+                $(balloon).stop(true, false);
+
+                const force =
+                    1 - (distance / reactionDistance);
+
+                /*
+                 * Direction away from cursor
+                 */
+                const directionX = dx / distance;
+                const directionY = dy / distance;
+
+                /*
+                 * Cursor speed adds extra momentum.
+                 */
+                const mouseSpeed =
+                    Math.sqrt(
+                        mouseDX * mouseDX +
+                        mouseDY * mouseDY
+                    );
+
+                const power =
+                    pushStrength +
+                    Math.min(mouseSpeed * 0.8, 25);
+
+                const moveX =
+                    directionX *
+                    power *
+                    force;
+
+                const moveY =
+                    directionY *
+                    power *
+                    force;
+
+                const style =
+                    window.getComputedStyle(balloon);
+
+                let left =
+                    parseFloat(style.left) || 0;
+
+                let bottom =
+                    parseFloat(style.bottom) || 0;
+
+                /*
+                 * New REAL position.
+                 * Nothing resets this afterward.
+                 */
+                left += moveX;
+                bottom -= moveY;
+
+                /*
+                 * Keep balloons roughly on screen
+                 */
+                const maxLeft =
+                    window.innerWidth -
+                    balloon.offsetWidth;
+
+                left = Math.max(
+                    0,
+                    Math.min(maxLeft, left)
+                );
+
+                bottom = Math.max(
+                    0,
+                    Math.min(
+                        window.innerHeight -
+                        balloon.offsetHeight,
+                        bottom
+                    )
+                );
+
+                balloon.style.left = left + 'px';
+                balloon.style.bottom = bottom + 'px';
+            }
+
+        });
 
     });
 
-});
+})();
