@@ -842,3 +842,237 @@ function startFakeEnding() {
 
     }, 9000);
 }
+/* =========================================
+   🎮 START MEMORY GAME
+   ========================================= */
+
+$(document).on('click', '#start-game', function () {
+
+    $('#not-over').fadeOut(500);
+
+    $('#fake-ending').fadeOut(1200, function () {
+
+        $(this).hide();
+
+        $('#memory-game').fadeIn(1200, function () {
+
+            startMemoryGame();
+
+        });
+
+    });
+
+});
+let memoryGameStarted = false;
+let memoryScore = 0;
+
+
+function startMemoryGame() {
+
+    if (memoryGameStarted) return;
+
+    memoryGameStarted = true;
+    memoryScore = 0;
+
+    const gameArea =
+        document.getElementById('game-area');
+
+    const score =
+        document.getElementById('memory-score');
+
+    if (!gameArea || !score) return;
+
+
+    const memories = [
+        '💗',
+        '💖',
+        '💕',
+        '💓',
+        '💞',
+        '💝',
+        '💘'
+    ];
+
+
+    document.getElementById(
+        'memory-total'
+    ).textContent = memories.length;
+
+
+    memories.forEach(function(symbol, index) {
+
+        const heart =
+            document.createElement('div');
+
+        heart.className =
+            'memory-heart';
+
+        heart.textContent = symbol;
+
+
+        /*
+         * Random positions
+         */
+
+        const x =
+            8 + Math.random() * 84;
+
+        const y =
+            8 + Math.random() * 72;
+
+        heart.style.left = x + '%';
+        heart.style.top = y + '%';
+
+
+        /*
+         * Slightly different floating timing
+         */
+
+        heart.style.animationDelay =
+            (index * 0.2) + 's';
+
+
+        heart.addEventListener(
+            'click',
+            function () {
+
+                collectMemory(
+                    heart,
+                    gameArea,
+                    score
+                );
+
+            }
+        );
+
+
+        gameArea.appendChild(heart);
+
+    });
+
+}
+function collectMemory(
+    heart,
+    gameArea,
+    scoreElement
+) {
+
+    if (
+        heart.classList.contains(
+            'collected'
+        )
+    ) {
+        return;
+    }
+
+
+    const rect =
+        heart.getBoundingClientRect();
+
+    const areaRect =
+        gameArea.getBoundingClientRect();
+
+
+    heart.classList.add(
+        'collected'
+    );
+
+
+    memoryScore++;
+
+    scoreElement.textContent =
+        memoryScore;
+
+
+    /* +1 MEMORY POPUP */
+
+    const popup =
+        document.createElement('div');
+
+    popup.className =
+        'memory-popup';
+
+    popup.textContent =
+        '+1 memory ✨';
+
+
+    popup.style.left =
+        (
+            rect.left -
+            areaRect.left +
+            rect.width / 2
+        ) + 'px';
+
+    popup.style.top =
+        (
+            rect.top -
+            areaRect.top
+        ) + 'px';
+
+
+    gameArea.appendChild(popup);
+
+
+    setTimeout(function () {
+
+        popup.remove();
+
+    }, 1000);
+
+
+    /*
+     * Remove collected heart
+     */
+
+    setTimeout(function () {
+
+        heart.remove();
+
+    }, 450);
+
+
+    /*
+     * ALL MEMORIES FOUND
+     */
+
+    if (memoryScore === 7) {
+
+        setTimeout(function () {
+
+            finishMemoryGame();
+
+        }, 1000);
+
+    }
+
+}
+function finishMemoryGame() {
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+    if (!gameArea) return;
+
+
+    const complete =
+        document.createElement('div');
+
+    complete.className =
+        'game-complete';
+
+    complete.innerHTML =
+        '<h2>All memories collected ✨</h2>' +
+        '<p>But there is still one final surprise...</p>';
+
+
+    gameArea.appendChild(complete);
+
+
+    $(complete)
+        .hide()
+        .fadeIn(1200);
+
+}
+
