@@ -4602,3 +4602,176 @@ img.cake-print {
 
     z-index: 10;
 }
+/* =========================================
+   💖 ROUND 3 — CATCH MY HEART
+   ========================================= */
+
+.final-game-heart {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 62px;
+
+    cursor: pointer;
+    user-select: none;
+
+    z-index: 20;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255, 80, 160, 0.8)
+        );
+
+    animation:
+        finalHeartPulse
+        1.3s
+        ease-in-out
+        infinite;
+
+    will-change:
+        left,
+        top,
+        transform;
+}
+
+
+@keyframes finalHeartPulse {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.12;
+    }
+}
+
+
+/* HEART REACTS WHEN ESCAPING */
+
+.final-game-heart.heart-scared {
+    transform:
+        scale(0.85)
+        rotate(-12deg);
+}
+
+
+/* HEART CAUGHT */
+
+.final-game-heart.heart-caught {
+
+    pointer-events: none;
+
+    animation:
+        heartCaught
+        0.9s
+        ease
+        forwards;
+}
+
+
+@keyframes heartCaught {
+
+    0% {
+        transform:
+            scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            scale(1.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            scale(2.8);
+        opacity: 0;
+    }
+}
+
+
+/* FLASH WHEN CAUGHT */
+
+.heart-catch-flash {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 150, 200, 0.45),
+            transparent 55%
+        );
+
+    animation:
+        heartFlash
+        0.9s
+        ease
+        forwards;
+
+    z-index: 15;
+}
+
+
+@keyframes heartFlash {
+
+    from {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* WIN SCREEN */
+
+.final-win-heart {
+    font-size: 70px;
+
+    margin-bottom: 10px;
+
+    animation:
+        finalWinPulse
+        1.3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes finalWinPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.15);
+    }
+}
+
+
+.final-surprise-btn {
+    margin-top: 30px;
+}
