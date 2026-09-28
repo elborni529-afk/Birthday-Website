@@ -30,20 +30,7 @@ body {
 
   z-index: 9999;
 }
-/* TEST: force fancy decorations to be visible */
-#fancy-decor {
-    display: block !important;
-}
 
-#fancy-decor .hanging-decor {
-    opacity: 1 !important;
-    animation: none !important;
-}
-
-#fancy-decor .party-sparkles span {
-    opacity: 1 !important;
-    animation: none !important;
-}
 /* Enlarged image */
 .lightbox img {
   max-width: 90%;
