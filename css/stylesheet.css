@@ -3727,3 +3727,45 @@ body:not(.letter-active) {
 
     pointer-events: none !important;
 }
+/* =========================================
+   🎂 FORCE PROFILE IMAGE INSIDE CAKE
+   ========================================= */
+
+.cake-cover .cake {
+    position: relative !important;
+}
+
+/* Anime image printed on pink side of cake */
+.cake-cover .cake > .profile-img {
+    display: block !important;
+    position: absolute !important;
+
+    /* Center horizontally on cake */
+    left: 50% !important;
+    right: auto !important;
+
+    /* Pink side of cake */
+    top: 122px !important;
+    bottom: auto !important;
+
+    transform: translateX(-50%) !important;
+
+    width: 48px !important;
+    height: 42px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+
+    /* Make it feel printed instead of like a photo card */
+    border: 0 !important;
+    border-radius: 4px !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 0.72 !important;
+
+    z-index: 50 !important;
+    pointer-events: none !important;
+}
