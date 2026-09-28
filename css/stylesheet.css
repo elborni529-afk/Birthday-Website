@@ -3619,3 +3619,24 @@ body.fancy-bg .cake-cover {
 body:not(.letter-active) {
     overflow: hidden !important;
 }
+/* =========================================
+   🩷 KEEP ANIME PICTURE VISIBLE
+   ========================================= */
+
+.cake-cover.cake-visible .profile-img {
+    position: fixed !important;
+
+    left: 50% !important;
+    bottom: 55px !important;
+
+    transform: translateX(-50%) !important;
+
+    margin: 0 !important;
+
+    width: 72px !important;
+    height: 72px !important;
+
+    object-fit: cover !important;
+
+    z-index: 150 !important;
+}
