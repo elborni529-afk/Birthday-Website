@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	            paragraphs.each(function (index) {
 	
 	                $(this)
-	                    .delay(index * 650)
+	                    .delay(index * 300)
 	                    .queue(function (next) {
 	
 	                        $(this).css({
