@@ -1952,78 +1952,51 @@ function scareFinalHeart(event) {
 }
 function catchFinalHeart() {
 
-    if (
-        !roundThreeRunning ||
-        !finalHeart
-    ) {
-        return;
-    }
-
+    if (!roundThreeRunning) return;
 
     roundThreeRunning = false;
 
-
-    const gameArea =
-        document.getElementById(
-            'game-area'
-        );
-
-
-    /*
-     * Stop mouse interaction
-     */
-
-    gameArea.removeEventListener(
+    document.removeEventListener(
         'mousemove',
         scareFinalHeart
     );
 
-
-    /*
-     * Heart catch animation
-     */
-
-    finalHeart.classList.add(
-        'heart-caught'
-    );
+    if (!finalHeart) return;
 
 
-    /*
-     * Screen flash
-     */
+    // Heart caught animation
+    finalHeart.classList.add('heart-caught');
 
+
+    // Big flash
     const flash =
-        document.createElement(
-            'div'
-        );
+        document.createElement('div');
 
     flash.className =
         'heart-catch-flash';
 
-    gameArea.appendChild(
-        flash
-    );
+    document.body.appendChild(flash);
 
 
     setTimeout(function () {
 
         flash.remove();
 
-    }, 900);
+    }, 1000);
 
 
+    // Wait for the heart animation
     setTimeout(function () {
 
         if (finalHeart) {
-
             finalHeart.remove();
             finalHeart = null;
-
         }
 
-        finishRoundThree();
+        startVideoSequence();
 
-    }, 1000);
+    }, 900);
+
 }
 function finishRoundThree() {
 
