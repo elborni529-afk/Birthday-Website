@@ -139,22 +139,15 @@ $('document').ready(function(){
 		});
 	});
 	$('#cake_fade').click(function(){
-
-	    $('.cake-cover').fadeIn('slow', function() {
+	    $('.cake-cover, .cake, #wishText').css({
+	        'display': 'block',
+	        'opacity': '1'
+	    }).hide().fadeIn('slow');
 	
-	        $('.cake, #wishText, .profile-img')
-	            .css('opacity', '1')
-	            .fadeIn('slow');
-	
-	    });
-
-	
-	    // Smooth scroll down so the cake is centered in view
 	    $('html, body').animate({
 	        scrollTop: $('.cake-cover').offset().top - 50
 	    }, 'slow');
 	
-	    // Hide this button and reveal the candle button
 	    $(this).fadeOut('slow', function(){
 	        $('#light_candle').fadeIn('slow');
 	    });
