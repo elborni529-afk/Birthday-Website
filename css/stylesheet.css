@@ -3784,11 +3784,11 @@ img.cake-print {
     position: absolute !important;
 
     left: 50% !important;
-    top: 103px !important;
+    top: 94px !important;
 
     /* Large box because person.png has transparent space */
-    width: 105px !important;
-    height: 55px !important;
+    width: 100px !important;
+    height: 43px !important;
 
     transform: translateX(-50%) !important;
 
