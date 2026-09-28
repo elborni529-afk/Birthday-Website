@@ -5388,3 +5388,70 @@ img.cake-print {
 
     transform: rotate(-5deg) !important;
 }
+/* =========================================
+   📸 FORCE FINAL PHOTO LAYOUT
+   ========================================= */
+
+body .album-photo {
+    position: absolute !important;
+
+    width: 230px !important;
+    height: 160px !important;
+
+    max-width: 230px !important;
+    max-height: 160px !important;
+
+    object-fit: cover !important;
+
+    border: 5px solid #fff !important;
+    border-radius: 8px !important;
+
+    box-sizing: border-box !important;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.22) !important;
+}
+
+
+/* LEFT TOP */
+body .album-left-1 {
+    top: 55px !important;
+    left: 55px !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    transform: rotate(-6deg) !important;
+}
+
+
+/* LEFT BOTTOM */
+body .album-left-2 {
+    top: 245px !important;
+    left: 75px !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    transform: rotate(5deg) !important;
+}
+
+
+/* RIGHT TOP */
+body .album-right-1 {
+    top: 55px !important;
+    right: 55px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    transform: rotate(6deg) !important;
+}
+
+
+/* RIGHT BOTTOM */
+body .album-right-2 {
+    top: 245px !important;
+    right: 75px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    transform: rotate(-5deg) !important;
+}
