@@ -2014,3 +2014,121 @@ function finishRoundThree() {
         .hide()
         .fadeIn(1200);
 }
+/* =========================================
+   🌌 FINAL SURPRISE
+   ========================================= */
+
+$(document).on(
+    'click',
+    '#final-surprise',
+    function () {
+
+        /*
+         * Fade the entire game away
+         */
+
+        $('#memory-game')
+            .fadeOut(
+                1400,
+                function () {
+
+                    $(this).hide();
+
+                    startFinalScene();
+
+                }
+            );
+
+    }
+);
+function startFinalScene() {
+
+    const scene =
+        $('#final-scene');
+
+
+    /*
+     * Start completely dark
+     */
+
+    scene
+        .css('display', 'block')
+        .hide()
+        .fadeIn(1800);
+
+
+    /*
+     * Stars slowly appear
+     */
+
+    setTimeout(function () {
+
+        $('.final-stars')
+            .addClass('awake');
+
+    }, 1800);
+
+
+    /*
+     * Moon
+     */
+
+    setTimeout(function () {
+
+        $('.final-moon')
+            .addClass('awake');
+
+    }, 3000);
+
+
+    /*
+     * First tiny message
+     */
+
+    setTimeout(function () {
+
+        $('#final-small-text')
+            .addClass('reveal');
+
+    }, 4300);
+
+
+    /*
+     * Main message
+     */
+
+    setTimeout(function () {
+
+        $('#final-main-text')
+            .addClass('reveal');
+
+    }, 5800);
+
+
+    /*
+     * Give the scene a moment...
+     */
+
+    setTimeout(function () {
+
+        $('#final-small-text')
+            .fadeOut(900);
+
+        $('#final-main-text')
+            .fadeOut(900);
+
+    }, 8500);
+
+
+    /*
+     * Final message
+     */
+
+    setTimeout(function () {
+
+        $('#final-message')
+            .addClass('reveal');
+
+    }, 9800);
+
+}
