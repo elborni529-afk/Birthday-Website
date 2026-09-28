@@ -344,3 +344,66 @@ document.addEventListener('DOMContentLoaded', function () {
 	    });
 	
 	});
+/* =========================================
+   🎈 BALLOONS RUN AWAY FROM MOUSE
+   ========================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const balloons = document.querySelectorAll('.balloons');
+
+    // How close the mouse must be before they react
+    const reactionDistance = 150;
+
+    // Maximum distance a balloon can be pushed
+    const maxPush = 75;
+
+    document.addEventListener('mousemove', function (e) {
+
+        balloons.forEach(function (balloon) {
+
+            const rect = balloon.getBoundingClientRect();
+
+            const balloonX = rect.left + rect.width / 2;
+            const balloonY = rect.top + rect.height / 2;
+
+            const dx = balloonX - e.clientX;
+            const dy = balloonY - e.clientY;
+
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < reactionDistance && distance > 0) {
+
+                // Stronger push when mouse gets closer
+                const strength =
+                    (reactionDistance - distance) / reactionDistance;
+
+                const pushX =
+                    (dx / distance) * maxPush * strength;
+
+                const pushY =
+                    (dy / distance) * maxPush * strength;
+
+                balloon.style.setProperty(
+                    '--mouse-x',
+                    pushX + 'px'
+                );
+
+                balloon.style.setProperty(
+                    '--mouse-y',
+                    pushY + 'px'
+                );
+
+            } else {
+
+                // Return smoothly to normal floating position
+                balloon.style.setProperty('--mouse-x', '0px');
+                balloon.style.setProperty('--mouse-y', '0px');
+
+            }
+
+        });
+
+    });
+
+});
