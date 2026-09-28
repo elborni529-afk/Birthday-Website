@@ -1049,12 +1049,9 @@ function collectMemory(
 function finishMemoryGame() {
 
     const gameArea =
-        document.getElementById(
-            'game-area'
-        );
+        document.getElementById('game-area');
 
     if (!gameArea) return;
-
 
     const complete =
         document.createElement('div');
@@ -1062,17 +1059,25 @@ function finishMemoryGame() {
     complete.className =
         'game-complete';
 
-    complete.innerHTML =
-        '<h2>All memories collected ✨</h2>' +
-        '<p>But there is still one final surprise...</p>';
+    complete.innerHTML = `
+        <h2>Round 1 complete ✨</h2>
 
+        <p>
+            That was the easy part...
+        </p>
+
+        <button
+            id="start-round-two"
+            class="round-next-btn"
+        >
+            CONTINUE →
+        </button>
+    `;
 
     gameArea.appendChild(complete);
 
-
     $(complete)
         .hide()
-        .fadeIn(1200);
-
+        .fadeIn(1000);
 }
 
