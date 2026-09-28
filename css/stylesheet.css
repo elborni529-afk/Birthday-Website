@@ -1514,92 +1514,63 @@ audio {
 }
 /* --- Fancy Cake & Candle --- */
 /* =========================================================
-   BIRTHDAY CAKE — CLEAN FINAL VERSION
+   🎂 FINAL BIRTHDAY CAKE
    ========================================================= */
 
-/* ---------------------------------------------------------
-   CAKE SECTION
-   Hidden when the page loads.
-   JavaScript adds .cake-visible after clicking the button.
-   --------------------------------------------------------- */
-
-/* =========================================================
-   CAKE VISIBILITY
-   ========================================================= */
-
+/* Cake section */
 .cake-cover {
     display: none !important;
+    margin-top: 50px !important;
 }
 
 .cake-cover.cake-visible {
     display: block !important;
 }
 
-
-/* ---------------------------------------------------------
-   BOOTSTRAP COLUMN
-   --------------------------------------------------------- */
-
 .cake-cover > .col-md-12 {
     position: relative !important;
-
     width: 100% !important;
-    max-width: none !important;
-
     margin: 0 !important;
-
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-
+    padding: 0 15px !important;
     float: none !important;
-
     text-align: center !important;
 }
 
 
-/* ---------------------------------------------------------
-   WISH TEXT
-   --------------------------------------------------------- */
+/* =========================================================
+   ✨ WISH TEXT
+   ========================================================= */
 
-.cake-cover .wish-text,
-.cake-cover #wishText {
-    position: relative !important;
-
+.cake-cover .wish-text {
     display: block !important;
-
     width: 100% !important;
-    max-width: 100% !important;
-
-    margin: 0 auto 15px auto !important;
+    margin: 0 auto 12px auto !important;
     padding: 0 !important;
 
     text-align: center !important;
 
-    font-size: 1rem !important;
+    font-size: 15px !important;
     font-weight: bold !important;
+    color: #ff4f9a !important;
 
-    color: #ff69b4 !important;
+    text-shadow: 0 0 8px rgba(255,105,180,.45) !important;
 
-    text-shadow:
-        0 0 8px rgba(255, 105, 180, 0.5) !important;
-
-    z-index: 1001 !important;
+    position: relative !important;
+    z-index: 200 !important;
 }
 
 
-/* ---------------------------------------------------------
-   MAIN CAKE
-   --------------------------------------------------------- */
+/* =========================================================
+   🎂 MAIN CAKE
+   ========================================================= */
 
 .cake-cover .cake {
     position: relative !important;
 
-    display: block !important;
-
     width: 220px !important;
-    height: 170px !important;
+    height: 185px !important;
 
-    margin: 20px auto 15px auto !important;
+    margin: 15px auto 15px auto !important;
     padding: 0 !important;
 
     left: auto !important;
@@ -1611,81 +1582,448 @@ audio {
 
     float: none !important;
 
-    margin-left: auto !important;
-    margin-right: auto !important;
+    overflow: visible !important;
 
     z-index: 10 !important;
 }
 
 
-/* ---------------------------------------------------------
-   CAKE BASE
-   --------------------------------------------------------- */
+/* =========================================================
+   🍰 CAKE BODY
+   ========================================================= */
 
 .cake-cover .cake .bizcocho {
     position: absolute !important;
 
-    top: 55px !important;
     left: 50% !important;
+    top: 58px !important;
 
     width: 220px !important;
-    height: 90px !important;
-
-    margin: 0 !important;
+    height: 85px !important;
 
     transform: translateX(-50%) !important;
 
-    background: #6d4c41 !important;
+    margin: 0 !important;
 
-    border-radius: 0 0 10px 10px !important;
+    border-radius: 0 0 12px 12px !important;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #c97996 0%,
+            #c97996 38%,
+
+            #fff0f6 39%,
+            #fff0f6 48%,
+
+            #b85c7d 49%,
+            #b85c7d 100%
+        ) !important;
+
+    overflow: hidden !important;
 
     z-index: 10 !important;
 }
 
 
-/* ---------------------------------------------------------
-   FROSTING
-   --------------------------------------------------------- */
-
-.cake-cover .cake .cobertura {
-    position: absolute !important;
-
-    top: 30px !important;
-    left: 50% !important;
-
-    width: 220px !important;
-    height: 30px !important;
-
-    margin: 0 !important;
-
-    transform: translateX(-50%) !important;
-
-    background: #ece7e6 !important;
-
-    border-radius: 50px / 10px !important;
-
-    z-index: 20 !important;
-}
-
-
-/* ---------------------------------------------------------
-   PLATE
-   --------------------------------------------------------- */
-
-.cake-cover .cake::after {
+/* Chocolate/cake details */
+.cake-cover .cake .bizcocho::before {
     content: "" !important;
 
     display: block !important;
 
     position: absolute !important;
 
-    top: 147px !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+
+    height: 7px !important;
+
+    background: #f5d6e2 !important;
+
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.08) !important;
+}
+
+
+/* Bottom decorations */
+.cake-cover .cake .bizcocho::after {
+    content: "✦   ✦   ✦   ✦   ✦" !important;
+
+    display: block !important;
+
+    position: absolute !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 10px !important;
+
+    text-align: center !important;
+
+    color: #ffd166 !important;
+
+    font-size: 12px !important;
+    letter-spacing: 4px !important;
+}
+
+
+/* =========================================================
+   🤍 FROSTING
+   ========================================================= */
+
+.cake-cover .cake .cobertura {
+    position: absolute !important;
+
     left: 50% !important;
+    top: 38px !important;
+
+    width: 220px !important;
+    height: 38px !important;
+
+    transform: translateX(-50%) !important;
+
+    margin: 0 !important;
+
+    background: #fff7fb !important;
+
+    border-radius: 50% / 30% !important;
+
+    box-shadow:
+        0 3px 5px rgba(0,0,0,.08) !important;
+
+    overflow: visible !important;
+
+    z-index: 30 !important;
+}
+
+
+/* Frosting drips */
+.cake-cover .cake .cobertura::before {
+    content: "" !important;
+
+    display: block !important;
+
+    position: absolute !important;
+
+    left: 0 !important;
+    bottom: -8px !important;
+
+    width: 220px !important;
+    height: 18px !important;
+
+    background: #fff7fb !important;
+
+    border-radius: 0 0 10px 10px !important;
+
+    box-shadow: none !important;
+
+    z-index: 31 !important;
+}
+
+
+/* Individual drips */
+.cake-cover .cake .cobertura::after {
+    content: "" !important;
+
+    display: block !important;
+
+    position: absolute !important;
+
+    left: 15px !important;
+    bottom: -14px !important;
+
+    width: 16px !important;
+    height: 18px !important;
+
+    background: #fff7fb !important;
+
+    border-radius: 0 0 10px 10px !important;
+
+    box-shadow:
+        35px 3px 0 #fff7fb,
+        72px -1px 0 #fff7fb,
+        110px 4px 0 #fff7fb,
+        148px 0 0 #fff7fb !important;
+
+    z-index: 32 !important;
+}
+
+
+/* =========================================================
+   ✨ SPRINKLES
+   ========================================================= */
+
+.cake-cover .sprinkles {
+    position: absolute !important;
+
+    left: 0 !important;
+    top: 0 !important;
+
+    width: 220px !important;
+    height: 38px !important;
+
+    z-index: 40 !important;
+
+    pointer-events: none !important;
+}
+
+.cake-cover .sprinkles span {
+    position: absolute !important;
+
+    width: 7px !important;
+    height: 3px !important;
+
+    border-radius: 5px !important;
+
+    display: block !important;
+}
+
+
+/* Sprinkle positions */
+.cake-cover .sprinkles span:nth-child(1) {
+    top: 13px;
+    left: 25px;
+    background: #ff69b4;
+    transform: rotate(25deg);
+}
+
+.cake-cover .sprinkles span:nth-child(2) {
+    top: 23px;
+    left: 55px;
+    background: #9b5de5;
+    transform: rotate(-20deg);
+}
+
+.cake-cover .sprinkles span:nth-child(3) {
+    top: 11px;
+    left: 88px;
+    background: #ffd166;
+    transform: rotate(30deg);
+}
+
+.cake-cover .sprinkles span:nth-child(4) {
+    top: 24px;
+    left: 120px;
+    background: #06d6a0;
+    transform: rotate(-25deg);
+}
+
+.cake-cover .sprinkles span:nth-child(5) {
+    top: 12px;
+    left: 153px;
+    background: #ff69b4;
+    transform: rotate(15deg);
+}
+
+.cake-cover .sprinkles span:nth-child(6) {
+    top: 25px;
+    left: 178px;
+    background: #ffd166;
+    transform: rotate(-15deg);
+}
+
+.cake-cover .sprinkles span:nth-child(7) {
+    top: 16px;
+    left: 130px;
+    background: #9b5de5;
+    transform: rotate(20deg);
+}
+
+.cake-cover .sprinkles span:nth-child(8) {
+    top: 27px;
+    left: 35px;
+    background: #06d6a0;
+    transform: rotate(-25deg);
+}
+
+
+/* =========================================================
+   🍓 STRAWBERRIES
+   ========================================================= */
+
+.cake-cover .strawberry {
+    position: absolute !important;
+
+    display: block !important;
+
+    z-index: 50 !important;
+
+    font-size: 25px !important;
+    line-height: 1 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* Left strawberry sits ON frosting */
+.cake-cover .strawberry-1 {
+    top: 27px !important;
+    left: 24px !important;
+
+    transform: rotate(-12deg) !important;
+}
+
+
+/* Right strawberry sits ON frosting */
+.cake-cover .strawberry-2 {
+    top: 27px !important;
+    right: 24px !important;
+
+    transform: rotate(12deg) !important;
+}
+
+
+/* Remove center strawberry */
+.cake-cover .strawberry-3 {
+    display: none !important;
+}
+
+
+/* =========================================================
+   🕯️ CANDLE
+   ========================================================= */
+
+.cake-cover .cake .velas {
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 8px !important;
+
+    width: 9px !important;
+    height: 34px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #ffffff 0px,
+            #ffffff 4px,
+            #ff69b4 4px,
+            #ff69b4 7px
+        ) !important;
+
+    border-radius: 5px !important;
+
+    z-index: 70 !important;
+}
+
+
+/* =========================================================
+   🔥 FLAME
+   ========================================================= */
+
+.cake-cover .cake .fuego {
+    position: absolute !important;
+
+    left: 50% !important;
+    top: -13px !important;
+
+    width: 13px !important;
+    height: 15px !important;
+
+    transform: translateX(-50%) !important;
+
+    margin: 0 !important;
+
+    background: #ffae00 !important;
+
+    border-radius: 50% 50% 50% 50% !important;
+
+    box-shadow:
+        0 0 18px 5px rgba(255,170,0,.75) !important;
+
+    cursor: pointer !important;
+
+    z-index: 100 !important;
+
+    display: block !important;
+}
+
+
+/* Flame OFF */
+.cake-cover .cake .fuego.extinguished {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   🎀 HAPPY BIRTHDAY TOPPER
+   ========================================================= */
+
+.cake-cover .cake-topper {
+    position: absolute !important;
+
+    left: 50% !important;
+    top: -45px !important;
+
+    transform: translateX(-50%) !important;
+
+    z-index: 90 !important;
+
+    pointer-events: none !important;
+
+    text-align: center !important;
+}
+
+.cake-cover .cake-topper span {
+    display: block !important;
+
+    padding: 5px 14px !important;
+
+    border-radius: 15px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff69b4,
+            #a855f7
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-family: "Lato", sans-serif !important;
+
+    font-size: 14px !important;
+    font-weight: bold !important;
+
+    white-space: nowrap !important;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.18) !important;
+}
+
+.cake-cover .topper-stick {
+    width: 3px !important;
+    height: 20px !important;
+
+    margin: 0 auto !important;
+
+    background: #8b5a2b !important;
+}
+
+
+/* =========================================================
+   🍽️ PLATE
+   ========================================================= */
+
+.cake-cover .cake::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 151px !important;
 
     width: 260px !important;
     height: 12px !important;
-
-    margin: 0 !important;
 
     transform: translateX(-50%) !important;
 
@@ -1694,101 +2032,17 @@ audio {
     border-radius: 10px !important;
 
     box-shadow:
-        0 3px 6px rgba(0, 0, 0, 0.15) !important;
+        0 3px 7px rgba(0,0,0,.15) !important;
 
-    z-index: 5 !important;
+    z-index: 3 !important;
+
+    pointer-events: none !important;
 }
 
 
-/* Remove old cake pseudo-elements */
-
-.cake-cover .cake::before,
-.cake-cover .cake .bizcocho::before,
-.cake-cover .cake .bizcocho::after {
-    display: none !important;
-    content: none !important;
-}
-
-
-/* ---------------------------------------------------------
-   CANDLE
-   --------------------------------------------------------- */
-
-.cake-cover .cake .velas {
-    position: absolute !important;
-
-    top: -5px !important;
-    left: 50% !important;
-
-    width: 8px !important;
-    height: 35px !important;
-
-    margin: 0 !important;
-
-    transform: translateX(-50%) !important;
-
-    background: #ffffff !important;
-
-    border-radius: 4px !important;
-
-    z-index: 25 !important;
-}
-
-
-/* ---------------------------------------------------------
-   FLAME
-   --------------------------------------------------------- */
-
-.cake-cover .cake .fuego {
-    position: absolute !important;
-
-    top: -12px !important;
-    left: 50% !important;
-
-    width: 12px !important;
-    height: 12px !important;
-
-    margin: 0 !important;
-
-    transform: translateX(-50%) !important;
-
-    background: #ffaa00 !important;
-
-    border-radius: 50% !important;
-
-    box-shadow:
-        0 0 20px 5px rgba(255, 170, 0, 0.8) !important;
-
-    cursor: pointer !important;
-
-    z-index: 30 !important;
-
-    display: block !important;
-
-    opacity: 1 !important;
-}
-
-
-/* ---------------------------------------------------------
-   FLAME OFF
-   --------------------------------------------------------- */
-
-.cake-cover .cake .fuego.extinguished {
-    display: none !important;
-
-    opacity: 0 !important;
-
-    visibility: hidden !important;
-
-    animation: none !important;
-
-    box-shadow: none !important;
-}
-
-
-/* ---------------------------------------------------------
-   PROFILE / ANIME IMAGE
-   --------------------------------------------------------- */
+/* =========================================================
+   🖼️ ANIME IMAGE
+   ========================================================= */
 
 .cake-cover .profile-img {
     position: relative !important;
@@ -1801,7 +2055,6 @@ audio {
     height: auto !important;
 
     margin: 25px auto 0 auto !important;
-    padding: 0 !important;
 
     left: auto !important;
     right: auto !important;
@@ -1810,22 +2063,20 @@ audio {
 
     transform: none !important;
 
-    float: none !important;
-
     border-radius: 12px !important;
 
     border: 3px solid #ffffff !important;
 
     box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.15) !important;
+        0 4px 10px rgba(0,0,0,.15) !important;
 
     z-index: 10 !important;
 }
 
 
-/* ---------------------------------------------------------
-   BALLOONS
-   --------------------------------------------------------- */
+/* =========================================================
+   🎈 KEEP BALLOONS FROM BLOCKING CLICKS
+   ========================================================= */
 
 .balloons,
 #balloon-border,
@@ -1835,9 +2086,9 @@ div[class*="balloon"] {
 }
 
 
-/* ---------------------------------------------------------
-   BUTTONS
-   --------------------------------------------------------- */
+/* =========================================================
+   🔘 BUTTONS
+   ========================================================= */
 
 #cake_fade,
 #light_candle,
@@ -1851,9 +2102,9 @@ div[class*="balloon"] {
 }
 
 
-/* ---------------------------------------------------------
-   MOBILE
-   --------------------------------------------------------- */
+/* =========================================================
+   📱 MOBILE
+   ========================================================= */
 
 @media (max-width: 767px) {
 
@@ -1863,7 +2114,7 @@ div[class*="balloon"] {
 
     .cake-cover .cake {
         width: 220px !important;
-        height: 170px !important;
+        height: 185px !important;
 
         margin-left: auto !important;
         margin-right: auto !important;
@@ -1874,316 +2125,11 @@ div[class*="balloon"] {
         left: 50% !important;
     }
 
-    .cake-cover .cake::after {
+    .cake-cover .cake .velas {
         left: 50% !important;
     }
 
-    .cake-cover .cake .velas,
     .cake-cover .cake .fuego {
         left: 50% !important;
     }
-}
-/* =========================================
-   🎂 FINAL CAKE DECORATION
-   ========================================= */
-
-/* Main cake container */
-.cake-cover .cake {
-    position: relative !important;
-    overflow: visible !important;
-    z-index: 5 !important;
-}
-
-
-/* =========================================
-   🎀 HAPPY BIRTHDAY TOPPER
-   ========================================= */
-
-.cake-cover .cake-topper {
-    position: absolute !important;
-    top: -52px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 100 !important;
-    pointer-events: none !important;
-}
-
-.cake-cover .cake-topper span {
-    background: linear-gradient(135deg, #ff69b4, #a855f7) !important;
-    color: white !important;
-    padding: 5px 13px !important;
-    border-radius: 16px !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-    white-space: nowrap !important;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.18) !important;
-}
-
-.cake-cover .topper-stick {
-    width: 3px !important;
-    height: 25px !important;
-    background: #8b5a2b !important;
-    margin: 0 auto !important;
-}
-
-
-/* =========================================
-   🍓 STRAWBERRIES
-   ========================================= */
-
-.cake-cover .strawberry {
-    position: absolute !important;
-    z-index: 45 !important;
-    font-size: 25px !important;
-    line-height: 1 !important;
-    pointer-events: none !important;
-}
-
-/* Left strawberry */
-.cake-cover .strawberry-1 {
-    top: 3px !important;
-    left: 22px !important;
-    transform: rotate(-12deg) !important;
-}
-
-/* Right strawberry */
-.cake-cover .strawberry-2 {
-    top: 3px !important;
-    right: 22px !important;
-    transform: rotate(12deg) !important;
-}
-
-/* Center strawberry removed because it clashes with candle */
-.cake-cover .strawberry-3 {
-    display: none !important;
-}
-
-
-/* =========================================
-   🕯️ CANDLE
-   ========================================= */
-
-.cake-cover .velas {
-    position: absolute !important;
-    z-index: 60 !important;
-}
-
-
-/* Flame stays above everything */
-.cake-cover .fuego {
-    position: absolute !important;
-    z-index: 100 !important;
-}
-
-
-/* =========================================
-   🍰 FROSTING
-   ========================================= */
-
-.cake-cover .cobertura {
-    position: absolute !important;
-    z-index: 20 !important;
-    overflow: visible !important;
-}
-
-
-/* Cream drips — contained INSIDE cake width */
-.cake-cover .cobertura::before {
-    content: "" !important;
-    position: absolute !important;
-
-    left: 0 !important;
-    bottom: -10px !important;
-
-    width: 100% !important;
-    height: 22px !important;
-
-    background: #fff7fb !important;
-
-    border-radius:
-        0 0 12px 12px !important;
-
-    box-shadow: none !important;
-
-    pointer-events: none !important;
-}
-
-
-/* Little rounded cream drips */
-.cake-cover .cobertura::after {
-    content: "" !important;
-    position: absolute !important;
-
-    left: 12px !important;
-    bottom: -14px !important;
-
-    width: 18px !important;
-    height: 18px !important;
-
-    background: #fff7fb !important;
-
-    border-radius: 0 0 12px 12px !important;
-
-    box-shadow:
-        38px 3px 0 #fff7fb,
-        76px -1px 0 #fff7fb,
-        114px 3px 0 #fff7fb,
-        152px -1px 0 #fff7fb !important;
-
-    pointer-events: none !important;
-}
-
-
-/* =========================================
-   ✨ SPRINKLES
-   ========================================= */
-
-.cake-cover .sprinkles {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 30 !important;
-    pointer-events: none !important;
-}
-
-.cake-cover .sprinkles span {
-    position: absolute !important;
-    display: block !important;
-
-    width: 7px !important;
-    height: 3px !important;
-
-    border-radius: 5px !important;
-}
-
-
-/* Sprinkle positions */
-.cake-cover .sprinkles span:nth-child(1) {
-    top: 20px;
-    left: 22px;
-    transform: rotate(25deg);
-    background: #ff69b4;
-}
-
-.cake-cover .sprinkles span:nth-child(2) {
-    top: 31px;
-    left: 52px;
-    transform: rotate(-20deg);
-    background: #9b5de5;
-}
-
-.cake-cover .sprinkles span:nth-child(3) {
-    top: 18px;
-    left: 83px;
-    transform: rotate(30deg);
-    background: #ffd166;
-}
-
-.cake-cover .sprinkles span:nth-child(4) {
-    top: 32px;
-    left: 115px;
-    transform: rotate(-25deg);
-    background: #06d6a0;
-}
-
-.cake-cover .sprinkles span:nth-child(5) {
-    top: 20px;
-    left: 150px;
-    transform: rotate(15deg);
-    background: #ff69b4;
-}
-
-.cake-cover .sprinkles span:nth-child(6) {
-    top: 43px;
-    left: 38px;
-    transform: rotate(-15deg);
-    background: #ffd166;
-}
-
-.cake-cover .sprinkles span:nth-child(7) {
-    top: 45px;
-    left: 91px;
-    transform: rotate(20deg);
-    background: #9b5de5;
-}
-
-.cake-cover .sprinkles span:nth-child(8) {
-    top: 43px;
-    left: 140px;
-    transform: rotate(-25deg);
-    background: #06d6a0;
-}
-
-
-/* =========================================
-   🎂 CAKE BODY
-   ========================================= */
-
-.cake-cover .bizcocho {
-    position: absolute !important;
-    z-index: 5 !important;
-    overflow: hidden !important;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #c97996 0%,
-            #c97996 42%,
-            #fff0f6 43%,
-            #fff0f6 49%,
-            #b85c7d 50%,
-            #b85c7d 100%
-        ) !important;
-}
-
-
-/* Decorative cream line */
-.cake-cover .bizcocho::before {
-    content: "" !important;
-
-    position: absolute !important;
-
-    left: 0 !important;
-    right: 0 !important;
-    top: 42% !important;
-
-    height: 8px !important;
-
-    background: #fff5fa !important;
-
-    border-radius: 50% !important;
-
-    box-shadow: 0 2px 3px rgba(0,0,0,0.08) !important;
-}
-
-
-/* Bottom decoration */
-.cake-cover .bizcocho::after {
-    content: "✦  ✦  ✦  ✦  ✦" !important;
-
-    position: absolute !important;
-
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 12px !important;
-
-    text-align: center !important;
-
-    color: #ffd166 !important;
-
-    font-size: 13px !important;
-    letter-spacing: 5px !important;
-}
-
-
-/* =========================================
-   🍽️ PLATE
-   ========================================= */
-
-.cake-cover .cake::after {
-    z-index: 1 !important;
-    pointer-events: none !important;
-
-    box-shadow:
-        0 8px 0 #d8d8d8,
-        0 12px 22px rgba(155,93,229,0.22) !important;
 }
