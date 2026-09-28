@@ -1469,3 +1469,414 @@ function finishRoundTwo() {
         .hide()
         .fadeIn(1000);
 }
+/* =========================================
+   💖 ROUND 3 — CATCH MY HEART
+   ========================================= */
+
+$(document).on('click', '#start-round-three', function () {
+
+    $('.game-complete').fadeOut(700, function () {
+
+        $(this).remove();
+
+        startRoundThree();
+
+    });
+
+});
+
+
+let finalHeart = null;
+let heartX = 0;
+let heartY = 0;
+
+let heartVX = 0;
+let heartVY = 0;
+
+let heartEscapes = 0;
+let roundThreeRunning = false;
+
+
+function startRoundThree() {
+
+    const gameArea =
+        document.getElementById('game-area');
+
+    if (!gameArea) return;
+
+
+    /* Reset round */
+
+    roundThreeRunning = true;
+    heartEscapes = 0;
+
+
+    /* Change title */
+
+    $('.game-header h1')
+        .fadeOut(300, function () {
+
+            $(this)
+                .text('Catch My Heart 💖')
+                .fadeIn(700);
+
+        });
+
+
+    $('.game-instructions')
+        .fadeOut(300, function () {
+
+            $(this)
+                .text(
+                    'Think you can catch the final one? 👀'
+                )
+                .fadeIn(700);
+
+        });
+
+
+    /*
+     * Create heart
+     */
+
+    finalHeart =
+        document.createElement('div');
+
+    finalHeart.id =
+        'final-game-heart';
+
+    finalHeart.className =
+        'final-game-heart';
+
+    finalHeart.innerHTML =
+        '💖';
+
+
+    gameArea.appendChild(
+        finalHeart
+    );
+
+
+    /*
+     * Start near center
+     */
+
+    heartX =
+        gameArea.clientWidth / 2 - 45;
+
+    heartY =
+        gameArea.clientHeight / 2 - 45;
+
+
+    heartVX = 0.7;
+    heartVY = -0.5;
+
+
+    updateFinalHeartPosition();
+
+
+    /*
+     * CLICK = WIN
+     */
+
+    finalHeart.addEventListener(
+        'click',
+        catchFinalHeart
+    );
+
+
+    /*
+     * Mouse interaction
+     */
+
+    gameArea.addEventListener(
+        'mousemove',
+        scareFinalHeart
+    );
+
+
+    requestAnimationFrame(
+        animateFinalHeart
+    );
+}
+function animateFinalHeart() {
+
+    if (
+        !roundThreeRunning ||
+        !finalHeart
+    ) {
+        return;
+    }
+
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+    if (!gameArea) return;
+
+
+    const heartSize = 90;
+
+    const maxX =
+        gameArea.clientWidth -
+        heartSize;
+
+    const maxY =
+        gameArea.clientHeight -
+        heartSize;
+
+
+    /*
+     * Gentle drifting
+     */
+
+    heartX += heartVX;
+    heartY += heartVY;
+
+
+    /*
+     * Bounce from edges
+     */
+
+    if (heartX <= 10) {
+
+        heartX = 10;
+
+        heartVX =
+            Math.abs(heartVX);
+
+    }
+
+
+    if (heartX >= maxX - 10) {
+
+        heartX =
+            maxX - 10;
+
+        heartVX =
+            -Math.abs(heartVX);
+
+    }
+
+
+    if (heartY <= 10) {
+
+        heartY = 10;
+
+        heartVY =
+            Math.abs(heartVY);
+
+    }
+
+
+    if (heartY >= maxY - 10) {
+
+        heartY =
+            maxY - 10;
+
+        heartVY =
+            -Math.abs(heartVY);
+
+    }
+
+
+    /*
+     * Tiny natural variation
+     */
+
+    heartVX +=
+        (Math.random() - 0.5) *
+        0.015;
+
+    heartVY +=
+        (Math.random() - 0.5) *
+        0.015;
+
+
+    /*
+     * Prevent endless acceleration
+     */
+
+    const maxSpeed = 1.25;
+
+    heartVX =
+        Math.max(
+            -maxSpeed,
+            Math.min(
+                maxSpeed,
+                heartVX
+            )
+        );
+
+    heartVY =
+        Math.max(
+            -maxSpeed,
+            Math.min(
+                maxSpeed,
+                heartVY
+            )
+        );
+
+
+    updateFinalHeartPosition();
+
+
+    requestAnimationFrame(
+        animateFinalHeart
+    );
+}
+
+
+function updateFinalHeartPosition() {
+
+    if (!finalHeart) return;
+
+    finalHeart.style.left =
+        heartX + 'px';
+
+    finalHeart.style.top =
+        heartY + 'px';
+}
+function scareFinalHeart(event) {
+
+    if (
+        !roundThreeRunning ||
+        !finalHeart
+    ) {
+        return;
+    }
+
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+    const areaRect =
+        gameArea.getBoundingClientRect();
+
+
+    /*
+     * Mouse coordinates inside game
+     */
+
+    const mouseX =
+        event.clientX -
+        areaRect.left;
+
+    const mouseY =
+        event.clientY -
+        areaRect.top;
+
+
+    /*
+     * Heart center
+     */
+
+    const centerX =
+        heartX + 45;
+
+    const centerY =
+        heartY + 45;
+
+
+    const dx =
+        centerX - mouseX;
+
+    const dy =
+        centerY - mouseY;
+
+
+    const distance =
+        Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+
+    /*
+     * It gets easier after escaping
+     * several times.
+     */
+
+    const scareDistance =
+        Math.max(
+            75,
+            165 -
+            heartEscapes * 12
+        );
+
+
+    if (
+        distance <
+        scareDistance
+    ) {
+
+        /*
+         * Normalize direction
+         */
+
+        const safeDistance =
+            Math.max(
+                distance,
+                1
+            );
+
+
+        const directionX =
+            dx / safeDistance;
+
+        const directionY =
+            dy / safeDistance;
+
+
+        /*
+         * Escape strength decreases
+         * over time.
+         */
+
+        const escapePower =
+            Math.max(
+                2.1,
+                5.5 -
+                heartEscapes * 0.35
+            );
+
+
+        heartVX +=
+            directionX *
+            escapePower;
+
+        heartVY +=
+            directionY *
+            escapePower;
+
+
+        heartEscapes++;
+
+
+        /*
+         * Little visual reaction
+         */
+
+        finalHeart.classList.add(
+            'heart-scared'
+        );
+
+
+        setTimeout(function () {
+
+            if (finalHeart) {
+
+                finalHeart.classList.remove(
+                    'heart-scared'
+                );
+
+            }
+
+        }, 180);
+
+    }
+}
