@@ -252,10 +252,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     flame.addEventListener('click', function () {
 
-        // Turn off flame
+        // 🔥 Turn off the flame
         this.classList.add('extinguished');
 
-        // Change wish message
+        // ✨ Change the wish message
         if (wishText) {
 
             wishText.textContent =
@@ -263,6 +263,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             wishText.style.color = "#7209b7";
         }
+
+        // 🔘 Hide "Don't forget to Light the Candle"
+        $('#light_candle').fadeOut('slow', function () {
+
+            // ➡️ Show the next button
+            $('#wish_message').fadeIn('slow');
+
+        });
 
     });
 
