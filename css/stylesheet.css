@@ -2468,10 +2468,21 @@ div[class*="balloon"] {
 #letter-scene.letter-opened .letter-intro {
     opacity: 0;
 
-    transform:
-        translateY(-25px);
+    height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    transform: translateY(-30px);
 
     pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        height 0.8s ease,
+        margin 0.8s ease;
 }
 
 
@@ -2492,41 +2503,90 @@ div[class*="balloon"] {
 
 
 /* =========================================
-   📜 LETTER BECOMES THE MAIN FOCUS
+   📜 OPENED LETTER
    ========================================= */
 
 .envelope.open .letter-paper {
-
-    position: fixed;
+    position: absolute;
 
     left: 50%;
     top: 50%;
 
     bottom: auto;
 
-    width: min(680px, 82vw);
-    height: min(78vh, 700px);
+    width: min(680px, 88vw);
+    height: 70vh;
+    max-height: 700px;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-    z-index: 10000;
+    z-index: 100;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.65),
-        0 0 60px rgba(255,190,210,0.18);
+        0 30px 90px rgba(0, 0, 0, 0.55),
+        0 0 45px rgba(255, 190, 210, 0.18);
+
+    animation: letterAppear 1s ease forwards;
+}
+/* Once opened, turn the envelope area into a reading area */
+
+#letter-scene.letter-opened .envelope-wrapper {
+    width: 100%;
+    height: 75vh;
+    max-height: 720px;
+
+    margin-top: -40px;
 
     transition:
-        width 1s cubic-bezier(.22,1,.36,1),
-        height 1s cubic-bezier(.22,1,.36,1),
-        transform 1.2s cubic-bezier(.22,1,.36,1);
-
-    animation:
-        letterAppear 1s ease forwards;
+        height 1s ease,
+        margin 1s ease;
 }
 
+
+#letter-scene.letter-opened .envelope {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    bottom: auto;
+
+    transform: none;
+
+    cursor: default;
+}
+
+
+/* Completely remove the envelope after opening */
+
+#letter-scene.letter-opened .envelope-back,
+#letter-scene.letter-opened .envelope-front,
+#letter-scene.letter-opened .envelope-flap,
+#letter-scene.letter-opened .envelope-seal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Letter content */
+
+#letter-scene.letter-opened .paper-content {
+    padding: 50px 60px;
+
+    overflow-y: auto;
+
+    scroll-behavior: smooth;
+}
+
+
+#letter-scene.letter-opened .paper-content h2 {
+    font-size: 34px;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+}
 
 /* =========================================
    ✨ LETTER APPEAR
