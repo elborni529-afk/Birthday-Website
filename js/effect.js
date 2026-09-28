@@ -746,13 +746,13 @@ function startBalloonPhysics() {
         mouseVY *= 0.72;
 
 
-        requestAnimationFrame(update);
+       if (balloonPhysicsStarted) {
+		   requestAnimationFrame(update);
+		}
     }
 
 
-    if (balloonPhysicsStarted) {
-	    requestAnimationFrame(update);
-	}
+	requestAnimationFrame(update);
 }
 /* =========================================
    🎈 ALIGN BALLOONS → H B D B A B Y
