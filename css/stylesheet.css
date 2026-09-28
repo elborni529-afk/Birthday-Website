@@ -3564,41 +3564,58 @@ body.fancy-bg .cake-cover {
         );
 }
 /* =========================================
-   KEEP BIRTHDAY SCENE INSIDE ONE SCREEN
+   🎂 CAKE OVERLAY — DOES NOT GROW THE PAGE
    ========================================= */
 
-html,
-body {
-    width: 100%;
-    height: 100%;
+.cake-cover.cake-visible {
+    display: block !important;
+
+    position: fixed !important;
+
+    left: 50% !important;
+    top: 54% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 100 !important;
+
+    pointer-events: none !important;
+}
+
+/* Keep the candle clickable */
+.cake-cover.cake-visible .fuego {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Keep cake content centered */
+.cake-cover.cake-visible > .col-md-12 {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Keep your PERFECT cake spacing */
+.cake-cover.cake-visible .wish-text {
+    margin: 0 auto 5px auto !important;
+}
+
+.cake-cover.cake-visible .cake {
+    margin: 55px auto 0 auto !important;
+}
+
+/* Anime card stays below cake without affecting page height */
+.cake-cover.cake-visible .profile-img {
+    margin: 20px auto 0 auto !important;
+}
+
+/* Never allow the birthday stage itself to scroll */
+body:not(.letter-active) {
     overflow: hidden !important;
-}
-
-body {
-    min-height: 100vh !important;
-    max-height: 100vh !important;
-}
-/* =========================================
-   FIT CAKE SCENE INSIDE ONE SCREEN
-   ========================================= */
-
-body.cake-stage {
-    overflow-y: hidden !important;
-}
-
-/* Cake section should not create extra page height */
-body.cake-stage .cake-cover {
-    margin-top: 10px !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* Bring cake slightly closer to wish text */
-body.cake-stage .cake-cover .cake {
-    margin-top: 38px !important;
-}
-
-/* Keep bottom navigation inside viewport */
-body.cake-stage #navbar_controls {
-    bottom: 6px !important;
 }
