@@ -232,6 +232,10 @@ $('#lightbox').click(function(e) {
 // CANDLE BLOWOUT
 // =========================================================
 
+// =========================================================
+// CANDLE BLOWOUT
+// =========================================================
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const flame = document.getElementById('flame');
@@ -241,15 +245,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     flame.addEventListener('click', function () {
 
-        // Turn off the flame
+        // Turn off flame
         this.classList.add('extinguished');
 
-        // Change wish text
+        // Change wish message
         if (wishText) {
-            wishText.textContent =
-                "🎉 Wish made! May all your dreams come true! 💖";
 
-            wishText.style.color = "#28a745";
+            wishText.textContent =
+                "✨ Wish made! May all your dreams come true! 💖";
+
+            wishText.style.color = "#7209b7";
         }
 
     });
