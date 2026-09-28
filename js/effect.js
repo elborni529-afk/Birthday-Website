@@ -1808,12 +1808,19 @@ function scareFinalHeart(event) {
             165 -
             heartEscapes * 12
         );
+	const now = Date.now();
+
+	if (
+	    now - lastHeartEscape <
+	    280
+	) {
+	    return;
+	}
 
 
-    if (
-        distance <
-        scareDistance
-    ) {
+    if (distance < scareDistance) {
+
+	    lastHeartEscape = now;
 
         /*
          * Normalize direction
@@ -1880,4 +1887,129 @@ function scareFinalHeart(event) {
         }, 180);
 
     }
+}
+function catchFinalHeart() {
+
+    if (
+        !roundThreeRunning ||
+        !finalHeart
+    ) {
+        return;
+    }
+
+
+    roundThreeRunning = false;
+
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+
+    /*
+     * Stop mouse interaction
+     */
+
+    gameArea.removeEventListener(
+        'mousemove',
+        scareFinalHeart
+    );
+
+
+    /*
+     * Heart catch animation
+     */
+
+    finalHeart.classList.add(
+        'heart-caught'
+    );
+
+
+    /*
+     * Screen flash
+     */
+
+    const flash =
+        document.createElement(
+            'div'
+        );
+
+    flash.className =
+        'heart-catch-flash';
+
+    gameArea.appendChild(
+        flash
+    );
+
+
+    setTimeout(function () {
+
+        flash.remove();
+
+    }, 900);
+
+
+    setTimeout(function () {
+
+        if (finalHeart) {
+
+            finalHeart.remove();
+            finalHeart = null;
+
+        }
+
+        finishRoundThree();
+
+    }, 1000);
+}
+function finishRoundThree() {
+
+    const gameArea =
+        document.getElementById(
+            'game-area'
+        );
+
+    if (!gameArea) return;
+
+
+    const complete =
+        document.createElement(
+            'div'
+        );
+
+    complete.className =
+        'game-complete final-round-complete';
+
+
+    complete.innerHTML = `
+        <div class="final-win-heart">
+            💖
+        </div>
+
+        <h2>
+            You caught it.
+        </h2>
+
+        <p>
+            Okay... you win ✨
+        </p>
+
+        <button
+            id="final-surprise"
+            class="round-next-btn final-surprise-btn"
+        >
+            ONE LAST THING ✨
+        </button>
+    `;
+
+
+    gameArea.appendChild(
+        complete
+    );
+
+
+    $(complete)
+        .hide()
+        .fadeIn(1200);
 }
