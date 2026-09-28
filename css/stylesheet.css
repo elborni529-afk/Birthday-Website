@@ -1836,7 +1836,7 @@ div[class*="balloon"] {
     .cake {
         width: 220px !important;
         height: 170px !important;
-
+		display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -1867,11 +1867,7 @@ div[class*="balloon"] {
     display: none !important;
 }
 
-.cake-cover .cake,
-.cake-cover #wishText,
-.cake-cover .profile-img {
-    display: none !important;
-}
+
 
 
 /* =========================================================
