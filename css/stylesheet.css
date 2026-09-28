@@ -1881,3 +1881,10 @@ div[class*="balloon"] {
     animation: none !important;
     box-shadow: none !important;
 }
+.fuego.extinguished {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
