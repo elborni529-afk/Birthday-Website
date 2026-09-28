@@ -3779,7 +3779,7 @@ body:not(.letter-active) {
     position: relative !important;
 }
 
-.cake > .cake-print {
+.cake-print {
     position: absolute !important;
     display: block !important;
 
