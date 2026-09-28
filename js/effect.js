@@ -280,57 +280,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-// =========================================================
-// 💌 SECRET LOVE LETTER
-// =========================================================
-
-$(document).ready(function () {
-
-    /*
-     * The existing "Happy Birthday" button is currently
-     * responsible for the balloon animation.
-     *
-     * We DON'T replace that.
-     *
-     * Instead, the letter appears after the existing
-     * "A message for you" button is clicked.
-     */
-
-    $('#story').click(function () {
-
-        // Give the existing story animation a moment to start
-        setTimeout(function () {
-
-            // Hide the old message section
-            $('.message').fadeOut('slow');
-
-            // Hide cake
-            $('.cake').fadeOut('slow');
-
-            // Hide balloons
-            $('.balloons').fadeOut('slow');
-
-            // Hide old controls
-            $('#story').fadeOut('slow');
-
-            // Show the letter
-            $('#letter-scene')
-                .css('display', 'block')
-                .hide()
-                .fadeIn(1500);
-
-            // Scroll smoothly to the letter
-            setTimeout(function () {
-
-                $('html, body').animate({
-                    scrollTop: $('#letter-scene').offset().top
-                }, 1200);
-
-            }, 300);
-
-        }, 2500);
-
-    });
 
 
     // =========================================
