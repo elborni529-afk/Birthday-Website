@@ -3693,3 +3693,37 @@ body:not(.letter-active) {
 #navbar_controls {
     z-index: 999999 !important;
 }
+/* =========================================
+   🎂 FINAL EDIBLE CAKE PHOTO
+   ========================================= */
+
+.cake-cover.cake-visible .cake .profile-img,
+.cake-cover .cake .profile-img {
+    position: absolute !important;
+
+    /* Pink front face of cake */
+    left: 50% !important;
+    top: 115px !important;
+    bottom: auto !important;
+    right: auto !important;
+
+    transform: translateX(-50%) !important;
+
+    width: 64px !important;
+    height: 45px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+
+    border: 0 !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+
+    opacity: 0.82 !important;
+
+    z-index: 85 !important;
+
+    pointer-events: none !important;
+}
