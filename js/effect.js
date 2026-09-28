@@ -283,14 +283,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =========================================================
-	// 💌 OPEN SECRET ENVELOPE
+	// 💌 CINEMATIC LOVE LETTER
 	// =========================================================
 	
 	$(document).ready(function () {
 	
 	    $('#envelope').on('click keypress', function (e) {
 	
-	        // Allow mouse click or Enter / Space
+	        // Allow mouse click
+	        // or Enter / Space on keyboard
 	        if (
 	            e.type === 'keypress' &&
 	            e.key !== 'Enter' &&
@@ -301,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	        const envelope = $(this);
 	
-	        // Prevent opening twice
+	        // Don't allow opening twice
 	        if (envelope.hasClass('open')) {
 	            return;
 	        }
@@ -309,23 +310,28 @@ document.addEventListener('DOMContentLoaded', function () {
 	        // ✉️ Open envelope
 	        envelope.addClass('open');
 	
-	        // Hide "Tap the envelope"
+	        // Hide instruction
 	        $('.open-hint').fadeOut(500);
 	
-	        // 📜 Start revealing the letter
+	
+	        // =========================================
+	        // 📜 REVEAL THE LETTER
+	        // =========================================
+	
 	        setTimeout(function () {
 	
-	            const paragraphs = $('#letter-text p');
+	            const paragraphs =
+	                $('#letter-text p');
 	
 	            paragraphs.each(function (index) {
 	
 	                $(this)
-	                    .delay(index * 700)
+	                    .delay(index * 650)
 	                    .queue(function (next) {
 	
 	                        $(this).css({
 	                            animation:
-	                                'letterParagraph 0.8s ease forwards'
+	                                'letterParagraph 0.9s ease forwards'
 	                        });
 	
 	                        next();
@@ -334,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	            });
 	
-	        }, 1300);
+	        }, 1200);
 	
 	    });
 	
