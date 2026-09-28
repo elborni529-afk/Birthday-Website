@@ -3133,36 +3133,75 @@ div[class*="balloon"] {
 
 }
 /* =========================================================
-   💌 FINAL CLOSED ENVELOPE FIX
+   💌 ACTUAL FINAL CLOSED ENVELOPE FIX
    ========================================================= */
 
-/* While CLOSED, keep the letter hidden inside the envelope */
+/*
+   CLOSED STATE:
+   Keep the paper completely inside/behind the envelope.
+*/
+
 #letter-scene:not(.letter-opened) .letter-paper {
-    height: 180px !important;
+    width: 340px !important;
+    height: 190px !important;
 
     left: 20px !important;
-    bottom: 15px !important;
 
-    transform: translateY(0) !important;
+    /* THIS is the important fix */
+    bottom: 5px !important;
+
+    transform: translateY(135px) !important;
+
+    z-index: 2 !important;
 
     overflow: hidden !important;
+
+    opacity: 1 !important;
 }
 
 
-/* Don't show any writing before opening */
+/* Hide all writing while envelope is closed */
 #letter-scene:not(.letter-opened) .paper-content {
     opacity: 0 !important;
     visibility: hidden !important;
 }
 
 
-/* Once opened, reveal the writing */
+/*
+   Make sure the envelope pieces stay
+   IN FRONT of the hidden paper.
+*/
+
+#letter-scene:not(.letter-opened) .envelope-front {
+    z-index: 4 !important;
+}
+
+#letter-scene:not(.letter-opened) .envelope-flap {
+    z-index: 6 !important;
+}
+
+#letter-scene:not(.letter-opened) .envelope-seal {
+    z-index: 8 !important;
+}
+
+
+/* =========================================================
+   💌 OPEN STATE
+   ========================================================= */
+
 #letter-scene.letter-opened .paper-content {
     opacity: 1 !important;
     visibility: visible !important;
 
-    transition: opacity 0.8s ease 0.5s !important;
+    transition:
+        opacity 0.8s ease 0.4s !important;
 }
+
+
+/* =========================================================
+   📱 MOBILE CLOSED ENVELOPE
+   ========================================================= */
+
 @media screen and (max-width: 600px) {
 
     #letter-scene:not(.letter-opened) .letter-paper {
@@ -3170,9 +3209,9 @@ div[class*="balloon"] {
         height: 150px !important;
 
         left: 15px !important;
-        bottom: 15px !important;
+        bottom: 5px !important;
 
-        transform: none !important;
+        transform: translateY(110px) !important;
     }
 
 }
