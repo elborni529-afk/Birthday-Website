@@ -338,6 +338,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	                $('#letter-text p');
 	
 	            paragraphs.each(function (index) {
+					const totalDelay =
+					    paragraphs.length * 300 + 1000;
+					
+					setTimeout(function () {
+					
+					    $('#close-letter')
+					        .fadeIn(800);
+					
+					}, totalDelay);
 	
 	                $(this)
 	                    .delay(index * 300)
@@ -754,3 +763,21 @@ function startBalloonPhysics() {
 
 	requestAnimationFrame(update);
 }
+/* =========================================
+   💌 FADE LETTER AWAY
+   ========================================= */
+
+$(document).on('click', '#close-letter', function () {
+
+    $(this).fadeOut(300);
+
+    $('#letter-scene').fadeOut(1400, function () {
+
+        // Letter is now completely gone.
+        $(this).css('display', 'none');
+
+        // NEXT PART OF WEBSITE WILL START HERE
+
+    });
+
+});
