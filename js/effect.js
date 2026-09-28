@@ -2034,31 +2034,22 @@ $(document).on('click', '#final-surprise', function (event) {
 });
 function startFinalScene() {
 
-    const scene =
-        $('#final-scene');
+    const scene = $('#final-scene');
 
+    // Force finale above absolutely everything
+    scene.css({
+        display: 'block',
+        opacity: 0,
+        visibility: 'visible',
+        zIndex: 99999999
+    });
 
-    /*
-     * Start completely dark
-     */
-
-    scene
-        .css('display', 'block')
-        .hide()
-        .fadeIn(1800);
-
-
-    /*
-     * Stars slowly appear
-     */
-
-    setTimeout(function () {
-
-        $('.final-stars')
-            .addClass('awake');
-
-    }, 1800);
-
+    scene.animate(
+        {
+            opacity: 1
+        },
+        1800
+    );
 
     /*
      * Moon
