@@ -856,7 +856,9 @@ $(document).on('click', '#start-game', function () {
 
         $('#memory-game').fadeIn(1200, function () {
 
-            startMemoryGame();
+            // Skip Round 1 + Round 2
+            // Go directly to Catch My Heart
+            startRoundThree();
 
         });
 
