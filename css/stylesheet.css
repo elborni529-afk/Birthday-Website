@@ -3640,3 +3640,17 @@ body:not(.letter-active) {
 
     z-index: 150 !important;
 }
+/* =========================================
+   🎀 COMPACT FANCY BANNER
+   ========================================= */
+
+.banner {
+    width: 48% !important;
+    max-width: 760px !important;
+    height: auto !important;
+
+    margin: 15px auto 0 auto !important;
+
+    position: relative !important;
+    z-index: 20 !important;
+}
