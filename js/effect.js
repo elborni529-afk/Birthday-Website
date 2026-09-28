@@ -152,12 +152,7 @@ $('document').ready(function(){
 	    // Make absolutely sure the section is visible
 	    cakeCover.style.setProperty('display', 'block', 'important');
 	
-	    // Smooth scroll to the cake
-	    setTimeout(function () {
-	        $('html, body').animate({
-	            scrollTop: $('.cake-cover').offset().top - 50
-	        }, 'slow');
-	    }, 100);
+	    
 	
 	    // Hide this button
 	    $(this).fadeOut('slow', function () {
