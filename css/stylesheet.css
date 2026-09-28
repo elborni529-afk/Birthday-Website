@@ -3783,7 +3783,7 @@ img.cake-print {
     position: absolute !important;
 
     left: 50% !important;
-    top: 91px !important;
+    top: 82px !important;
 
     width: 130px !important;
     height: 75px !important;
@@ -3793,7 +3793,7 @@ img.cake-print {
     object-fit: contain !important;
     object-position: center bottom !important;
 
-    opacity: 1 !important;
+    opacity: 0.75 !important;
 
     z-index: 100 !important;
     pointer-events: none !important;
