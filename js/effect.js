@@ -1570,8 +1570,8 @@ function startRoundThree() {
         gameArea.clientHeight / 2 - 45;
 
 
-    heartVX = 0.7;
-    heartVY = -0.5;
+    heartVX = 3.2;
+    heartVY = -2.7;
 
 
     updateFinalHeartPosition();
