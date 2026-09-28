@@ -2134,21 +2134,43 @@ div[class*="balloon"] {
     }
 }
 /* =========================================
-   ✨ FIX WISH TEXT / CAKE TOPPER SPACING
+   ✨ FINAL CAKE SPACING
    ========================================= */
 
+/* Instruction stays in its own space */
 .cake-cover .wish-text {
     position: relative !important;
     z-index: 200 !important;
 
-    /* Move the instruction above the cake */
-    transform: translateY(-32px) !important;
+    display: block !important;
 
-    /* Prevent it from affecting cake positioning */
-    margin-bottom: -32px !important;
+    margin: 0 auto 5px auto !important;
+
+    transform: none !important;
 }
 
+
+/* Give the cake more breathing room */
+.cake-cover .cake {
+    margin-top: 55px !important;
+}
+
+
+/* Put the topper between the instruction and candle */
 .cake-cover .cake-topper {
-    top: -42px !important;
+    top: -30px !important;
     z-index: 90 !important;
+}
+
+
+/* Keep topper text clearly above its stick */
+.cake-cover .cake-topper span {
+    position: relative !important;
+    z-index: 91 !important;
+}
+
+
+/* Keep candle above cake */
+.cake-cover .cake .velas {
+    z-index: 100 !important;
 }
