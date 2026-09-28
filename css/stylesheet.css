@@ -5148,8 +5148,7 @@ img.cake-print {
     left: 50%;
 
     transform:
-        translate(-50%, -50%)
-        scale(.94);
+        translate(-50%, -50%);
 
     width: 100%;
     height: 100%;
@@ -5160,10 +5159,16 @@ img.cake-print {
 
     opacity: 0;
 
-    transition:
-        opacity 1.8s ease,
-        transform 2.5s ease;
+    transition: none;
+}
 
+
+.final-video.video-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%);
 }
 
 
