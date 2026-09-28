@@ -1883,3 +1883,237 @@ div[class*="balloon"] {
         left: 50% !important;
     }
 }
+/* =========================================
+   🎂 EXTRA BIRTHDAY CAKE DECORATIONS
+   ========================================= */
+
+/* Cake topper */
+.cake-topper {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+    pointer-events: none;
+}
+
+.cake-topper span {
+    display: block;
+    background: linear-gradient(135deg, #ff69b4, #9b5de5);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.topper-stick {
+    width: 3px;
+    height: 28px;
+    background: #8b5a2b;
+    margin: 0 auto;
+}
+
+
+/* 🍓 Strawberries */
+.strawberry {
+    position: absolute;
+    z-index: 12;
+    font-size: 27px;
+    line-height: 1;
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,0.2));
+    animation: strawberryFloat 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.strawberry-1 {
+    top: -12px;
+    left: 25px;
+    transform: rotate(-15deg);
+}
+
+.strawberry-2 {
+    top: -17px;
+    right: 27px;
+    transform: rotate(15deg);
+    animation-delay: .5s;
+}
+
+.strawberry-3 {
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%) rotate(5deg);
+    font-size: 23px;
+    animation-delay: 1s;
+}
+
+@keyframes strawberryFloat {
+    0%, 100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -4px;
+    }
+}
+
+
+/* 🍰 Frosting decoration */
+.cake-cover .cobertura {
+    overflow: visible !important;
+    position: absolute !important;
+    z-index: 8;
+}
+
+/* Cream drips */
+.cake-cover .cobertura::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: -13px;
+    height: 22px;
+    background: #fff5fa;
+    border-radius: 0 0 14px 14px;
+    box-shadow:
+        35px 3px 0 #fff5fa,
+        70px -1px 0 #fff5fa,
+        105px 4px 0 #fff5fa,
+        140px 0 0 #fff5fa;
+}
+
+
+/* ✨ Sprinkles */
+.sprinkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.sprinkles span {
+    position: absolute;
+    width: 7px;
+    height: 3px;
+    border-radius: 3px;
+    background: #ff69b4;
+}
+
+.sprinkles span:nth-child(1) {
+    top: 25px;
+    left: 25px;
+    transform: rotate(25deg);
+}
+
+.sprinkles span:nth-child(2) {
+    top: 35px;
+    left: 65px;
+    transform: rotate(-20deg);
+    background: #9b5de5;
+}
+
+.sprinkles span:nth-child(3) {
+    top: 22px;
+    left: 105px;
+    transform: rotate(30deg);
+    background: #ffd166;
+}
+
+.sprinkles span:nth-child(4) {
+    top: 38px;
+    left: 145px;
+    transform: rotate(-30deg);
+    background: #06d6a0;
+}
+
+.sprinkles span:nth-child(5) {
+    top: 18px;
+    left: 175px;
+    transform: rotate(15deg);
+    background: #ff69b4;
+}
+
+.sprinkles span:nth-child(6) {
+    top: 55px;
+    left: 45px;
+    transform: rotate(-15deg);
+    background: #ffd166;
+}
+
+.sprinkles span:nth-child(7) {
+    top: 50px;
+    left: 95px;
+    transform: rotate(20deg);
+    background: #9b5de5;
+}
+
+.sprinkles span:nth-child(8) {
+    top: 58px;
+    left: 155px;
+    transform: rotate(-25deg);
+    background: #06d6a0;
+}
+
+
+/* 🍰 Cake layers */
+.cake-cover .bizcocho {
+    position: relative !important;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            to bottom,
+            #d889a9 0%,
+            #d889a9 48%,
+            #b85c85 49%,
+            #b85c85 55%,
+            #d889a9 56%,
+            #d889a9 100%
+        ) !important;
+}
+
+/* Cream line around the cake */
+.cake-cover .bizcocho::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 43%;
+    height: 9px;
+    background: #fff5fa;
+    border-radius: 50%;
+}
+
+
+/* Bottom cake decoration */
+.cake-cover .bizcocho::after {
+    content: "✦  ✦  ✦  ✦  ✦";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    text-align: center;
+    color: #ffd166;
+    font-size: 14px;
+    letter-spacing: 5px;
+}
+
+
+/* 🕯️ Make candle stand out */
+.cake-cover .velas {
+    z-index: 15 !important;
+}
+
+.cake-cover .fuego {
+    z-index: 20 !important;
+}
+
+
+/* ✨ Soft glow underneath cake */
+.cake-cover .cake::after {
+    box-shadow:
+        0 8px 0 #d8d8d8,
+        0 12px 25px rgba(155, 93, 229, 0.25) !important;
+}
