@@ -309,6 +309,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	        // ✉️ Open envelope
 	        envelope.addClass('open');
+			// 🌙 Fade away the introduction
+			$('#letter-scene').addClass('letter-opened');
 	
 	        // Hide instruction
 	        $('.open-hint').fadeOut(500);
