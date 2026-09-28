@@ -3799,3 +3799,16 @@ img.cake-print {
     background: transparent !important;
     box-shadow: none !important;
 }
+/* =========================================
+   🎈 BALLOONS RUN AWAY FROM MOUSE
+   ========================================= */
+
+.balloons {
+    pointer-events: none !important;
+
+    /* Smooth fleeing movement */
+    translate: var(--mouse-x, 0px) var(--mouse-y, 0px);
+
+    transition: translate 0.18s ease-out;
+    will-change: translate;
+}
