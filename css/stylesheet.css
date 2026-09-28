@@ -5340,3 +5340,51 @@ img.cake-print {
     }
 
 }
+/* =========================================
+   📸 FINAL PHOTO SIZE / POSITION FIX
+   ========================================= */
+
+.album-photo {
+    width: 250px !important;
+    height: 180px !important;
+
+    object-fit: cover !important;
+
+    border: 6px solid white !important;
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* TOP LEFT */
+.album-left-1 {
+    top: 55px !important;
+    left: 65px !important;
+
+    transform: rotate(-6deg) !important;
+}
+
+/* BOTTOM LEFT */
+.album-left-2 {
+    top: 255px !important;
+    left: 90px !important;
+
+    transform: rotate(5deg) !important;
+}
+
+/* TOP RIGHT */
+.album-right-1 {
+    top: 55px !important;
+    right: 65px !important;
+
+    transform: rotate(5deg) !important;
+}
+
+/* BOTTOM RIGHT */
+.album-right-2 {
+    top: 255px !important;
+    right: 90px !important;
+
+    transform: rotate(-5deg) !important;
+}
