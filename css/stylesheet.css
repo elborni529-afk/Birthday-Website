@@ -5455,3 +5455,7 @@ body .album-right-2 {
 
     transform: rotate(-5deg) !important;
 }
+/* Bottom-right photo — rotate 70° left */
+body .album-right-2 {
+    transform: rotate(-70deg) !important;
+}
