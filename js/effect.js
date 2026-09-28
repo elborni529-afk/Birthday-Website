@@ -865,6 +865,8 @@ $(document).on('click', '#start-game', function () {
 });
 let memoryGameStarted = false;
 let memoryScore = 0;
+let roundOneTimer = null;
+let roundOneTimeLeft = 3;
 
 
 function startMemoryGame() {
