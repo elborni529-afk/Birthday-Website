@@ -2173,46 +2173,23 @@ function startVideoSequence() {
     }
 
 
-    // Show cinematic scene
+    // Show black cinematic scene
     scene.style.display = 'block';
 
 
-    // Reset video
+    // Completely reset video
     video.pause();
     video.currentTime = 0;
 
-    // Start muted immediately so browsers allow playback
-    video.muted = true;
+    // Keep invisible during intro
+    video.classList.remove('video-visible');
 
 
-    const playPromise = video.play();
-
-
-    if (playPromise !== undefined) {
-
-        playPromise
-            .then(function () {
-
-                console.log('Video started successfully');
-
-            })
-            .catch(function (error) {
-
-                console.error(
-                    'Video failed to start:',
-                    error
-                );
-
-            });
-
-    }
-
-
-    // Hide game
+    // Hide the game
     $('#memory-game').fadeOut(700);
 
 
-    // Explosion
+    // Heart/glow explosion
     setTimeout(function () {
 
         if (glow) {
@@ -2222,7 +2199,7 @@ function startVideoSequence() {
     }, 150);
 
 
-    // Intro
+    // Intro text
     setTimeout(function () {
 
         if (intro) {
@@ -2232,12 +2209,39 @@ function startVideoSequence() {
     }, 700);
 
 
-    // Keep video playing but reveal it after intro
+    // AFTER intro:
+    // reset video AGAIN and actually play it
     setTimeout(function () {
+
+        video.pause();
+        video.currentTime = 0;
 
         video.classList.add('video-visible');
 
-    }, 2600);
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+
+            playPromise
+                .then(function () {
+
+                    console.log(
+                        'Video playing from beginning'
+                    );
+
+                })
+                .catch(function (error) {
+
+                    console.error(
+                        'Video playback failed:',
+                        error
+                    );
+
+                });
+
+        }
+
+    }, 3000);
 
 }
 document.addEventListener(
