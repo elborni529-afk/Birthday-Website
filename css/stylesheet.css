@@ -2174,3 +2174,404 @@ div[class*="balloon"] {
 .cake-cover .cake .velas {
     z-index: 100 !important;
 }
+/* =========================================
+   💌 SECRET LETTER SCENE
+   ========================================= */
+
+#letter-scene {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 80px 20px 120px;
+    text-align: center;
+    position: relative;
+    z-index: 5000;
+    overflow: hidden;
+}
+
+/* Intro text */
+
+.letter-intro {
+    opacity: 0;
+    animation: letterIntro 2s ease forwards;
+    margin-bottom: 70px;
+}
+
+.letter-intro p {
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.letter-intro h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    text-shadow: 0 0 20px rgba(255,255,255,0.35);
+}
+
+
+/* =========================================
+   ✉️ ENVELOPE
+   ========================================= */
+
+.envelope {
+    width: 360px;
+    height: 240px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.5s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Back */
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        145deg,
+        #f8e1e8,
+        #f3c7d5
+    );
+    border-radius: 8px;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.4),
+        0 0 35px rgba(255,150,190,0.15);
+}
+
+
+/* Letter paper */
+
+.letter-paper {
+    position: absolute;
+    width: 320px;
+    height: 430px;
+    left: 20px;
+    bottom: 20px;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.96),
+            rgba(255,249,245,0.96)
+        );
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+
+    z-index: 2;
+
+    transform: translateY(0);
+
+    transition:
+        transform 1.2s cubic-bezier(.22,1,.36,1),
+        height 0.8s ease;
+
+    overflow: hidden;
+}
+
+
+/* Front of envelope */
+
+.envelope-front {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 125px solid #efbfd0;
+
+    z-index: 4;
+}
+
+
+/* Flap */
+
+.envelope-flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 125px solid #f7d3df;
+
+    transform-origin: top center;
+
+    z-index: 5;
+
+    transition:
+        transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* Heart seal */
+
+.envelope-seal {
+    position: absolute;
+
+    left: 50%;
+    top: 95px;
+
+    transform: translateX(-50%);
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e85d82;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    z-index: 6;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.2);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+}
+
+
+/* =========================================
+   💌 OPENING ANIMATION
+   ========================================= */
+
+.envelope.open {
+    cursor: default;
+}
+
+.envelope.open:hover {
+    transform: none;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .envelope-seal {
+    opacity: 0;
+    transform:
+        translateX(-50%)
+        scale(0.5);
+}
+
+.envelope.open .letter-paper {
+    transform: translateY(-250px);
+}
+
+
+/* =========================================
+   📜 LETTER CONTENT
+   ========================================= */
+
+.paper-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 35px 30px;
+
+    text-align: left;
+}
+
+.paper-content h2 {
+    text-align: center;
+
+    color: #b23a62;
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+#letter-text p {
+    color: #49333b;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 22px;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+}
+
+
+/* Final birthday line */
+
+#letter-text .letter-final {
+    text-align: center;
+
+    color: #d44772;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    margin-top: 35px;
+}
+
+
+/* Signature */
+
+#letter-text .letter-signature {
+    text-align: right;
+
+    color: #7b4b5d;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    margin-top: 30px;
+}
+
+
+/* Hint */
+
+.open-hint {
+    color: rgba(255,255,255,0.7);
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    margin-top: 30px;
+
+    animation: hintPulse 2s infinite;
+}
+
+
+/* =========================================
+   ✨ ANIMATIONS
+   ========================================= */
+
+@keyframes letterIntro {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes hintPulse {
+
+    0%, 100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes letterParagraph {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   📱 MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    #letter-scene {
+        padding-top: 50px;
+    }
+
+    .letter-intro h2 {
+        font-size: 23px;
+    }
+
+    .envelope {
+        width: 300px;
+        height: 200px;
+    }
+
+    .envelope-front {
+        border-left-width: 150px;
+        border-right-width: 150px;
+        border-bottom-width: 105px;
+    }
+
+    .envelope-flap {
+        border-left-width: 150px;
+        border-right-width: 150px;
+        border-top-width: 105px;
+    }
+
+    .letter-paper {
+        width: 270px;
+        left: 15px;
+        height: 390px;
+    }
+
+    .paper-content {
+        padding: 25px 22px;
+    }
+
+    .paper-content h2 {
+        font-size: 24px;
+    }
+
+    #letter-text p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .envelope.open .letter-paper {
+        transform: translateY(-220px);
+    }
+
+}
