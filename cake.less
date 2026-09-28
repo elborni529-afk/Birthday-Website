@@ -269,3 +269,88 @@ p{
   -ms-user-select: none;
   user-select: none;
 }
+/* =========================================================
+   💌 FINAL ENVELOPE CLOSED/OPEN STATE FIX
+   KEEP THIS AS THE LAST CSS IN THE FILE
+   ========================================================= */
+
+
+/* -----------------------------------------
+   CLOSED STATE
+   ----------------------------------------- */
+
+/* Completely hide the actual letter paper */
+#letter-scene:not(.letter-opened) .letter-paper {
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transform: none !important;
+}
+
+
+/* Hide ALL letter content too */
+#letter-scene:not(.letter-opened) .paper-content,
+#letter-scene:not(.letter-opened) #letter-text,
+#letter-scene:not(.letter-opened) #letter-text p,
+#letter-scene:not(.letter-opened) .paper-content h2 {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
+/* Keep the envelope itself visible */
+#letter-scene:not(.letter-opened) .envelope-back,
+#letter-scene:not(.letter-opened) .envelope-front,
+#letter-scene:not(.letter-opened) .envelope-flap,
+#letter-scene:not(.letter-opened) .envelope-seal {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* -----------------------------------------
+   OPEN STATE
+   ----------------------------------------- */
+
+/* Bring the letter back */
+#letter-scene.letter-opened .letter-paper {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* Bring the paper content back */
+#letter-scene.letter-opened .paper-content,
+#letter-scene.letter-opened #letter-text,
+#letter-scene.letter-opened .paper-content h2 {
+    visibility: visible !important;
+}
+
+
+/* The individual paragraphs are controlled
+   by your existing reveal animation */
+#letter-scene.letter-opened #letter-text p {
+    visibility: visible !important;
+}
+
+
+/* Hide the envelope after it has opened */
+#letter-scene.letter-opened .envelope-back,
+#letter-scene.letter-opened .envelope-front,
+#letter-scene.letter-opened .envelope-flap,
+#letter-scene.letter-opened .envelope-seal {
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* Hide the tap message */
+#letter-scene.letter-opened .open-hint {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
