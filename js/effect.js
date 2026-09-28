@@ -138,24 +138,31 @@ $('document').ready(function(){
 			$('#cake_fade').fadeIn('slow');
 		});
 	});
-	$('#cake_fade').click(function(){
+	$('#cake_fade').click(function () {
 	
-	    var $cakeCover = $('.cake-cover');
+	    const cakeCover = document.querySelector('.cake-cover');
 	
-	    // Reveal the cake section
-	    $cakeCover
-	        .addClass('cake-visible')
-	        .hide()
-	        .fadeIn('slow');
+	    if (!cakeCover) return;
 	
-	    // Scroll smoothly to the cake
-	    $('html, body').animate({
-	        scrollTop: $cakeCover.offset().top - 50
-	    }, 'slow');
+	    // Reveal the cake
+	    cakeCover.classList.add('cake-visible');
 	
-	    // Hide this button and show the next button
-	    $(this).fadeOut('slow', function(){
+	    // Make absolutely sure the section is visible
+	    cakeCover.style.setProperty('display', 'block', 'important');
+	
+	    // Smooth scroll to the cake
+	    setTimeout(function () {
+	        $('html, body').animate({
+	            scrollTop: $('.cake-cover').offset().top - 50
+	        }, 'slow');
+	    }, 100);
+	
+	    // Hide this button
+	    $(this).fadeOut('slow', function () {
+	
+	        // Show candle button
 	        $('#light_candle').fadeIn('slow');
+	
 	    });
 	
 	});
