@@ -3736,19 +3736,24 @@ body:not(.letter-active) {
 }
 
 /* Anime image printed on pink side of cake */
+/* =========================================
+   🎂 FINAL ANIME PRINT ON CAKE
+   ========================================= */
+
 .cake-cover .cake > .profile-img {
     display: block !important;
     position: absolute !important;
 
+    /* Center of pink cake face */
     left: 50% !important;
-    top: 110px !important;
+    top: 96px !important;
     right: auto !important;
     bottom: auto !important;
 
     transform: translateX(-50%) !important;
 
-    width: 46px !important;
-    height: 38px !important;
+    width: 44px !important;
+    height: 34px !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -3756,11 +3761,12 @@ body:not(.letter-active) {
     object-fit: contain !important;
 
     border: none !important;
-    border-radius: 3px !important;
+    border-radius: 0 !important;
     outline: none !important;
     box-shadow: none !important;
+    background: transparent !important;
 
-    opacity: 0.9 !important;
+    opacity: 0.92 !important;
 
     z-index: 50 !important;
     pointer-events: none !important;
