@@ -3838,3 +3838,341 @@ img.cake-print {
     box-shadow:
         0 8px 25px rgba(255, 92, 138, 0.5);
 }
+/* =========================================
+   🌙 FAKE ENDING
+   ========================================= */
+
+.fake-ending {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #24103d 0%,
+            #0d0717 45%,
+            #020104 100%
+        );
+
+    z-index: 9999999;
+}
+
+
+/* CENTER CONTENT */
+
+.ending-content {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    color: white;
+
+    z-index: 3;
+}
+
+
+/* HEART */
+
+.ending-heart {
+    font-size: 65px;
+
+    opacity: 0;
+
+    animation:
+        endingHeart 1.5s ease forwards,
+        endingHeartbeat 1.8s ease-in-out 1.5s infinite;
+
+    text-shadow:
+        0 0 20px rgba(255, 100, 150, 0.8);
+}
+
+
+@keyframes endingHeart {
+
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes endingHeartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* TITLE */
+
+#ending-title {
+    margin-top: 20px;
+
+    font-size: clamp(35px, 6vw, 70px);
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        endingReveal 1.5s ease 0.8s forwards;
+}
+
+
+#ending-subtitle {
+    margin-top: 15px;
+
+    font-size: clamp(16px, 2vw, 22px);
+
+    opacity: 0;
+
+    animation:
+        endingReveal 1.5s ease 1.8s forwards;
+}
+
+
+@keyframes endingReveal {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* THE END */
+
+.the-end {
+    margin-top: 40px;
+
+    font-size: 22px;
+    letter-spacing: 6px;
+
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+.the-end.show {
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   👀 NOT OVER
+   ========================================= */
+
+.not-over {
+    display: none;
+
+    margin-top: 30px;
+}
+
+
+.wait-text {
+    font-size: 26px;
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation:
+        waitAppear 1s ease forwards;
+}
+
+
+@keyframes waitAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.not-over h2 {
+    margin-top: 20px;
+
+    font-size: clamp(22px, 4vw, 38px);
+
+    opacity: 0;
+
+    animation:
+        surpriseReveal 1s ease 1s forwards;
+}
+
+
+@keyframes surpriseReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* GAME BUTTON */
+
+.start-game-btn {
+    margin-top: 35px;
+
+    padding: 14px 32px;
+
+    border: none;
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5c8a,
+            #b5179e
+        );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform: scale(0.8);
+
+    animation:
+        gameButtonReveal 0.8s ease 2s forwards;
+
+    box-shadow:
+        0 0 25px rgba(255, 92, 138, 0.4);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.start-game-btn:hover {
+    transform: scale(1.08) !important;
+
+    box-shadow:
+        0 0 40px rgba(255, 92, 138, 0.75);
+}
+
+
+@keyframes gameButtonReveal {
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   ✨ STARS
+   ========================================= */
+
+.ending-stars,
+.ending-stars::before,
+.ending-stars::after {
+
+    position: absolute;
+
+    content: "";
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+
+        8vw 15vh white,
+        17vw 72vh white,
+        25vw 32vh white,
+        34vw 82vh white,
+        42vw 18vh white,
+        51vw 67vh white,
+        58vw 40vh white,
+        65vw 12vh white,
+        72vw 78vh white,
+        81vw 30vh white,
+        90vw 63vh white,
+        95vw 20vh white,
+
+        12vw 48vh rgba(255,255,255,.6),
+        30vw 60vh rgba(255,255,255,.7),
+        47vw 88vh rgba(255,255,255,.6),
+        69vw 52vh rgba(255,255,255,.8),
+        86vw 90vh rgba(255,255,255,.6);
+
+    animation:
+        twinkleStars 2.5s ease-in-out infinite alternate;
+}
+
+
+.ending-stars::before {
+    left: 4vw;
+    top: 8vh;
+
+    transform: scale(0.6);
+}
+
+
+.ending-stars::after {
+    left: -7vw;
+    top: -12vh;
+
+    transform: scale(1.4);
+
+    animation-delay: 1s;
+}
+
+
+@keyframes twinkleStars {
+
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
