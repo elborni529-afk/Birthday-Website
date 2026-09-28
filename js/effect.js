@@ -275,3 +275,113 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+// =========================================================
+// 💌 SECRET LOVE LETTER
+// =========================================================
+
+$(document).ready(function () {
+
+    /*
+     * The existing "Happy Birthday" button is currently
+     * responsible for the balloon animation.
+     *
+     * We DON'T replace that.
+     *
+     * Instead, the letter appears after the existing
+     * "A message for you" button is clicked.
+     */
+
+    $('#story').click(function () {
+
+        // Give the existing story animation a moment to start
+        setTimeout(function () {
+
+            // Hide the old message section
+            $('.message').fadeOut('slow');
+
+            // Hide cake
+            $('.cake').fadeOut('slow');
+
+            // Hide balloons
+            $('.balloons').fadeOut('slow');
+
+            // Hide old controls
+            $('#story').fadeOut('slow');
+
+            // Show the letter
+            $('#letter-scene')
+                .css('display', 'block')
+                .hide()
+                .fadeIn(1500);
+
+            // Scroll smoothly to the letter
+            setTimeout(function () {
+
+                $('html, body').animate({
+                    scrollTop: $('#letter-scene').offset().top
+                }, 1200);
+
+            }, 300);
+
+        }, 2500);
+
+    });
+
+
+    // =========================================
+    // ✉️ OPEN ENVELOPE
+    // =========================================
+
+    $('#envelope').on('click keypress', function (e) {
+
+        // Allow mouse click or Enter/Space
+        if (
+            e.type === 'keypress' &&
+            e.key !== 'Enter' &&
+            e.key !== ' '
+        ) {
+            return;
+        }
+
+        const envelope = $(this);
+
+        // Prevent opening twice
+        if (envelope.hasClass('open')) {
+            return;
+        }
+
+        // Open envelope
+        envelope.addClass('open');
+
+        // Hide instruction
+        $('.open-hint').fadeOut(500);
+
+
+        // =========================================
+        // 📜 REVEAL LETTER
+        // =========================================
+
+        setTimeout(function () {
+
+            const paragraphs = $('#letter-text p');
+
+            paragraphs.each(function (index) {
+
+                $(this).delay(index * 700).queue(function (next) {
+
+                    $(this).css({
+                        animation:
+                            'letterParagraph 0.8s ease forwards'
+                    });
+
+                    next();
+
+                });
+
+            });
+
+        }, 1300);
+
+    });
+
+});
