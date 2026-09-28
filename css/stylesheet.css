@@ -5096,3 +5096,22 @@ img.cake-print {
 
     overflow: hidden !important;
 }
+.round-one-timer {
+    display: inline-block;
+
+    margin-left: 10px;
+    padding: 8px 16px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    font-weight: bold;
+    font-size: 15px;
+
+    color: #ffd1e5;
+
+    backdrop-filter: blur(8px);
+}
