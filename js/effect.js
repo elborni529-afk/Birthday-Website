@@ -2211,37 +2211,26 @@ function startVideoSequence() {
 
     // AFTER intro:
     // reset video AGAIN and actually play it
-    setTimeout(function () {
+   setTimeout(function () {
 
-        video.pause();
-        video.currentTime = 0;
-
-        video.classList.add('video-visible');
-
-        const playPromise = video.play();
-
-        if (playPromise !== undefined) {
-
-            playPromise
-                .then(function () {
-
-                    console.log(
-                        'Video playing from beginning'
-                    );
-
-                })
-                .catch(function (error) {
-
-                    console.error(
-                        'Video playback failed:',
-                        error
-                    );
-
-                });
-
-        }
-
-    }, 3000);
+	    // Reset exactly to the beginning
+	    video.pause();
+	    video.currentTime = 0;
+	
+	    // Show video immediately
+	    video.classList.add('video-visible');
+	
+	    // Play from 0:00
+	    video.play().catch(function (error) {
+	
+	        console.error(
+	            'Video playback failed:',
+	            error
+	        );
+	
+	    });
+	
+	}, 3000);
 
 }
 document.addEventListener(
