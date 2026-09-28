@@ -2117,3 +2117,135 @@ div[class*="balloon"] {
         0 8px 0 #d8d8d8,
         0 12px 25px rgba(155, 93, 229, 0.25) !important;
 }
+/* =========================================
+   🎂 FINAL DECORATION FIX
+   ========================================= */
+
+/* IMPORTANT: allow decorations to extend outside the cake */
+.cake-cover .cake {
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Keep the actual cake underneath decorations */
+.cake-cover .bizcocho {
+    position: absolute !important;
+    z-index: 5 !important;
+}
+
+.cake-cover .cobertura {
+    position: absolute !important;
+    z-index: 10 !important;
+    overflow: visible !important;
+}
+
+/* Candle above frosting */
+.cake-cover .velas {
+    position: absolute !important;
+    z-index: 30 !important;
+}
+
+/* Flame above EVERYTHING */
+.cake-cover .fuego {
+    position: absolute !important;
+    z-index: 50 !important;
+}
+
+
+/* =========================================
+   🍓 STRAWBERRIES
+   ========================================= */
+
+.cake-cover .strawberry {
+    position: absolute !important;
+    display: block !important;
+    z-index: 40 !important;
+    pointer-events: none !important;
+    font-size: 27px !important;
+    line-height: 1 !important;
+}
+
+.cake-cover .strawberry-1 {
+    top: -8px !important;
+    left: 20px !important;
+    transform: rotate(-15deg) !important;
+}
+
+.cake-cover .strawberry-2 {
+    top: -10px !important;
+    right: 20px !important;
+    transform: rotate(15deg) !important;
+}
+
+.cake-cover .strawberry-3 {
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(5deg) !important;
+}
+
+
+/* =========================================
+   ✨ SPRINKLES
+   ========================================= */
+
+.cake-cover .sprinkles {
+    position: absolute !important;
+    z-index: 20 !important;
+    inset: 0 !important;
+    display: block !important;
+    pointer-events: none !important;
+}
+
+.cake-cover .sprinkles span {
+    position: absolute !important;
+    display: block !important;
+    z-index: 21 !important;
+}
+
+
+/* =========================================
+   🍰 CREAM DRIPS
+   ========================================= */
+
+.cake-cover .cobertura::before {
+    z-index: 15 !important;
+    pointer-events: none !important;
+}
+
+
+/* =========================================
+   🎀 HAPPY BIRTHDAY TOPPER
+   ========================================= */
+
+.cake-cover .cake-topper {
+    position: absolute !important;
+    top: -65px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 100 !important;
+    display: block !important;
+    pointer-events: none !important;
+}
+
+.cake-cover .cake-topper span {
+    position: relative !important;
+    z-index: 101 !important;
+    display: block !important;
+    white-space: nowrap !important;
+}
+
+.cake-cover .topper-stick {
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+
+/* =========================================
+   🌟 LITTLE CAKE GLOW
+   ========================================= */
+
+.cake-cover .cake::after {
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
