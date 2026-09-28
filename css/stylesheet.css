@@ -1514,12 +1514,18 @@ audio {
 }
 /* --- Fancy Cake & Candle --- */
 /* =========================================================
-   PERFECTLY CENTERED BIRTHDAY CAKE
+   BIRTHDAY CAKE — CLEAN FINAL VERSION
    ========================================================= */
 
-/* The Bootstrap .row must stay full width */
+/* ---------------------------------------------------------
+   CAKE SECTION
+   Hidden when the page loads.
+   JavaScript adds .cake-visible after clicking the button.
+   --------------------------------------------------------- */
+
 .cake-cover {
     position: relative !important;
+
     width: 100% !important;
     max-width: none !important;
 
@@ -1530,9 +1536,20 @@ audio {
     clear: both !important;
 
     text-align: center !important;
+
+    display: none !important;
 }
 
-/* The Bootstrap column containing the cake */
+/* Reveal the cake only after the button is clicked */
+.cake-cover.cake-visible {
+    display: block !important;
+}
+
+
+/* ---------------------------------------------------------
+   BOOTSTRAP COLUMN
+   --------------------------------------------------------- */
+
 .cake-cover > .col-md-12 {
     position: relative !important;
 
@@ -1540,6 +1557,7 @@ audio {
     max-width: none !important;
 
     margin: 0 !important;
+
     padding-left: 15px !important;
     padding-right: 15px !important;
 
@@ -1549,12 +1567,12 @@ audio {
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    WISH TEXT
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.wish-text,
-#wishText {
+.cake-cover .wish-text,
+.cake-cover #wishText {
     position: relative !important;
 
     display: block !important;
@@ -1579,11 +1597,11 @@ audio {
 }
 
 
-/* =========================================================
-   CAKE
-   ========================================================= */
+/* ---------------------------------------------------------
+   MAIN CAKE
+   --------------------------------------------------------- */
 
-.cake {
+.cake-cover .cake {
     position: relative !important;
 
     display: block !important;
@@ -1603,7 +1621,6 @@ audio {
 
     float: none !important;
 
-    /* Important: this is the centering anchor */
     margin-left: auto !important;
     margin-right: auto !important;
 
@@ -1611,11 +1628,11 @@ audio {
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    CAKE BASE
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.cake .bizcocho {
+.cake-cover .cake .bizcocho {
     position: absolute !important;
 
     top: 55px !important;
@@ -1632,17 +1649,15 @@ audio {
 
     border-radius: 0 0 10px 10px !important;
 
-    box-shadow: none !important;
-
     z-index: 10 !important;
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    FROSTING
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.cake .cobertura {
+.cake-cover .cake .cobertura {
     position: absolute !important;
 
     top: 30px !important;
@@ -1663,12 +1678,14 @@ audio {
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    PLATE
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.cake::after {
+.cake-cover .cake::after {
     content: "" !important;
+
+    display: block !important;
 
     position: absolute !important;
 
@@ -1694,19 +1711,20 @@ audio {
 
 
 /* Remove old cake pseudo-elements */
-.cake::before,
-.cake .bizcocho::before,
-.cake .bizcocho::after {
+
+.cake-cover .cake::before,
+.cake-cover .cake .bizcocho::before,
+.cake-cover .cake .bizcocho::after {
     display: none !important;
     content: none !important;
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    CANDLE
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.cake .velas {
+.cake-cover .cake .velas {
     position: absolute !important;
 
     top: -5px !important;
@@ -1727,11 +1745,11 @@ audio {
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    FLAME
-   ========================================================= */
+   --------------------------------------------------------- */
 
-.cake .fuego {
+.cake-cover .cake .fuego {
     position: absolute !important;
 
     top: -12px !important;
@@ -1754,12 +1772,33 @@ audio {
     cursor: pointer !important;
 
     z-index: 30 !important;
+
+    display: block !important;
+
+    opacity: 1 !important;
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
+   FLAME OFF
+   --------------------------------------------------------- */
+
+.cake-cover .cake .fuego.extinguished {
+    display: none !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    animation: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* ---------------------------------------------------------
    PROFILE / ANIME IMAGE
-   ========================================================= */
+   --------------------------------------------------------- */
 
 .cake-cover .profile-img {
     position: relative !important;
@@ -1768,6 +1807,7 @@ audio {
 
     width: 110px !important;
     max-width: 110px !important;
+
     height: auto !important;
 
     margin: 25px auto 0 auto !important;
@@ -1776,12 +1816,14 @@ audio {
     left: auto !important;
     right: auto !important;
     top: auto !important;
+    bottom: auto !important;
 
     transform: none !important;
 
     float: none !important;
 
     border-radius: 12px !important;
+
     border: 3px solid #ffffff !important;
 
     box-shadow:
@@ -1791,9 +1833,9 @@ audio {
 }
 
 
-/* =========================================================
-   BALLOONS DON'T BLOCK THE CAKE
-   ========================================================= */
+/* ---------------------------------------------------------
+   BALLOONS
+   --------------------------------------------------------- */
 
 .balloons,
 #balloon-border,
@@ -1803,88 +1845,51 @@ div[class*="balloon"] {
 }
 
 
-/* =========================================================
-   BUTTONS STAY CLICKABLE
-   ========================================================= */
+/* ---------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------- */
 
-.navbar-fixed-bottom,
 #cake_fade,
 #light_candle,
 #wish_message,
-#story,
-.btn {
-    pointer-events: auto !important;
-
+#story {
     position: relative !important;
 
     z-index: 999999 !important;
+
+    pointer-events: auto !important;
 }
 
 
-/* =========================================================
+/* ---------------------------------------------------------
    MOBILE
-   ========================================================= */
+   --------------------------------------------------------- */
 
 @media (max-width: 767px) {
 
     .cake-cover {
-        width: 100% !important;
-
         margin-top: 40px !important;
     }
 
-    .cake {
+    .cake-cover .cake {
         width: 220px !important;
         height: 170px !important;
-		display: block !important;
+
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
-    .cake .bizcocho,
-    .cake .cobertura {
+    .cake-cover .cake .bizcocho,
+    .cake-cover .cake .cobertura {
         left: 50% !important;
     }
 
-    .cake::after {
+    .cake-cover .cake::after {
         left: 50% !important;
     }
 
-    .cake .velas {
+    .cake-cover .cake .velas,
+    .cake-cover .cake .fuego {
         left: 50% !important;
     }
-
-    .cake .fuego {
-        left: 50% !important;
-    }
-}
-/* =========================================================
-   CAKE INITIAL STATE
-   Hidden until "Cake? Of course!" is clicked
-   ========================================================= */
-
-.cake-cover {
-    display: none !important;
-}
-
-
-
-
-/* =========================================================
-   FLAME EXTINGUISHED STATE
-   ========================================================= */
-
-.fuego.extinguished {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    animation: none !important;
-    box-shadow: none !important;
-}
-.fuego.extinguished {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    animation: none !important;
-    box-shadow: none !important;
 }
