@@ -2907,3 +2907,228 @@ div[class*="balloon"] {
     }
 
 }
+/* =========================================================
+   📱 FINAL MOBILE LETTER FIX
+   KEEP THIS AT THE VERY BOTTOM OF stylesheet.css
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    /* Whole letter scene */
+    #letter-scene {
+        min-height: 100vh !important;
+        padding: 50px 12px 70px !important;
+        overflow: hidden !important;
+    }
+
+
+    /* Intro before opening */
+    #letter-scene .letter-intro {
+        margin-bottom: 45px !important;
+    }
+
+    #letter-scene .letter-intro p {
+        font-size: 13px !important;
+        letter-spacing: 1.5px !important;
+    }
+
+    #letter-scene .letter-intro h2 {
+        font-size: 22px !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+    }
+
+
+    /* Closed envelope wrapper */
+    #letter-scene .envelope-wrapper {
+        width: 290px !important;
+        height: 215px !important;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+
+    /* Closed envelope */
+    #letter-scene .envelope {
+        width: 290px !important;
+        height: 195px !important;
+
+        left: 50% !important;
+        bottom: 0 !important;
+
+        transform: translateX(-50%) !important;
+    }
+
+
+    /* Closed envelope front */
+    #letter-scene .envelope-front {
+        border-left-width: 145px !important;
+        border-right-width: 145px !important;
+        border-bottom-width: 103px !important;
+    }
+
+
+    /* Closed envelope flap */
+    #letter-scene .envelope-flap {
+        border-left-width: 145px !important;
+        border-right-width: 145px !important;
+        border-top-width: 103px !important;
+    }
+
+
+    /* Heart seal */
+    #letter-scene .envelope-seal {
+        top: 75px !important;
+
+        width: 46px !important;
+        height: 46px !important;
+
+        font-size: 20px !important;
+    }
+
+
+    /* Paper while envelope is still closed */
+    #letter-scene .letter-paper {
+        width: 260px !important;
+        height: 390px !important;
+
+        left: 15px !important;
+    }
+
+
+    /* =====================================================
+       💌 AFTER ENVELOPE IS OPENED
+       ===================================================== */
+
+    #letter-scene.letter-opened {
+        padding-top: 25px !important;
+    }
+
+
+    /* Remove intro from layout */
+    #letter-scene.letter-opened .letter-intro {
+        opacity: 0 !important;
+
+        height: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        pointer-events: none !important;
+    }
+
+
+    /* Turn wrapper into reading area */
+    #letter-scene.letter-opened .envelope-wrapper {
+        width: 100% !important;
+        height: 82vh !important;
+
+        margin: 0 auto !important;
+    }
+
+
+    /* Envelope itself becomes invisible container */
+    #letter-scene.letter-opened .envelope {
+        width: 100% !important;
+        height: 100% !important;
+
+        left: 0 !important;
+        bottom: auto !important;
+
+        transform: none !important;
+    }
+
+
+    /* Hide physical envelope */
+    #letter-scene.letter-opened .envelope-back,
+    #letter-scene.letter-opened .envelope-front,
+    #letter-scene.letter-opened .envelope-flap,
+    #letter-scene.letter-opened .envelope-seal {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+
+    /* Actual opened paper */
+    #letter-scene.letter-opened .letter-paper {
+        position: absolute !important;
+
+        left: 50% !important;
+        top: 50% !important;
+        bottom: auto !important;
+
+        width: 92vw !important;
+        max-width: 430px !important;
+
+        height: 76vh !important;
+
+        transform:
+            translate(-50%, -50%) !important;
+
+        z-index: 100 !important;
+
+        border-radius: 10px !important;
+
+        overflow: hidden !important;
+    }
+
+
+    /* Scrollable letter */
+    #letter-scene.letter-opened .paper-content {
+        box-sizing: border-box !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        padding: 30px 22px 45px !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+
+    /* "For You ❤️" */
+    #letter-scene.letter-opened .paper-content h2 {
+        margin: 0 0 28px !important;
+
+        font-size: 26px !important;
+        line-height: 1.3 !important;
+    }
+
+
+    /* Letter paragraphs */
+    #letter-scene.letter-opened #letter-text p {
+        font-size: 14px !important;
+        line-height: 1.75 !important;
+
+        margin-bottom: 20px !important;
+    }
+
+
+    /* Final birthday message */
+    #letter-scene.letter-opened #letter-text .letter-final {
+        font-size: 19px !important;
+
+        margin-top: 30px !important;
+    }
+
+
+    /* Signature */
+    #letter-scene.letter-opened #letter-text .letter-signature {
+        font-size: 17px !important;
+
+        margin-top: 25px !important;
+    }
+
+
+    /* Hide tap instruction after opening */
+    #letter-scene.letter-opened .open-hint {
+        display: none !important;
+    }
+
+}
