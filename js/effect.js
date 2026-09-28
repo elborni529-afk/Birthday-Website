@@ -2161,50 +2161,58 @@ function startVideoSequence() {
         document.getElementById('final-video');
 
     const glow =
-        document.querySelector(
-            '.video-transition-glow'
-        );
+        document.querySelector('.video-transition-glow');
 
     const intro =
-        document.querySelector(
-            '.video-intro-text'
-        );
+        document.querySelector('.video-intro-text');
 
 
     if (!scene || !video) {
-        console.error(
-            'Final video scene not found.'
-        );
-
+        console.error('Video scene/video missing');
         return;
     }
 
 
-    /*
-     * Remove the game
-     */
-
-    $('#memory-game').fadeOut(
-        700,
-        function () {
-
-            $(this).hide();
-
-        }
-    );
-
-
-    /*
-     * Show black cinematic screen
-     */
-
+    // Show cinematic scene
     scene.style.display = 'block';
 
 
-    /*
-     * Pink/white explosion
-     */
+    // Reset video
+    video.pause();
+    video.currentTime = 0;
 
+    // Start muted immediately so browsers allow playback
+    video.muted = true;
+
+
+    const playPromise = video.play();
+
+
+    if (playPromise !== undefined) {
+
+        playPromise
+            .then(function () {
+
+                console.log('Video started successfully');
+
+            })
+            .catch(function (error) {
+
+                console.error(
+                    'Video failed to start:',
+                    error
+                );
+
+            });
+
+    }
+
+
+    // Hide game
+    $('#memory-game').fadeOut(700);
+
+
+    // Explosion
     setTimeout(function () {
 
         if (glow) {
@@ -2214,55 +2222,22 @@ function startVideoSequence() {
     }, 150);
 
 
-    /*
-     * Small message
-     */
-
+    // Intro
     setTimeout(function () {
 
         if (intro) {
             intro.classList.add('show');
         }
 
-    }, 1100);
+    }, 700);
 
 
-    /*
-     * Start video
-     */
-
+    // Keep video playing but reveal it after intro
     setTimeout(function () {
 
-        video.classList.add(
-            'video-visible'
-        );
+        video.classList.add('video-visible');
 
-
-        video.currentTime = 0;
-
-
-        const playPromise =
-            video.play();
-
-
-        if (
-            playPromise !== undefined
-        ) {
-
-            playPromise.catch(
-                function (error) {
-
-                    console.log(
-                        'Video autoplay blocked:',
-                        error
-                    );
-
-                }
-            );
-
-        }
-
-    }, 3200);
+    }, 2600);
 
 }
 document.addEventListener(
