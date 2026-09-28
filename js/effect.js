@@ -46,6 +46,8 @@ $('document').ready(function(){
 
 	$('#bannar_coming').click(function(){
 		$('.bannar').addClass('bannar-come');
+		// ✨ Show fancy stars, hearts and sparkles
+    	$('#fancy-decor').fadeIn(1200);
 
 		$(this).fadeOut('slow').delay(6000).promise().done(function(){
 			$('#balloons_flying').fadeIn('slow');
