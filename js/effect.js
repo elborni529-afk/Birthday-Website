@@ -192,29 +192,34 @@ $('document').ready(function(){
 		});
 	});
 	
-	$('#story').click(function(){
-		$(this).fadeOut('slow');
-		$('.cake').fadeOut('fast').promise().done(function(){
-			$('.message').fadeIn('slow');
-		});
-
-		var $messages = $(".message p");   // only inside .message
-		var totalMessages = $messages.length;
-
-		function msgLoop(i) {
-			if (i < totalMessages - 1) {
-				$messages.eq(i).fadeIn('slow').delay(1500).fadeOut('slow').promise().done(function(){
-					msgLoop(i + 1);
-				});
-			} else {
-				// Last message stays + cake comes back
-				$messages.eq(i).fadeIn('slow').promise().done(function(){
-					$('.cake').fadeIn('fast');
-				});
-			}
-		}
-
-		msgLoop(0);
+	// =========================================================
+	// 💌 STORY → SECRET LOVE LETTER
+	// =========================================================
+	
+	$('#story').click(function () {
+	
+	    $(this).fadeOut('slow');
+	
+	    // Hide the old story/cake
+	    $('.cake').fadeOut('slow');
+	    $('.message').fadeOut('slow');
+	    $('.balloons').fadeOut('slow');
+	
+	    // Show the letter
+	    setTimeout(function () {
+	
+	        $('#letter-scene')
+	            .css('display', 'block')
+	            .hide()
+	            .fadeIn(1500);
+	
+	        // Smoothly move to the letter
+	        $('html, body').animate({
+	            scrollTop: $('#letter-scene').offset().top
+	        }, 1200);
+	
+	    }, 700);
+	
 	});
 
 });
