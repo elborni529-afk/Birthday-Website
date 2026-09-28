@@ -2430,20 +2430,42 @@ div[class*="balloon"] {
 
 
 /* =========================================
-   OPENING
+   💌 OPENING ANIMATION
    ========================================= */
 
-.envelope.open:hover {
-    transform:
-        translateX(-50%);
+.envelope.open {
+    cursor: default;
+    transform: translateX(-50%);
 }
+
+
+/* The intro gently disappears */
+
+#letter-scene.letter-opened .letter-intro {
+    opacity: 0;
+    transform: translateY(-30px);
+    pointer-events: none;
+}
+
+
+/* Envelope moves slightly down */
+
+.envelope.open {
+    transform:
+        translateX(-50%)
+        translateY(180px);
+}
+
+
+/* Flap opens */
 
 .envelope.open .envelope-flap {
-    transform:
-        rotateX(180deg);
-
+    transform: rotateX(180deg);
     z-index: 1;
 }
+
+
+/* Hide the seal */
 
 .envelope.open .envelope-seal {
     opacity: 0;
@@ -2453,9 +2475,71 @@ div[class*="balloon"] {
         scale(0.4);
 }
 
+
+/* =========================================
+   📜 THE LETTER BECOMES THE MAIN SCENE
+   ========================================= */
+
 .envelope.open .letter-paper {
+
+    width: 650px;
+    height: 650px;
+
+    left: 50%;
+
+    bottom: 0;
+
     transform:
-        translateY(-285px);
+        translateX(-50%)
+        translateY(-420px);
+
+    z-index: 20;
+
+    transition:
+        width 1s cubic-bezier(.22,1,.36,1),
+        height 1s cubic-bezier(.22,1,.36,1),
+        transform 1.2s cubic-bezier(.22,1,.36,1);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.55),
+        0 0 50px rgba(255,190,210,0.12);
+}
+
+
+/* Keep envelope front behind the letter */
+
+.envelope.open .envelope-front {
+    z-index: 3;
+}
+
+
+/* =========================================
+   LETTER CONTENT WHEN OPEN
+   ========================================= */
+
+.envelope.open .paper-content {
+    padding: 50px 65px;
+}
+
+
+/* Bigger title */
+
+.envelope.open .paper-content h2 {
+    font-size: 34px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   SMOOTH INTRO TRANSITION
+   ========================================= */
+
+.letter-intro {
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 
@@ -2676,10 +2760,40 @@ div[class*="balloon"] {
         height: 410px;
     }
 
-    .envelope.open .letter-paper {
-        transform:
-            translateY(-250px);
-    }
+   .envelope.open {
+	    transform:
+	        translateX(-50%)
+	        translateY(120px);
+	}
+
+	.envelope.open {
+	    transform:
+	        translateX(-50%)
+	        translateY(120px);
+	}
+	
+	.envelope.open .letter-paper {
+	
+	    width: 92vw;
+	    max-width: 430px;
+	
+	    height: 620px;
+	
+	    left: 50%;
+	
+	    transform:
+	        translateX(-50%)
+	        translateY(-390px);
+	
+	}
+	
+	.envelope.open .paper-content {
+	    padding: 35px 28px;
+	}
+	
+	.envelope.open .paper-content h2 {
+	    font-size: 27px;
+	}
 
     .paper-content {
         padding:
