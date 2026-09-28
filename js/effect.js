@@ -1701,7 +1701,7 @@ function animateFinalHeart() {
      * Prevent endless acceleration
      */
 
-    const maxSpeed = 1.25;
+    const maxSpeed = 5.5;
 
     heartVX =
         Math.max(
