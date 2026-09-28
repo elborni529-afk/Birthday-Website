@@ -3771,3 +3771,40 @@ body:not(.letter-active) {
     z-index: 50 !important;
     pointer-events: none !important;
 }
+/* =========================================
+   🎂 ANIME PRINT ON FRONT OF CAKE
+   ========================================= */
+
+.cake {
+    position: relative !important;
+}
+
+.cake > .cake-print {
+    position: absolute !important;
+    display: block !important;
+
+    /* position inside pink front panel */
+    top: 112px !important;
+    left: 50% !important;
+
+    width: 42px !important;
+    height: 30px !important;
+
+    transform: translateX(-50%) !important;
+
+    object-fit: contain !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+
+    opacity: 0.9 !important;
+
+    z-index: 100 !important;
+    pointer-events: none !important;
+}
