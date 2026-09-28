@@ -4775,3 +4775,305 @@ img.cake-print {
 .final-surprise-btn {
     margin-top: 30px;
 }
+/* =========================================
+   🌌 FINAL SURPRISE
+   ========================================= */
+
+.final-scene {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: #020105;
+
+    z-index: 10000000;
+
+    color: white;
+}
+
+
+/* NIGHT SKY */
+
+.final-sky {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            #25103c 0%,
+            #0b0615 42%,
+            #020105 78%
+        );
+}
+
+
+/* =========================================
+   ⭐ STARS
+   ========================================= */
+
+.final-stars,
+.final-stars::before,
+.final-stars::after {
+    position: absolute;
+
+    content: "";
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0;
+
+    box-shadow:
+        5vw 15vh white,
+        12vw 38vh white,
+        18vw 72vh white,
+        24vw 25vh white,
+        31vw 58vh white,
+        37vw 12vh white,
+        43vw 82vh white,
+        49vw 32vh white,
+        56vw 65vh white,
+        62vw 18vh white,
+        68vw 76vh white,
+        74vw 41vh white,
+        81vw 13vh white,
+        87vw 62vh white,
+        94vw 28vh white,
+
+        8vw 87vh rgba(255,255,255,.6),
+        21vw 48vh rgba(255,255,255,.7),
+        35vw 91vh rgba(255,255,255,.6),
+        53vw 9vh rgba(255,255,255,.8),
+        71vw 88vh rgba(255,255,255,.7),
+        91vw 79vh rgba(255,255,255,.6);
+}
+
+
+.final-stars::before {
+    left: 4vw;
+    top: -5vh;
+
+    transform: scale(.6);
+}
+
+
+.final-stars::after {
+    left: -7vw;
+    top: 9vh;
+
+    transform: scale(1.4);
+}
+
+
+.final-stars.awake {
+    animation:
+        finalStarsAppear 3s ease forwards,
+        finalTwinkle 2.5s ease-in-out 3s infinite alternate;
+}
+
+
+@keyframes finalStarsAppear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: .9;
+    }
+}
+
+
+@keyframes finalTwinkle {
+    from {
+        opacity: .35;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   🌙 MOON
+   ========================================= */
+
+.final-moon {
+    position: absolute;
+
+    right: 10%;
+    top: 10%;
+
+    font-size: clamp(70px, 9vw, 130px);
+
+    color: #fff4cf;
+
+    opacity: 0;
+
+    transform:
+        translateY(-20px)
+        rotate(-10deg);
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255, 240, 190, .45)
+        );
+}
+
+
+.final-moon.awake {
+    animation:
+        moonAppear 2.5s ease forwards;
+}
+
+
+@keyframes moonAppear {
+
+    to {
+        opacity: .9;
+
+        transform:
+            translateY(0)
+            rotate(-10deg);
+    }
+}
+
+
+/* =========================================
+   ✨ FINAL TEXT
+   ========================================= */
+
+.final-content {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(900px, 88%);
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+
+.final-small-text,
+.final-main-text,
+.final-message {
+    opacity: 0;
+}
+
+
+.final-small-text {
+    font-size: 18px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.7);
+}
+
+
+.final-main-text {
+    margin-top: 15px;
+
+    font-size:
+        clamp(38px, 6vw, 72px);
+
+    font-weight: 400;
+}
+
+
+.final-message {
+    margin-top: 30px;
+}
+
+
+.final-message > p:first-child {
+    font-size:
+        clamp(16px, 2vw, 21px);
+
+    line-height: 1.8;
+
+    color:
+        rgba(255,255,255,.72);
+}
+
+
+.final-message h2 {
+    margin-top: 25px;
+
+    font-size:
+        clamp(28px, 4vw, 48px);
+
+    font-weight: 400;
+}
+
+
+.final-birthday {
+    margin-top: 30px;
+
+    font-size:
+        clamp(22px, 3vw, 34px);
+
+    font-weight: bold;
+}
+
+
+/* TEXT REVEALS */
+
+.final-small-text.reveal {
+    animation:
+        finalTextReveal 1.4s ease forwards;
+}
+
+
+.final-main-text.reveal {
+    animation:
+        finalTextReveal 1.8s ease forwards;
+}
+
+
+.final-message.reveal {
+    animation:
+        finalTextReveal 2s ease forwards;
+}
+
+
+@keyframes finalTextReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        filter:
+            blur(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
