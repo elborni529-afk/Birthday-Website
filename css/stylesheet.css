@@ -3799,3 +3799,42 @@ img.cake-print {
     background: transparent !important;
     box-shadow: none !important;
 }
+/* =========================================
+   💌 CLOSE LETTER BUTTON
+   ========================================= */
+
+.close-letter-btn {
+    display: none;
+
+    margin: 30px auto 10px;
+    padding: 12px 28px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #ff5c8a,
+        #ff8fab
+    );
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px rgba(255, 92, 138, 0.35);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.close-letter-btn:hover {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 8px 25px rgba(255, 92, 138, 0.5);
+}
